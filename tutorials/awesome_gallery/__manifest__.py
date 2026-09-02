@@ -11,7 +11,7 @@
 
     'version': '0.1',
     'application': True,
-    'category': 'Tutorials/AwesomeGallery',
+    'category': 'Tutorials',
     'installable': True,
     'depends': ['web', 'contacts'],
     'data': [
@@ -22,5 +22,6 @@
             'awesome_gallery/static/src/**/*',
         ],
     },
+    'author': 'Odoo S.A.',
     'license': 'AGPL-3'
 }

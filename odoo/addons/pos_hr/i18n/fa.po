@@ -2,19 +2,17 @@
 # This file contains the translation of the following modules:
 # * pos_hr
 #
-# Translators:
-# Tiffany Chang, 2025
-# F Hariri <fhari1234@gmail.com>, 2025
-# Mohsen Mohammadi <iammohsen.123@gmail.com>, 2025
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
+# Heshmatkhah <maheshmatkhah.soft@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:37+0000\n"
-"PO-Revision-Date: 2026-08-14 17:06+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/pos_hr/"
+"POT-Creation-Date: 2026-07-31 17:37+0000\n"
+"PO-Revision-Date: 2026-08-23 06:11+0000\n"
+"Last-Translator: Heshmatkhah <maheshmatkhah.soft@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/pos_hr/"
 "fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -24,18 +22,13 @@ msgstr ""
 "X-Generator: Weblate 2026.6.1\n"
 
 #. module: pos_hr
-#: model:ir.model,name:pos_hr.model_report_pos_hr_multi_employee_sales_report
-msgid "A collection of single session reports. One for each employee"
-msgstr ""
-
-#. module: pos_hr
 #: model_terms:ir.ui.view,arch_db:pos_hr.single_employee_sales_report
 msgid "Abigal Peterson"
 msgstr "آسنا دانایی"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/screens/product_screen/order_summary/order_summary.js:0
+#: code:addons/pos_hr/static/src/app/screens/product_screen/order_summary/order_summary.js:0
 msgid "Access Denied"
 msgstr "امکان دسترسی وجود ندارد"
 
@@ -70,13 +63,15 @@ msgstr "دسترسی‌های پایه"
 #. module: pos_hr
 #: model_terms:ir.ui.view,arch_db:pos_hr.view_pos_daily_sales_reports_wizard
 msgid ""
-"Can't generate a report per employee! as selected session has no orders "
-"associated with any employee."
+"Cannot generate report per employee: only one employee logged in during this "
+"session."
 msgstr ""
+"امکان تولید گزارش به ازای هر کارمند وجود ندارد: فقط یک کارمند در این نشست "
+"وارد شده است."
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/components/closing_popup/closing_popup.xml:0
+#: code:addons/pos_hr/static/src/app/components/popups/closing_popup/closing_popup.xml:0
 msgid "Cash in/out"
 msgstr "ورود/خروج نقد"
 
@@ -100,12 +95,6 @@ msgid "Cashier name"
 msgstr "نام صندوق‌دار"
 
 #. module: pos_hr
-#. odoo-javascript
-#: code:addons/pos_hr/static/src/app/select_cashier_mixin.js:0
-msgid "Change Cashier"
-msgstr "تغییر صندوق‌دار"
-
-#. module: pos_hr
 #. odoo-python
 #: code:addons/pos_hr/models/pos_session.py:0
 msgid "Closed Register"
@@ -117,22 +106,48 @@ msgid "Config Settings"
 msgstr "تنظیمات پیکربندی"
 
 #. module: pos_hr
+#: model:ir.model,name:pos_hr.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/components/closing_popup/closing_popup.xml:0
+#: code:addons/pos_hr/static/src/app/components/popups/closing_popup/closing_popup.xml:0
 msgid "Counted"
 msgstr "شمارش شده"
 
 #. module: pos_hr
+#: model:ir.model,website_form_label:pos_hr.model_res_partner
+msgid "Create a Customer"
+msgstr ""
+
+#. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/components/closing_popup/closing_popup.xml:0
+#: code:addons/pos_hr/static/src/app/components/popups/closing_popup/closing_popup.xml:0
 msgid "Difference"
 msgstr "تفاوت"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/screens/login_screen/login_screen.js:0
+#: code:addons/pos_hr/static/src/app/screens/login_screen/login_screen.js:0
 msgid "Discard"
 msgstr "رها کردن"
+
+#. module: pos_hr
+#: model:ir.model.fields,field_description:pos_hr.field_account_bank_statement_line__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_pos_config__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_pos_daily_sales_reports_wizard__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_pos_order__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_pos_payment__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_pos_session__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_product_product__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_report_pos_hr_single_employee_sales_report__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:pos_hr.field_res_partner__display_name
+msgid "Display Name"
+msgstr "نام نمایشی"
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_hr_employee
@@ -142,11 +157,6 @@ msgstr "رها کردن"
 #: model_terms:ir.ui.view,arch_db:pos_hr.view_report_pos_order_search_inherit
 msgid "Employee"
 msgstr "کارمند"
-
-#. module: pos_hr
-#: model:ir.actions.report,name:pos_hr.multi_employee_sales_report_action
-msgid "Employee Sales Details"
-msgstr ""
 
 #. module: pos_hr
 #: model_terms:ir.ui.view,arch_db:pos_hr.single_employee_sales_report
@@ -171,8 +181,8 @@ msgid ""
 "Employees linked to users with the PoS Manager role are automatically added "
 "to this list"
 msgstr ""
-"در صورت خالی بودن، فقط کاربران سازمان‌یار دارای دسترسی‌های گسترده‌تر در پایانه "
-"فروش هستند"
+"در صورت خالی بودن، فقط کاربران اودو دارای دسترسی‌های گسترده‌تر در پایانه فروش "
+"هستند"
 
 #. module: pos_hr
 #: model:ir.model.fields,field_description:pos_hr.field_pos_config__basic_employee_ids
@@ -187,32 +197,63 @@ msgid "Employees with manager access"
 msgstr "کارمندان دارای دسترسی مدیریتی"
 
 #. module: pos_hr
+#: model:ir.model.fields,field_description:pos_hr.field_pos_config__minimal_employee_ids
+#: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__pos_minimal_employee_ids
+msgid "Employees with minimal access"
+msgstr "کارمندان با دسترسی حداقلی"
+
+#. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/screens/login_screen/login_screen.xml:0
+#: code:addons/pos_hr/static/src/app/screens/login_screen/login_screen.xml:0
 msgid "Enter your PIN"
 msgstr "PIN خود را وارد کنید"
 
 #. module: pos_hr
+#: model:ir.model.fields,field_description:pos_hr.field_account_bank_statement_line__id
+#: model:ir.model.fields,field_description:pos_hr.field_hr_employee__id
+#: model:ir.model.fields,field_description:pos_hr.field_pos_config__id
+#: model:ir.model.fields,field_description:pos_hr.field_pos_daily_sales_reports_wizard__id
+#: model:ir.model.fields,field_description:pos_hr.field_pos_order__id
+#: model:ir.model.fields,field_description:pos_hr.field_pos_payment__id
+#: model:ir.model.fields,field_description:pos_hr.field_pos_session__id
+#: model:ir.model.fields,field_description:pos_hr.field_product_product__id
+#: model:ir.model.fields,field_description:pos_hr.field_report_pos_hr_single_employee_sales_report__id
+#: model:ir.model.fields,field_description:pos_hr.field_report_pos_order__id
+#: model:ir.model.fields,field_description:pos_hr.field_res_config_settings__id
+#: model:ir.model.fields,field_description:pos_hr.field_res_partner__id
+msgid "ID"
+msgstr "شناسه"
+
+#. module: pos_hr
 #: model:ir.model.fields,help:pos_hr.field_pos_config__basic_employee_ids
+#: model:ir.model.fields,help:pos_hr.field_pos_config__minimal_employee_ids
 #: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_basic_employee_ids
+#: model:ir.model.fields,help:pos_hr.field_res_config_settings__pos_minimal_employee_ids
 msgid "If left empty, all employees can log in to PoS"
 msgstr "در صورت خالی بودن، همه کارمندان می‌توانند وارد پایانه فروش شوند"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/components/navbar/navbar.xml:0
+#: code:addons/pos_hr/static/src/app/components/navbar/navbar.xml:0
+#: code:addons/pos_hr/static/src/app/components/popups/cashier_selection_popup/cashier_selection_popup.xml:0
 msgid "Lock"
 msgstr "قفل"
 
 #. module: pos_hr
+#: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
+#: model_terms:ir.ui.view,arch_db:pos_hr.res_config_settings_view_form
+msgid "Minimal rights"
+msgstr "حداقل دسترسی‌ها"
+
+#. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/app/select_cashier_mixin.js:0
+#: code:addons/pos_hr/static/src/app/utils/select_cashier_mixin.js:0
 msgid "No Cashiers"
 msgstr "بدون صندوق‌دار"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/screens/login_screen/login_screen.js:0
+#: code:addons/pos_hr/static/src/app/screens/login_screen/login_screen.js:0
 msgid ""
 "Only the cashier linked to the logged-in user (%s) can proceed to the "
 "Backend."
@@ -222,7 +263,7 @@ msgstr ""
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/screens/login_screen/login_screen.xml:0
+#: code:addons/pos_hr/static/src/app/screens/login_screen/login_screen.xml:0
 msgid "Open Register"
 msgstr "ورود به صندوق"
 
@@ -234,7 +275,7 @@ msgstr "رجیستر باز شده"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/components/closing_popup/closing_popup.xml:0
+#: code:addons/pos_hr/static/src/app/components/popups/closing_popup/closing_popup.xml:0
 msgid "Opening"
 msgstr "ابتدای دوره"
 
@@ -246,27 +287,21 @@ msgstr "دیگران"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/app/select_cashier_mixin.js:0
+#: code:addons/pos_hr/static/src/app/utils/select_cashier_mixin.js:0
 msgid "PIN not found"
 msgstr "PIN یافت نشد"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/app/select_cashier_mixin.js:0
+#: code:addons/pos_hr/static/src/app/utils/select_cashier_mixin.js:0
 msgid "Password?"
 msgstr "رمز عبور؟"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/components/closing_popup/closing_popup.xml:0
+#: code:addons/pos_hr/static/src/app/components/popups/closing_popup/closing_popup.xml:0
 msgid "Payments"
 msgstr "پرداخت‌ها"
-
-#. module: pos_hr
-#. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/components/closing_popup/closing_popup.js:0
-msgid "Payments in %(paymentMethod)s"
-msgstr ""
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_pos_config
@@ -296,18 +331,18 @@ msgstr "پرداخت های پایانه فروش"
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_pos_session
 msgid "Point of Sale Session"
-msgstr "نشست پایانه فروش"
-
-#. module: pos_hr
-#. odoo-javascript
-#: code:addons/pos_hr/static/src/app/print_report_button/print_report_button.xml:0
-msgid "Print"
-msgstr "چاپ"
+msgstr "جلسه پایانه فروش"
 
 #. module: pos_hr
 #: model:ir.model,name:pos_hr.model_product_product
 msgid "Product Variant"
 msgstr "گونه محصول"
+
+#. module: pos_hr
+#. odoo-javascript
+#: code:addons/pos_hr/static/src/app/components/popups/cashier_selection_popup/cashier_selection_popup.xml:0
+msgid "Select Cashier"
+msgstr "انتخاب صندوق‌دار"
 
 #. module: pos_hr
 #: model_terms:ir.ui.view,arch_db:pos_hr.pos_config_form_view_inherit
@@ -338,25 +373,25 @@ msgstr "کارمندی که از صندوق استفاده می‌کند."
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/app/select_cashier_mixin.js:0
+#: code:addons/pos_hr/static/src/app/utils/select_cashier_mixin.js:0
 msgid "There is no cashier available."
 msgstr "صندوق‌داری در دسترس نیست."
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/screens/login_screen/login_screen.xml:0
+#: code:addons/pos_hr/static/src/app/screens/login_screen/login_screen.xml:0
 msgid "Unlock Register"
 msgstr "قفل‌گشایی صندوق"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/app/select_cashier_mixin.js:0
+#: code:addons/pos_hr/static/src/app/utils/select_cashier_mixin.js:0
 msgid "Wrong PIN"
 msgstr "پین‌کد اشتباه"
 
 #. module: pos_hr
 #. odoo-javascript
-#: code:addons/pos_hr/static/src/overrides/screens/product_screen/order_summary/order_summary.js:0
+#: code:addons/pos_hr/static/src/app/screens/product_screen/order_summary/order_summary.js:0
 msgid "You are not allowed to change the price of a product."
 msgstr "شما مجاز به تغییر قیمت یک محصول نیستید."
 

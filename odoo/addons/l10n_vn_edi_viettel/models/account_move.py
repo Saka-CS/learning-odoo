@@ -432,7 +432,7 @@ class AccountMove(models.Model):
             invoice.l10n_vn_edi_invoice_state = 'sent'
 
             if self._can_commit():
-                self._cr.commit()
+                self.env.cr.commit()
 
     def _l10n_vn_need_cancel_request(self):
         return self._l10n_vn_edi_is_sent() and self.l10n_vn_edi_invoice_state != 'canceled'
@@ -540,7 +540,7 @@ class AccountMove(models.Model):
         })
 
         if self._can_commit():
-            self._cr.commit()
+            self.env.cr.commit()
 
     def _l10n_vn_edi_cancel_invoice(self, reason, agreement_document_name, agreement_document_date):
         """ Send a request to cancel the invoice. """
@@ -583,17 +583,17 @@ class AccountMove(models.Model):
 
             self.button_cancel()
 
-            self.with_context(no_new_invoice=True).message_post(
+            self.message_post(
                 body=_('The invoice has been canceled for reason: %(reason)s', reason=reason),
             )
         except UserError as e:
-            self.with_context(no_new_invoice=True).message_post(
+            self.message_post(
                 body=_('The invoice has been canceled on sinvoice for reason: %(reason)s'
                        'But the cancellation in Odoo failed with error: %(error)s', reason=reason, error=e),
             )
 
         if self._can_commit():
-            self._cr.commit()
+            self.env.cr.commit()
 
     def button_draft(self):
         # EXTEND account
@@ -888,11 +888,11 @@ class AccountMove(models.Model):
             - We use the credentials of the parent company, if no credentials are set on the child one.
             - We store the access token on the appropriate company, based on which holds the credentials.
         """
-        if self.company_id.l10n_vn_edi_username and self.company_id.l10n_vn_edi_password:
+        if self.company_id.sudo().l10n_vn_edi_username and self.company_id.sudo().l10n_vn_edi_password:
             return self.company_id
 
-        return self.company_id.sudo().parent_ids.filtered(
-            lambda c: c.l10n_vn_edi_username and c.l10n_vn_edi_password
+        return self.company_id.parent_ids.filtered(
+            lambda c: c.sudo().l10n_vn_edi_username and c.sudo().l10n_vn_edi_password
         )[-1:]
 
     # -------------------------------------------------------------------------

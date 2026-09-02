@@ -2,14 +2,8 @@ import { describe, expect } from "@odoo/hoot";
 import { waitUntil } from "@odoo/hoot-dom";
 import { advanceTime } from "@odoo/hoot-mock";
 import { browser } from "@web/core/browser/browser";
-import { onRpc, mountWebClient, asyncStep, waitForSteps } from "@web/../tests/web_test_helpers";
-import {
-    assertSteps,
-    defineMailModels,
-    mockGetMedia,
-    onlineTest,
-    step,
-} from "@mail/../tests/mail_test_helpers";
+import { asyncStep, onRpc, mountWebClient, waitForSteps } from "@web/../tests/web_test_helpers";
+import { defineMailModels, mockGetMedia, onlineTest } from "@mail/../tests/mail_test_helpers";
 import { PeerToPeer, STREAM_TYPE, UPDATE_EVENT } from "@mail/discuss/call/common/peer_to_peer";
 
 describe.current.tags("desktop");
@@ -57,14 +51,14 @@ onlineTest("basic peer to peer connection", async () => {
     const user2 = network.register(2);
     user2.p2p.addEventListener("update", ({ detail: { name, payload } }) => {
         if (name === UPDATE_EVENT.CONNECTION_CHANGE && payload.state === "connected") {
-            step(payload.state);
+            asyncStep(payload.state);
         }
     });
 
     user2.p2p.connect(user2.id, channelId);
     user1.p2p.connect(user1.id, channelId);
     await user1.p2p.addPeer(user2.id);
-    await assertSteps(["connected"]);
+    await waitForSteps(["connected"]);
     network.close();
 });
 
@@ -102,7 +96,7 @@ onlineTest("connection recovery", async () => {
     user2.remoteStates = new Map();
     user2.p2p.addEventListener("update", ({ detail: { name, payload } }) => {
         if (name === UPDATE_EVENT.CONNECTION_CHANGE && payload.state === "connected") {
-            step(payload.state);
+            asyncStep(payload.state);
         }
     });
 
@@ -116,7 +110,7 @@ onlineTest("connection recovery", async () => {
     });
     advanceTime(5_000); // recovery timeout
     await openPromise;
-    await assertSteps(["connected"]);
+    await waitForSteps(["connected"]);
     network.close();
 });
 
@@ -208,9 +202,7 @@ onlineTest("can reject arbitrary offers", async () => {
             asyncStep("offer rejected");
         }
     };
-    user2.p2p.acceptOffer = (id, sequence) => {
-        return id !== user1.id || sequence > 20;
-    };
+    user2.p2p.acceptOffer = (id, sequence) => id !== user1.id || sequence > 20;
     user1.p2p.addPeer(user2.id, { sequence: 19 });
     await waitForSteps(["offer rejected"]);
     network.close();

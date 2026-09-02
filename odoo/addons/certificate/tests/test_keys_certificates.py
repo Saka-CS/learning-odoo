@@ -132,15 +132,23 @@ class TestKeysCertificates(TransactionCase):
         private_key_obj = serialization.load_pem_private_key(base64.b64decode(private_key.pem_key), None)
         self.assertTrue(isinstance(private_key_obj, rsa.RSAPrivateKey))
 
+    def test_ed25519_key_generated(self):
+        private_key = self.env['certificate.key']._generate_ed25519_private_key(self.env.company)
+        private_key_obj = serialization.load_pem_private_key(base64.b64decode(private_key.pem_key), None)
+        self.assertTrue(isinstance(private_key_obj, ed25519.Ed25519PrivateKey))
+
     def test_key_loading_wrong_password(self):
         correct_password = 'foobar'
         wrong_password = 'barfoo'
         content = file_open('certificate/tests/data/encrypted_private.key', 'rb').read()
-        key = self.env['certificate.key'].create({'content': base64.b64encode(content)})
-        self.assertEqual(key.loading_error, '')
-        key.password = wrong_password
+        key = self.env['certificate.key'].create({
+            'content': base64.b64encode(content),
+            'password': wrong_password,
+        })
         self.assertEqual(key.loading_error, 'This key could not be loaded. Either its content or its password is erroneous.')
-        key.password = correct_password
+        key.write({
+            'password': correct_password,
+        })
         self.assertEqual(key.loading_error, '')
 
     def test_der_certificate(self):

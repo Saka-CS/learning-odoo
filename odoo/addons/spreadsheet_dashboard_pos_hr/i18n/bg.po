@@ -2,24 +2,15 @@
 # This file contains the translation of the following modules:
 # * spreadsheet_dashboard_pos_hr
 #
-# Translators:
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# KeyVillage, 2024
-# Ivan Ivanov, 2024
-# aleksandar ivanov, 2024
-# Martin Trigaux, 2024
-# Albena Mincheva <albena_vicheva@abv.bg>, 2024
-# Rumena Georgieva <rumena.georgieva@gmail.com>, 2024
-# Petko Karamotchev, 2024
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2026-08-17 17:09+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-05 04:42+0000\n"
+"Last-Translator: Rosen Vladimirov <vladimirov.rosen@gmail.com>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/"
 "spreadsheet_dashboard_pos_hr/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -44,14 +35,12 @@ msgstr "Настоящ"
 
 #. module: spreadsheet_dashboard_pos_hr
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_sample_dashboard.json:0
 msgid "Customer"
 msgstr "Клиент"
 
 #. module: spreadsheet_dashboard_pos_hr
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_sample_dashboard.json:0
 msgid "Date"
 msgstr "Дата"
@@ -117,7 +106,7 @@ msgstr "Продукт"
 #: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_sample_dashboard.json:0
 msgid "Responsible"
-msgstr "Отговорен"
+msgstr "Отговорно лице"
 
 #. module: spreadsheet_dashboard_pos_hr
 #. odoo-javascript
@@ -149,7 +138,6 @@ msgstr "Топ поръчки"
 
 #. module: spreadsheet_dashboard_pos_hr
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_sample_dashboard.json:0
 msgid "Top Points of Sale"
 msgstr "Топ центрове за продажби"
@@ -166,7 +154,7 @@ msgstr "Топ продукти"
 #: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_sample_dashboard.json:0
 msgid "Top Responsibles"
-msgstr "Топ отговорници"
+msgstr "Топ отговорни лица"
 
 #. module: spreadsheet_dashboard_pos_hr
 #. odoo-javascript
@@ -177,10 +165,9 @@ msgstr "Топ сесии"
 
 #. module: spreadsheet_dashboard_pos_hr
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_hr/data/files/pos_sample_dashboard.json:0
 msgid "Total"
-msgstr "Обща стойност"
+msgstr "Общо"
 
 #. module: spreadsheet_dashboard_pos_hr
 #. odoo-javascript

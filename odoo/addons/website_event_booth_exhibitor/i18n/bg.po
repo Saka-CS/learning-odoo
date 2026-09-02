@@ -2,21 +2,15 @@
 # This file contains the translation of the following modules:
 # * website_event_booth_exhibitor
 #
-# Translators:
-# Petko Karamotchev, 2024
-# aleksandar ivanov, 2024
-# Martin Trigaux, 2024
-# Elena Varbanova, 2024
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2026-08-22 17:34+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-02 19:16+0000\n"
+"Last-Translator: Rosen Vladimirov <vladimirov.rosen@gmail.com>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/"
 "website_event_booth_exhibitor/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -70,6 +64,12 @@ msgid "Description"
 msgstr "Описание"
 
 #. module: website_event_booth_exhibitor
+#: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__display_name
+#: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth_category__display_name
+msgid "Display Name"
+msgstr "Име за показване"
+
+#. module: website_event_booth_exhibitor
 #: model:ir.model,name:website_event_booth_exhibitor.model_event_booth
 msgid "Event Booth"
 msgstr "Щанд на събитие"
@@ -85,14 +85,15 @@ msgid "Exhibitor type"
 msgstr "Вид изложител"
 
 #. module: website_event_booth_exhibitor
-#: model_terms:ir.ui.view,arch_db:website_event_booth_exhibitor.event_booth_category_view_search
-msgid "Group By"
-msgstr "Групиране по"
-
-#. module: website_event_booth_exhibitor
 #: model_terms:ir.ui.view,arch_db:website_event_booth_exhibitor.event_booth_registration_details
 msgid "How can we showcase your company ?"
 msgstr "Как можем да представим вашата фирма?"
+
+#. module: website_event_booth_exhibitor
+#: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__id
+#: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth_category__id
+msgid "ID"
+msgstr "Номер (ID)"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,help:website_event_booth_exhibitor.field_event_booth__use_sponsor
@@ -137,17 +138,12 @@ msgstr "Имейл на спонсора"
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_type_id
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth_category__sponsor_type_id
 msgid "Sponsor Level"
-msgstr "Ниво на спонсор"
+msgstr "Ниво на спонсорство"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_image_512
 msgid "Sponsor Logo"
-msgstr "Емблема на спонсора"
-
-#. module: website_event_booth_exhibitor
-#: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_mobile
-msgid "Sponsor Mobile"
-msgstr ""
+msgstr "Лого на спонсора"
 
 #. module: website_event_booth_exhibitor
 #: model:ir.model.fields,field_description:website_event_booth_exhibitor.field_event_booth__sponsor_name

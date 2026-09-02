@@ -2,18 +2,15 @@
 # This file contains the translation of the following modules:
 # * project_purchase
 #
-# Translators:
-# Tiffany Chang, 2025
-#
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:37+0000\n"
-"PO-Revision-Date: 2026-08-21 21:29+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:36+0000\n"
+"PO-Revision-Date: 2026-08-09 11:36+0000\n"
+"Last-Translator: Aliraza Habibitanha <alireza.habibitanha@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/"
 "project_purchase/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -25,11 +22,25 @@ msgstr ""
 #. module: project_purchase
 #: model:product.template,name:project_purchase.product_product_bricks_product_template
 msgid "Bricks"
-msgstr "آجرها"
+msgstr ""
 
 #. module: project_purchase
 #: model:product.template,name:project_purchase.product_product_cement_product_template
 msgid "Cement"
+msgstr ""
+
+#. module: project_purchase
+#: model:ir.model.fields,field_description:project_purchase.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_purchase.field_purchase_order__display_name
+#: model:ir.model.fields,field_description:project_purchase.field_purchase_order_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_purchase
+#: model:ir.model.fields,field_description:project_purchase.field_project_project__id
+#: model:ir.model.fields,field_description:project_purchase.field_purchase_order__id
+#: model:ir.model.fields,field_description:project_purchase.field_purchase_order_line__id
+msgid "ID"
 msgstr ""
 
 #. module: project_purchase
@@ -57,25 +68,20 @@ msgstr "پروژه"
 #. module: project_purchase
 #: model:ir.model,name:project_purchase.model_purchase_order
 msgid "Purchase Order"
-msgstr "سفارش خرید"
-
-#. module: project_purchase
-#. odoo-python
-#: code:addons/project_purchase/models/project_project.py:0
-msgid "Purchase Order Items"
 msgstr ""
 
 #. module: project_purchase
 #: model:ir.model,name:project_purchase.model_purchase_order_line
 msgid "Purchase Order Line"
-msgstr "سطر سفارش خرید"
+msgstr ""
 
 #. module: project_purchase
 #. odoo-python
 #: code:addons/project_purchase/models/project_project.py:0
 #: model:ir.embedded.actions,name:project_purchase.project_embedded_action_purchase_orders
+#: model:ir.embedded.actions,name:project_purchase.project_embedded_action_purchase_orders_dashboard
 msgid "Purchase Orders"
-msgstr "سفارشات خرید"
+msgstr "سفارش‌های خرید"
 
 #. module: project_purchase
 #: model:product.template,name:project_purchase.product_product_sand_product_template

@@ -23,7 +23,7 @@ class AccountMoveLine(models.Model):
 
         # The copied account is never recomputed, so set the return account here.
         # `_reverse_moves` always sets the key; skip duplicates and cancelling reversals.
-        if 'move_reverse_cancel' in self._context and not self._context['move_reverse_cancel']:
+        if 'move_reverse_cancel' in self.env.context and not self.env.context['move_reverse_cancel']:
             for line, values in zip(self, data_list):
                 if (
                     line.company_id.country_code == 'TR'

@@ -407,7 +407,7 @@ class TestItEdiExport(TestItEdi):
             'amount': 0.0,
             'amount_type': 'percent',
             'l10n_it_exempt_reason': 'N3.1',
-            'l10n_it_law_reference': 'Art. 8, c.1, lett.a - D.P.R. 633/1972',
+            'invoice_legal_notes': 'Art. 8, c.1, lett.a - D.P.R. 633/1972',
         })
 
         american_partner_b = self.env['res.partner'].create({
@@ -505,17 +505,18 @@ class TestItEdiExport(TestItEdi):
         if self.env['ir.module.module']._get('sale').state != 'installed':
             self.skipTest("sale module is not installed")
 
-        sale_order = self.env['sale.order'].with_company(self.company).create({
+        sale_order = self.env['sale.order'].with_company(self.company).sudo().create({
             'partner_id': self.italian_partner_a.id,
             'order_line': [
                 Command.create({'product_id': self.service_product.id, 'price_unit': 200.00}),
             ],
         })
+        sale_order.name = 'SO-IT0001'
         sale_order.action_confirm()
 
         for amount in (50, 100):
             self.env['account.move'].with_company(self.company).browse(
-                self.env['sale.advance.payment.inv'].create([{
+                self.env['sale.advance.payment.inv'].sudo().create([{
                     'advance_payment_method': 'fixed',
                     'fixed_amount': amount,
                     'sale_order_ids': [Command.link(sale_order.id)],
@@ -523,7 +524,7 @@ class TestItEdiExport(TestItEdi):
             ).action_post()
 
         invoice = self.env['account.move'].with_company(self.company).browse(
-            self.env['sale.advance.payment.inv'].create([{
+            self.env['sale.advance.payment.inv'].sudo().create([{
                 'advance_payment_method': 'delivered',
                 'sale_order_ids': [Command.link(sale_order.id)],
             }]).create_invoices()['res_id']
@@ -541,7 +542,7 @@ class TestItEdiExport(TestItEdi):
         if self.env['ir.module.module']._get('sale').state != 'installed':
             self.skipTest("sale module is not installed")
 
-        sale_order = self.env['sale.order'].with_company(self.company).create({
+        sale_order = self.env['sale.order'].with_company(self.company).sudo().create({  # noqa: OLS03001
             'partner_id': self.italian_partner_a.id,
             'order_line': [
                 Command.create({'product_id': self.service_product.id, 'price_unit': 200.00}),
@@ -550,7 +551,7 @@ class TestItEdiExport(TestItEdi):
         sale_order.action_confirm()
 
         downpayment_invoice = self.env['account.move'].with_company(self.company).browse(
-            self.env['sale.advance.payment.inv'].create([{
+            self.env['sale.advance.payment.inv'].sudo().create([{
                 'advance_payment_method': 'fixed',
                 'fixed_amount': 50,
                 'sale_order_ids': [Command.link(sale_order.id)],
@@ -600,7 +601,7 @@ class TestItEdiExport(TestItEdi):
 
         self._assert_export_invoice(invoice, 'prezzio_unitario_converted_company_currency.xml')
 
-    def test_export_XML_lowercase_fields(self):
+    def test_export_XML_lowercase_fields_and_payment_method(self):
         partner = self.env['res.partner'].create({
             'name': 'Alessi',
             'l10n_it_codice_fiscale': 'Mrtmtt91d08f205j',
@@ -620,6 +621,7 @@ class TestItEdiExport(TestItEdi):
                     'tax_ids': [Command.set(self.default_tax.ids)],
                 }),
             ],
+            'l10n_it_payment_method': 'MP15',
         })
         invoice.action_post()
         self._assert_export_invoice(invoice, 'invoice_lowercase_fields.xml')
@@ -773,11 +775,8 @@ class TestItEdiExport(TestItEdi):
 
     def test_export_invoice_uom_unicode_normalization(self):
         """Test that non-standard Unicode characters (e.g. m², m³) are correctly normalized for XML invoices."""
-        uom_category = self.env['uom.category'].create({
-            'name': 'Test Surface',
-        })
 
-        self.product_a.uom_id = self.product_a.uom_id.copy({'name': 'm²', 'category_id': uom_category.id})
+        self.product_a.uom_id = self.product_a.uom_id.copy({'name': 'm²'})
         invoice = self._create_invoice(
             partner_id=self.italian_partner_a,
             post=True,
@@ -790,22 +789,42 @@ class TestItEdiExport(TestItEdi):
         uom_nodes = invoice_tree.xpath("//*[local-name()='DettaglioLinee']/*[local-name()='UnitaMisura']")
         self.assertEqual(uom_nodes[0].text, 'm2')
 
-    def test_reset_to_draft_l10n_it_edi_transaction(self):
-        """
-        In l10n_it_edi, it is possible to receive a bill where l10n_it_edi_transaction is already populated.
-        It should be possible to still reset this move to draft
-        """
-        bill = self.env['account.move'].create({
-            'partner_id': self.partner_a.id,
-            'move_type': 'in_invoice',
-            'invoice_date': '2026-03-24',
-            'l10n_it_edi_transaction': 'transaction',
-            'line_ids': [
+    # Simplified tests ----------------------------------------------------
+    def _force_simplified(self, partner):
+        td07 = self.env['l10n_it.document.type'].search([('code', '=', 'TD07')], limit=1)
+        return self.env['account.move'].with_company(self.company).create({
+            'move_type': 'out_invoice',
+            'invoice_date': '2022-03-24',
+            'invoice_date_due': '2022-03-24',
+            'partner_id': partner.id,
+            'invoice_line_ids': [
                 Command.create({
-                    'name': 'line',
-                    'account_id': self.company_data['default_account_revenue'].id,
+                    'name': 'cheap_line',
+                    'price_unit': 100.00,
+                    'tax_ids': [Command.set(self.default_tax.ids)],
                 }),
-            ]
+            ],
+            'l10n_it_document_type': td07.id,
         })
-        bill.action_post()
-        self.assertEqual(bill.show_reset_to_draft_button, True)
+
+    def _get_simplified_errors(self, moves):
+        return [
+            k
+            for k, v in moves._l10n_it_edi_is_simplified_checks().items()
+            if v.get('level') in ('warning', 'error')
+        ]
+
+    def test_invoice_non_domestic_force_simplified(self):
+        """ If the user forces a simplified document type (i.e. TD07) on a non-italian partner, an error is raised """
+        invoice = self._force_simplified(self.american_partner)
+        self.assertEqual(['l10n_it_edi_move_simplified_partner'], self._get_simplified_errors(invoice))
+
+    def test_invoice_domestic_force_simplified(self):
+        """ If the user forces a simplified document type (i.e. TD07) on an italian partner, it works """
+        invoice = self._force_simplified(self.italian_partner_a)
+        self.assertEqual([], self._get_simplified_errors(invoice))
+
+    def test_invoice_pa_force_simplified(self):
+        """ If the user forces a simplified document type (i.e. TD07) on an italian PA partner, errors are raised """
+        invoice = self._force_simplified(self.italian_partner_b)
+        self.assertEqual(['l10n_it_edi_move_simplified_partner'], self._get_simplified_errors(invoice))

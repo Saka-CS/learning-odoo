@@ -2,6 +2,7 @@
 
 {
     'name': 'Greece - myDATA E-invoicing through e-invoo',
+    'author': 'Odoo',
     'countries': ['gr'],
     'category': 'Accounting/Localizations/EDI',
     'depends': [
@@ -13,6 +14,5 @@
         'views/report_invoice.xml',
     ],
     'auto_install': ['l10n_gr_edi'],
-    'installable': True,
     'license': 'LGPL-3',
 }

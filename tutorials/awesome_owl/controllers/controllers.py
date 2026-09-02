@@ -1,5 +1,7 @@
+from odoo.http import request
+
 from odoo import http
-from odoo.http import request, route
+
 
 class OwlPlayground(http.Controller):
     @http.route(['/awesome_owl'], type='http', auth='public')

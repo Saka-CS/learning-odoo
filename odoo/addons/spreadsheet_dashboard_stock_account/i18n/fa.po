@@ -2,18 +2,15 @@
 # This file contains the translation of the following modules:
 # * spreadsheet_dashboard_stock_account
 #
-# Translators:
-# Tiffany Chang, 2025
-#
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2026-08-21 21:26+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-09 10:17+0000\n"
+"Last-Translator: Aliraza Habibitanha <alireza.habibitanha@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/"
 "spreadsheet_dashboard_stock_account/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -48,6 +45,13 @@ msgstr "مقدار موجودی خواب بر اساس دسته‌بندی و ت
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
+msgid "Ageing stock qty by product and creation date"
+msgstr "مقدار موجودی قدیمی بر اساس محصول و تاریخ ایجاد"
+
+#. module: spreadsheet_dashboard_stock_account
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_sample_dashboard.json:0
 msgid "Ageing stock value by product and creation date"
 msgstr "ارزش موجودی خواب بر اساس محصول و تاریخ ایجاد"
@@ -56,7 +60,7 @@ msgstr "ارزش موجودی خواب بر اساس محصول و تاریخ ا
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_sample_dashboard.json:0
 msgid "Available Quantity"
-msgstr "مقدار در دسترس"
+msgstr "موجودی در دسترس"
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
@@ -108,6 +112,12 @@ msgstr "تعداد محصولات با موجودی منفی"
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
+msgid "Creation Date"
+msgstr "تاریخ ایجاد"
+
+#. module: spreadsheet_dashboard_stock_account
+#. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_sample_dashboard.json:0
 msgid "Electric standing desk"
 msgstr "میز ایستاده برقی"
@@ -123,7 +133,7 @@ msgstr "صندلی ارگونومیک اداری"
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_sample_dashboard.json:0
 msgid "KPI"
-msgstr "KPI"
+msgstr "شاخص عملکرد کلیدی"
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
@@ -136,13 +146,13 @@ msgstr "سطرهای دارای موجودی منفی"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
 msgid "Location"
-msgstr "مکان"
+msgstr "موقعیت مکانی"
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
 msgid "Lot/Serial"
-msgstr "سری/سریال"
+msgstr "سری ساخت/شماره سریال"
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
@@ -166,7 +176,7 @@ msgstr "محصول"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
 msgid "Product Category"
-msgstr "دسته بندی محصول"
+msgstr "دسته‌بندی محصول"
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
@@ -233,6 +243,17 @@ msgstr "شارژر گوشی خورشیدی"
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
+msgid "Stock Quantity"
+msgstr "مقدار موجودی"
+
+#. module: spreadsheet_dashboard_stock_account
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_dashboard.json:0
+msgid "Stock Value"
+msgstr "ارزش موجودی"
+
+#. module: spreadsheet_dashboard_stock_account
+#. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_sample_dashboard.json:0
 msgid "Top 10 products with negative stock"
 msgstr "10 محصول با بیشترین موجودی منفی"
@@ -241,7 +262,7 @@ msgstr "10 محصول با بیشترین موجودی منفی"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_sample_dashboard.json:0
 msgid "Total"
-msgstr "مجموع"
+msgstr "جمع کل"
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript
@@ -260,7 +281,7 @@ msgstr "WH/خروجی"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_stock_account/data/files/warehouse_metrics_sample_dashboard.json:0
 msgid "WH/Stock"
-msgstr "انبار/موجودی"
+msgstr "WH/موجودی"
 
 #. module: spreadsheet_dashboard_stock_account
 #. odoo-javascript

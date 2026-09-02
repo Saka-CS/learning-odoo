@@ -2,26 +2,15 @@
 # This file contains the translation of the following modules:
 # * spreadsheet_dashboard_sale
 #
-# Translators:
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# Ivan Ivanov, 2024
-# Igor Sheludko <igor.sheludko@gmail.com>, 2024
-# kalatchev, 2024
-# aleksandar ivanov, 2024
-# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2024
-# Martin Trigaux, 2024
-# Petko Karamotchev, 2024
-# Martin Dinovski, 2025
-# "v.kanev" <v.kanev@tutanota.com>, 2026.
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2026-08-19 16:19+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-04 20:34+0000\n"
+"Last-Translator: Rosen Vladimirov <vladimirov.rosen@gmail.com>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/"
 "spreadsheet_dashboard_sale/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -54,7 +43,7 @@ msgstr "Средна поръчка"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Average order amount"
-msgstr "Средна стойност на поръчка"
+msgstr "Средна сума на поръчка"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
@@ -75,7 +64,7 @@ msgstr "Най-продаван"
 #: code:addons/spreadsheet_dashboard_sale/data/files/product_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/product_sample_dashboard.json:0
 msgid "Best Sellers by Revenue"
-msgstr "Най-продавани по приходи"
+msgstr "Най-продавани по приход"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
@@ -86,7 +75,6 @@ msgstr "Най-продавани по продадени бройки"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_sale/data/files/product_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/product_sample_dashboard.json:0
 msgid "Best Selling Categories"
 msgstr "Най-продавани категории"
@@ -159,7 +147,7 @@ msgstr "Клиент"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Draft quotations"
-msgstr "Чернови оферти"
+msgstr "Оферти в чернова"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
@@ -211,7 +199,7 @@ msgstr "KPI"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Medium"
-msgstr "Преносител"
+msgstr "Канал"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
@@ -357,14 +345,12 @@ msgstr "TitanForge Gaming Chair"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Top Categories"
 msgstr "Топ категории"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Top Countries"
 msgstr "Топ страни"
@@ -380,7 +366,6 @@ msgstr "Топ клиенти"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
-#, fuzzy
 msgid "Top Mediums"
 msgstr "Топ медии"
 
@@ -389,7 +374,7 @@ msgstr "Топ медии"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Top Products"
-msgstr "Топ продукти"
+msgstr "топ продукти"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
@@ -403,21 +388,21 @@ msgstr "Топ оферти"
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Top Sales Orders"
-msgstr "Най-продавани поръчки"
+msgstr "Топ поръчки за продажба"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Top Sales Teams"
-msgstr "Най-добри екипи по продажбите"
+msgstr "Топ търговски екипи"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_sale/data/files/sales_sample_dashboard.json:0
 msgid "Top Salespeople"
-msgstr "Най-добрите търговци"
+msgstr "Топ търговци"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript
@@ -445,6 +430,12 @@ msgstr "Общо оферти"
 #: code:addons/spreadsheet_dashboard_sale/data/files/product_sample_dashboard.json:0
 msgid "UltraBeam Projector"
 msgstr "UltraBeam проектор"
+
+#. module: spreadsheet_dashboard_sale
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_sale/data/files/product_dashboard.json:0
+msgid "Unit sold"
+msgstr "Продадена единица"
 
 #. module: spreadsheet_dashboard_sale
 #. odoo-javascript

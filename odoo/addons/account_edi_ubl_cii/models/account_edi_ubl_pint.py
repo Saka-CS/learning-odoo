@@ -77,9 +77,9 @@ class AccountEdiUBLPint(models.AbstractModel):
         if self._is_document(vals, 'invoice', 'credit_note', 'self_invoice', 'self_credit_note'):
             self._ubl_add_notes_nodes_all_invoices(vals)
 
-    def _ubl_add_invoice_delivery_nodes(self, vals):
+    def _ubl_add_delivery_nodes(self, vals):
         # [ibr-107]-Deliver to information (ibg-13) MUST occur maximum once.
-        super()._ubl_add_invoice_delivery_nodes(vals)
+        super()._ubl_add_delivery_nodes(vals)
 
         if self._is_document(vals, 'invoice', 'credit_note', 'self_invoice', 'self_credit_note'):
             document_node = vals['document_node']
@@ -218,6 +218,24 @@ class AccountEdiUBLPint(models.AbstractModel):
                 },
             })
 
+    def _ubl_add_delivery_party_endpoint_id_node(self, vals):
+        pass
+
+    def _ubl_add_delivery_party_identification_nodes(self, vals):
+        pass
+
+    def _ubl_add_delivery_party_postal_address_node(self, vals):
+        pass
+
+    def _ubl_add_delivery_party_tax_scheme_nodes(self, vals):
+        pass
+
+    def _ubl_add_delivery_party_legal_entity_nodes(self, vals):
+        pass
+
+    def _ubl_add_delivery_party_contact_node(self, vals):
+        pass
+
     def _ubl_get_payment_means_payee_financial_account_institution_branch_node_from_partner_bank(self, vals, partner_bank):
         node = super()._ubl_get_payment_means_payee_financial_account_institution_branch_node_from_partner_bank(vals, partner_bank)
         if node:
@@ -310,6 +328,9 @@ class AccountEdiUBLPint(models.AbstractModel):
                 'currencyID': currency.name,
             }
 
+        # Percent is not reported in TaxSubtotal
+        node['cbc:Percent']['_text'] = None
+
         return node
 
     def _ubl_tax_totals_node_grouping_key(self, base_line, tax_data, vals, currency):
@@ -398,3 +419,20 @@ class AccountEdiUBLPint(models.AbstractModel):
         AccountTax._round_raw_gross_total_excluded_and_discount(vals['base_lines'], company, in_foreign_currency=False)
 
         return vals
+
+    # -------------------------------------------------------------------------
+    # IMPORT
+    # -------------------------------------------------------------------------
+
+    def _import_prepare_missing_customer_create_values(self, collected_values):
+        partner_create_values = super()._import_prepare_missing_customer_create_values(collected_values)
+
+        customer_values = collected_values['customer_values']
+        if (
+                (peppol_eas := customer_values.get('peppol_eas'))
+                and (peppol_endpoint := customer_values.get('peppol_endpoint'))
+        ):
+            partner_create_values['peppol_eas'] = peppol_eas
+            partner_create_values['peppol_endpoint'] = peppol_endpoint
+
+        return partner_create_values

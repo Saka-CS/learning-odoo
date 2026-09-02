@@ -2,7 +2,6 @@ from stdnum.gr import vat as gr_vat
 
 from odoo import fields, models
 from odoo.exceptions import RedirectWarning
-from odoo.tools import index_exists
 
 
 L10N_GR_EDI_DEFAULT_IAP_ENDPOINT = 'https://l10n-gr-edi.api.odoo.com'
@@ -20,25 +19,10 @@ class AccountEdiProxyClientUser(models.Model):
         ondelete={L10N_GR_EDI_PROXY_TYPE: 'cascade'},
     )
 
-    _sql_constraints = [
-        (
-            'unique_identification_l10n_gr_edi',
-            '',
-            'This EDI identification is already assigned to an active user.',
-        ),
-    ]
-
-    def _auto_init(self):
-        super()._auto_init()
-        if not index_exists(
-            self.env.cr,
-            'account_edi_proxy_client_user_unique_identification_l10n_gr_edi',
-        ):
-            self.env.cr.execute("""
-                CREATE UNIQUE INDEX account_edi_proxy_client_user_unique_identification_l10n_gr_edi
-                                 ON account_edi_proxy_client_user(edi_identification, edi_mode)
-                              WHERE (active IS True AND proxy_type = 'l10n_gr_edi')
-            """)
+    _unique_identification_l10n_gr_edi = models.UniqueIndex(
+        "(edi_identification, edi_mode) WHERE (active IS TRUE AND proxy_type = 'l10n_gr_edi')",
+        "This EDI identification is already assigned to an active user.",
+    )
 
     def _get_proxy_urls(self):
         urls = super()._get_proxy_urls()

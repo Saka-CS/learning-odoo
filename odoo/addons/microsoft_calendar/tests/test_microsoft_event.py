@@ -1,3 +1,5 @@
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
 from datetime import datetime
 from unittest.mock import patch
 
@@ -5,7 +7,7 @@ from dateutil.relativedelta import relativedelta
 from pytz import UTC
 
 from odoo.exceptions import UserError
-from odoo.addons.microsoft_calendar.models.microsoft_sync import MicrosoftSync
+from odoo.addons.microsoft_calendar.models.microsoft_sync import MicrosoftCalendarSync
 from odoo.addons.microsoft_calendar.utils.microsoft_event import MicrosoftEvent
 from odoo.addons.microsoft_calendar.tests.common import TestCommon, patch_api
 
@@ -410,7 +412,7 @@ class TestMicrosoftEvent(TestCommon):
         def track_microsoft_delete(*args, **kwargs):
             microsoft_delete_calls.append((args, kwargs))
 
-        with patch.object(MicrosoftSync, '_microsoft_delete', track_microsoft_delete):
+        with patch.object(MicrosoftCalendarSync, '_microsoft_delete', track_microsoft_delete):
             self.env['calendar.event']._sync_microsoft2odoo(MicrosoftEvent(recurrent))
 
         # assert

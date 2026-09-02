@@ -2,22 +2,15 @@
 # This file contains the translation of the following modules:
 # * spreadsheet_dashboard_pos_restaurant
 #
-# Translators:
-# Petko Karamotchev, 2024
-# KeyVillage, 2024
-# Ivan Ivanov, 2024
-# Albena Mincheva <albena_vicheva@abv.bg>, 2024
-# Martin Trigaux, 2024
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-08 18:37+0000\n"
-"PO-Revision-Date: 2026-08-18 16:29+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-07 05:44+0000\n"
+"Last-Translator: Rosen Vladimirov <vladimirov.rosen@gmail.com>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/"
 "spreadsheet_dashboard_pos_restaurant/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -112,7 +105,6 @@ msgstr "Среден приход на поръчка"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Category "
 msgstr "Категория "
@@ -153,7 +145,6 @@ msgstr "Почасов общ приход"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Margin"
 msgstr "Марж"
@@ -162,7 +153,7 @@ msgstr "Марж"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Measure"
-msgstr "Измервайте "
+msgstr "Мярка"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
@@ -172,7 +163,6 @@ msgstr "Нетен приход"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Orders"
 msgstr "Поръчки"
@@ -190,7 +180,6 @@ msgstr "Продукт"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Product "
 msgstr "Продукт "
@@ -203,24 +192,21 @@ msgstr "Категория продукт"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Quantity"
 msgstr "Количество"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Quantity Sold"
 msgstr "Продадено количество"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Responsible"
-msgstr "Отговорен"
+msgstr "Отговорно лице"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
@@ -231,7 +217,6 @@ msgstr "Приход"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Revenue "
 msgstr "Приход "
@@ -252,10 +237,9 @@ msgstr "Приход на час"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Table"
-msgstr "Таблица"
+msgstr "Маса"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
@@ -266,14 +250,12 @@ msgstr "Време"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Tip"
-msgstr "Съвет"
+msgstr "Бакшиш"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Top 15 Products per Category"
 msgstr "Топ 15 продукта по категория"
@@ -297,14 +279,14 @@ msgstr "Топ 15 маси по приход"
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Top Responsibles"
-msgstr "Топ отговорници"
+msgstr "Топ отговорни лица"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_pos_restaurant/data/files/pos_restaurant_sample_dashboard.json:0
 msgid "Total revenue"
-msgstr "Общи приходи"
+msgstr "Общ приход"
 
 #. module: spreadsheet_dashboard_pos_restaurant
 #. odoo-javascript

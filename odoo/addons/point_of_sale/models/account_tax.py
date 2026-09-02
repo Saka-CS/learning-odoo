@@ -44,12 +44,13 @@ class AccountTax(models.Model):
         return super(AccountTax, self).write(vals)
 
     @api.model
-    def _load_pos_data_domain(self, data):
-        return self.env['account.tax']._check_company_domain(data['pos.config']['data'][0]['company_id'])
+    def _load_pos_data_domain(self, data, config):
+        return self.env['account.tax']._check_company_domain(config.company_id.id)
 
     @api.model
-    def _load_pos_data_fields(self, config_id):
+    def _load_pos_data_fields(self, config):
         return [
             'id', 'name', 'price_include', 'include_base_amount', 'is_base_affected', 'has_negative_factor',
             'amount_type', 'children_tax_ids', 'amount', 'company_id', 'id', 'sequence', 'tax_group_id',
+            'fiscal_position_ids',
         ]

@@ -2,19 +2,15 @@
 # This file contains the translation of the following modules:
 # * payment_aps
 #
-# Translators:
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# aleksandar ivanov, 2024
-# Turhan Aydin <taydin@unionproject.eu>, 2024
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2026-08-21 21:28+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-08 00:17+0000\n"
+"Last-Translator: Rosen Vladimirov <vladimirov.rosen@gmail.com>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/"
 "payment_aps/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -59,15 +55,21 @@ msgid "Code"
 msgstr "Код"
 
 #. module: payment_aps
+#: model:ir.model.fields,field_description:payment_aps.field_payment_provider__display_name
+#: model:ir.model.fields,field_description:payment_aps.field_payment_transaction__display_name
+msgid "Display Name"
+msgstr "Име за показване"
+
+#. module: payment_aps
+#: model:ir.model.fields,field_description:payment_aps.field_payment_provider__id
+#: model:ir.model.fields,field_description:payment_aps.field_payment_transaction__id
+msgid "ID"
+msgstr "Номер (ID)"
+
+#. module: payment_aps
 #: model_terms:ir.ui.view,arch_db:payment_aps.payment_provider_form
 msgid "Merchant Identifier"
 msgstr "Идентификатор на търговеца"
-
-#. module: payment_aps
-#. odoo-python
-#: code:addons/payment_aps/models/payment_transaction.py:0
-msgid "No transaction found matching reference %s."
-msgstr "Не е открита транзакция, съответстваща с референция %s."
 
 #. module: payment_aps
 #: model:ir.model,name:payment_aps.model_payment_provider
@@ -84,12 +86,6 @@ msgstr "Платежна транзакция"
 #: code:addons/payment_aps/models/payment_transaction.py:0
 msgid "Received data with missing payment state."
 msgstr "Получени са данни с липсващо състояние на плащането."
-
-#. module: payment_aps
-#. odoo-python
-#: code:addons/payment_aps/models/payment_transaction.py:0
-msgid "Received data with missing reference %(ref)s."
-msgstr ""
 
 #. module: payment_aps
 #. odoo-python

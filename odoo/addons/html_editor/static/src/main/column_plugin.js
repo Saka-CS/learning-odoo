@@ -1,11 +1,13 @@
 import { _t } from "@web/core/l10n/translation";
 import { Plugin } from "@html_editor/plugin";
 import { closestBlock } from "@html_editor/utils/blocks";
-import { closestElement } from "@html_editor/utils/dom_traversal";
+import { closestElement, firstLeaf } from "@html_editor/utils/dom_traversal";
+import { baseContainerGlobalSelector } from "@html_editor/utils/base_container";
 import { isEmptyBlock } from "@html_editor/utils/dom_info";
+import { isHtmlContentSupported } from "@html_editor/core/selection_plugin";
 import { nodeSize } from "@html_editor/utils/position";
 
-const REGEX_BOOTSTRAP_COLUMN = /(?:^| )col(-[a-zA-Z]+)?(-\d+)?(?= |$)/;
+const REGEX_BOOTSTRAP_COLUMN = /(^| )col(-[a-zA-Z]+)?(-\d+)?(?= |$)/;
 
 function isUnremovableColumn(node, root) {
     const isColumnInnerStructure =
@@ -24,13 +26,16 @@ function isUnremovableColumn(node, root) {
 function columnIsAvailable(numberOfColumns) {
     return (selection) => {
         const row = closestElement(selection.anchorNode, ".o_text_columns .row");
-        return !(row && row.childElementCount === numberOfColumns);
+        return row
+            ? row.childElementCount !== numberOfColumns
+            : closestBlock(selection.anchorNode)?.parentNode?.isContentEditable;
     };
 }
 
 export class ColumnPlugin extends Plugin {
     static id = "column";
     static dependencies = ["baseContainer", "selection", "history", "dom"];
+    /** @type {import("plugins").EditorResources} */
     resources = {
         user_commands: [
             {
@@ -39,6 +44,7 @@ export class ColumnPlugin extends Plugin {
                 description: _t("Convert into columns"),
                 icon: "fa-columns",
                 run: this.columnize.bind(this),
+                isAvailable: isHtmlContentSupported,
             },
         ],
         powerbox_items: [
@@ -48,7 +54,7 @@ export class ColumnPlugin extends Plugin {
                 categoryId: "structure",
                 isAvailable: columnIsAvailable(2),
                 commandId: "columnize",
-                commandParams: { numberOfColumns: 2 },
+                commandParams: 2,
             },
             {
                 title: _t("3 columns"),
@@ -56,7 +62,7 @@ export class ColumnPlugin extends Plugin {
                 categoryId: "structure",
                 isAvailable: columnIsAvailable(3),
                 commandId: "columnize",
-                commandParams: { numberOfColumns: 3 },
+                commandParams: 3,
             },
             {
                 title: _t("4 columns"),
@@ -64,7 +70,7 @@ export class ColumnPlugin extends Plugin {
                 categoryId: "structure",
                 isAvailable: columnIsAvailable(4),
                 commandId: "columnize",
-                commandParams: { numberOfColumns: 4 },
+                commandParams: 4,
             },
             {
                 title: _t("Remove column layout"),
@@ -73,19 +79,39 @@ export class ColumnPlugin extends Plugin {
                 isAvailable: (selection) =>
                     !!closestElement(selection.anchorNode, ".o_text_columns .row"),
                 commandId: "columnize",
-                commandParams: { numberOfColumns: 0 },
+                commandParams: 0,
             },
         ],
         hints: [
             {
-                selector: `.odoo-editor-editable .o_text_columns div[class^='col-'],
-                            .odoo-editor-editable .o_text_columns div[class^='col-']>p:first-child`,
+                selector: `.odoo-editor-editable .o_text_columns div[class*='col-'],
+                            .odoo-editor-editable .o_text_columns div[class*='col-']>${baseContainerGlobalSelector}:first-child`,
                 text: _t("Empty column"),
             },
         ],
         unremovable_node_predicates: isUnremovableColumn,
         power_buttons_visibility_predicates: ({ anchorNode }) =>
             !closestElement(anchorNode, ".o_text_columns"),
+        move_node_whitelist_selectors: ".o_text_columns",
+        move_node_blacklist_selectors: ".o_text_columns *",
+        hint_targets_providers: (selectionData) => {
+            if (!selectionData.documentSelection) {
+                return [];
+            }
+            const anchorNode = selectionData.documentSelection.anchorNode;
+            const columnContainer = closestElement(anchorNode, "div.o_text_columns");
+            if (!columnContainer) {
+                return [];
+            }
+            const closestColumn = closestElement(anchorNode, "div[class*='col-']");
+            const closestBlockEl = closestBlock(anchorNode);
+            return [...columnContainer.querySelectorAll("div[class*='col-']")]
+                .map((column) => {
+                    const block = closestBlock(firstLeaf(column));
+                    return column === closestColumn && block !== closestBlockEl ? null : block;
+                })
+                .filter(Boolean);
+        },
     };
 
     /**
@@ -98,7 +124,7 @@ export class ColumnPlugin extends Plugin {
         return ![...column.children].every((node) => isEmptyBlock(node));
     }
 
-    columnize({ numberOfColumns, addParagraphAfter = true } = {}) {
+    columnize(numberOfColumns) {
         const cursors = this.dependencies.selection.preserveSelection();
         const anchor = cursors.anchor.node;
         const hasColumns = !!closestElement(anchor, ".o_text_columns");
@@ -118,7 +144,7 @@ export class ColumnPlugin extends Plugin {
                 this.createColumnsFromList(anchor, li, numberOfColumns);
                 return;
             }
-            this.createColumns(anchor, numberOfColumns, addParagraphAfter);
+            this.createColumns(anchor, numberOfColumns);
         }
 
         if (!anchor.isConnected) {
@@ -188,9 +214,6 @@ export class ColumnPlugin extends Plugin {
     createColumns(anchor, numberOfColumns, addParagraphAfter) {
         const { container, columns } = this.buildColumnsContainer(anchor, numberOfColumns);
         const block = closestBlock(anchor);
-        if (addParagraphAfter) {
-            block.after(this.createEmptyParagraph());
-        }
         columns.shift().append(block);
         for (const column of columns) {
             column.append(this.createEmptyParagraph());
@@ -240,7 +263,7 @@ export class ColumnPlugin extends Plugin {
         for (const column of columns) {
             column.className = column.className.replace(
                 REGEX_BOOTSTRAP_COLUMN,
-                `col$1-${columnSize}`
+                `$1col$2-${columnSize}`
             );
         }
         if (diff > 0) {

@@ -2,35 +2,15 @@
 # This file contains the translation of the following modules:
 # * loyalty
 #
-# Translators:
-# Petko Karamotchev, 2024
-# Vladimir Dachev <v.dachev@dalkomotors.com>, 2024
-# Anton Vassilev, 2024
-# Ивайло Малинов <iv.malinov@gmail.com>, 2024
-# Rumena Georgieva <rumena.georgieva@gmail.com>, 2024
-# Meglen Hadzhitsanchev, 2024
-# KeyVillage, 2024
-# Elena Varbanova, 2024
-# Albena Mincheva <albena_vicheva@abv.bg>, 2024
-# Martin Trigaux, 2024
-# B Dochev, 2024
-# aleksandar ivanov, 2024
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# Venelin Stoykov, 2024
-# Margarita Katzeva, 2024
-# Milena Georgieva, 2024
-# Martin Dinovski, 2025
-# Veselina Slavkova, 2025
-# "v.kanev" <v.kanev@tutanota.com>, 2026.
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-10 18:38+0000\n"
-"PO-Revision-Date: 2026-08-14 17:07+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-04-10 18:39+0000\n"
+"PO-Revision-Date: 2026-08-02 13:32+0000\n"
+"Last-Translator: Rosen Vladimirov <vladimirov.rosen@gmail.com>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/"
 "loyalty/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -57,21 +37,19 @@ msgstr ""
 "        "
 
 #. module: loyalty
-#: model:ir.model.fields,help:loyalty.field_loyalty_program__available_on
-msgid ""
-"\n"
-"        Manage where your program should be available for use.\n"
-"        "
-msgstr ""
-
-#. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_program__portal_visible
 msgid ""
 "\n"
 "        Show in web portal, PoS customer ticket, eCommerce checkout, the "
-"number of points available and used by reward.\n"
+"number of points available\n"
+"         and used by reward.\n"
 "        "
 msgstr ""
+"\n"
+"        Показва в уеб портала, клиентската бележка в POS и плащането в "
+"електронния магазин броя налични\n"
+"         и използвани точки за награда.\n"
+"        "
 
 #. module: loyalty
 #. odoo-python
@@ -133,7 +111,7 @@ msgstr "Купони за 10% отстъпка"
 #: model:loyalty.reward,description:loyalty.10_percent_coupon_reward
 #: model:loyalty.reward,description:loyalty.10_percent_with_code_reward
 msgid "10% on your order"
-msgstr "10% от вашата поръчка"
+msgstr "10% върху вашата поръчка"
 
 #. module: loyalty
 #. odoo-python
@@ -186,17 +164,71 @@ msgid ""
 "                    <span style=\"background-color:#999999; display:inline-"
 "block; width:auto; border-radius:5px;\">\n"
 "                        <a t-attf-href=\"{{ object.get_base_url() }}/shop\" "
-"target=\"_blank\" style=\"text-decoration:none; font-family:arial, "
-"'helvetica neue', helvetica, sans-serif; font-size:22px; color:#FFFFFF; "
-"border-style:solid; border-color:#999999; border-width:20px 30px; "
-"display:inline-block; background-color:#999999; border-radius:5px; font-"
-"weight:bold; font-style:normal; line-height:26px; width:auto; text-"
+"target=\"_blank\" t-attf-style=\"text-decoration:none; font-family:arial, "
+"'helvetica neue', helvetica, sans-serif; font-size:22px; color: "
+"{{object.company_id.email_primary_color or '#FFFFFF'}}; border-style:solid; "
+"border-width:20px 30px; display:inline-block; background-color: "
+"{{object.company_id.email_secondary_color or '#875A7B'}}; border-radius:5px; "
+"font-weight:bold; font-style:normal; line-height:26px; width:auto; text-"
 "align:center\">Use it right now!</a>\n"
 "                    </span>\n"
 "                </div>\n"
 "            </div>\n"
 "        "
 msgstr ""
+"<div style=\"background: #ffffff\">\n"
+"                <div style=\"margin:0px; font-size:24px; font-family:arial, "
+"'helvetica neue', helvetica, sans-serif; line-height:36px; color:#333333; "
+"text-align: center\">\n"
+"                    Ето вашата подаръчна карта!\n"
+"                </div>\n"
+"                <div style=\"padding-top:20px; padding-bottom:20px\">\n"
+"                    <img src=\"/loyalty/static/img/gift_card.png\" "
+"style=\"display:block; border:0; outline:none; text-decoration:none; "
+"margin:auto;\" width=\"300\"/>\n"
+"                </div>\n"
+"                <div style=\"padding:0; margin:0px; padding-top:35px; "
+"padding-bottom:35px; text-align:center;\">\n"
+"                    <h3 style=\"margin:0px; line-height:48px; font-"
+"family:arial, 'helvetica neue', helvetica, sans-serif; font-size:40px; font-"
+"style:normal; font-weight:normal; color:#333333; text-align:center\">\n"
+"                        <strong t-out=\"format_amount(object.points, "
+"object.currency_id) or ''\">$ 150.00</strong></h3>\n"
+"                </div>\n"
+"                <div style=\"padding:0; margin:0px; padding-top:35px; "
+"padding-bottom:35px; background-color:#efefef; text-align:center;\">\n"
+"                    <p style=\"margin:0px; font-size:14px;font-family:arial, "
+"'helvetica neue', helvetica, sans-serif; line-height:21px; color:#333333\">\n"
+"                        <strong>Код на подаръчната карта</strong>\n"
+"                    </p>\n"
+"                    <p style=\"margin:0px; font-size:25px;font-family:arial, "
+"'helvetica neue', helvetica, sans-serif; line-height:38px; color:#A9A9A9\" t-"
+"out=\"object.code or ''\">4f10-15d6-41b7-b04c-7b3e</p>\n"
+"                </div>\n"
+"                <div t-if=\"object.expiration_date\" style=\"padding:0; "
+"margin:0px; padding-top:10px; padding-bottom:10px; text-align:center;\">\n"
+"                    <h3 style=\"margin:0px; line-height:17px; font-"
+"family:arial, 'helvetica neue', helvetica, sans-serif; font-size:14px; font-"
+"style:normal; font-weight:normal; color:#A9A9A9; text-align:center\">Картата "
+"изтича на <t t-out=\"format_date(object.expiration_date) or ''\">05/05/2021</"
+"t></h3>\n"
+"                </div>\n"
+"                <div style=\"padding:20px; margin:0px; text-align:center;\">"
+"\n"
+"                    <span style=\"background-color:#999999; display:inline-"
+"block; width:auto; border-radius:5px;\">\n"
+"                        <a t-attf-href=\"{{ object.get_base_url() }}/shop\" "
+"target=\"_blank\" t-attf-style=\"text-decoration:none; font-family:arial, "
+"'helvetica neue', helvetica, sans-serif; font-size:22px; color: {"
+"{object.company_id.email_primary_color or '#FFFFFF'}}; border-style:solid; "
+"border-width:20px 30px; display:inline-block; background-color: {"
+"{object.company_id.email_secondary_color or '#875A7B'}}; border-radius:5px; "
+"font-weight:bold; font-style:normal; line-height:26px; width:auto; text-"
+"align:center\">Използвайте я още сега!</a>\n"
+"                    </span>\n"
+"                </div>\n"
+"            </div>\n"
+"        "
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_kanban
@@ -214,7 +246,7 @@ msgstr "<i class=\"fa fa-cube fa-fw\" title=\"Продукти\"/>"
 msgid ""
 "<i class=\"fa fa-cube fa-fw\" title=\"Products\"/><span>All Products</span>"
 msgstr ""
-"<i class=\"fa fa-cube fa-fw\" title=\"Products\"/><span>Всички продукти</"
+"<i class=\"fa fa-cube fa-fw\" title=\"Продукти\"/><span>Всички продукти</"
 "span>"
 
 #. module: loyalty
@@ -255,16 +287,16 @@ msgstr ""
 "<span class=\"o_stat_text\" invisible=\"program_type not in ('coupons', "
 "'next_order_coupons')\">Купони</span>\n"
 "                                <span class=\"o_stat_text\" "
-"invisible=\"program_type != 'loyalty'\">Лоялни карти</span>\n"
+"invisible=\"program_type != 'loyalty'\">Карти за лоялност</span>\n"
 "                                <span class=\"o_stat_text\" "
 "invisible=\"program_type not in ('promotion', 'buy_x_get_y')\">Промоции</"
 "span>\n"
 "                                <span class=\"o_stat_text\" "
 "invisible=\"program_type != 'promo_code'\">Отстъпка</span>\n"
 "                                <span class=\"o_stat_text\" "
-"invisible=\"program_type != 'gift_card'\">Подаръчни ваучери</span>\n"
+"invisible=\"program_type != 'gift_card'\">Подаръчни карти</span>\n"
 "                                <span class=\"o_stat_text\" "
-"invisible=\"program_type != 'ewallet'\">eПортфейли</span>"
+"invisible=\"program_type != 'ewallet'\">Електронни портфейли</span>"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
@@ -319,17 +351,17 @@ msgstr "<span>Минимална покупка от</span>"
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
 msgid "<span>Valid for purchase above</span>"
-msgstr "<span>Валидно при покупка над</span>"
+msgstr "<span>Валидно за покупка над</span>"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_form
 msgid "<span>on</span>"
-msgstr "<span>на</span>"
+msgstr "<span>върху</span>"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
 msgid "<span>products</span>"
-msgstr "<span>продукти</span>"
+msgstr "<span>продукта</span>"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.gift_card_report
@@ -343,8 +375,8 @@ msgid ""
 "margin:0px auto; background:#ffffff; color:#333333;\"><tbody>\n"
 "<tr>\n"
 "    <td valign=\"top\" style=\"text-align: center; font-size: 14px;\">\n"
-"        <t t-if=\"object._get_mail_partner().name\">\n"
-"            Congratulations <t t-out=\"object._get_mail_partner().name or "
+"        <t t-if=\"object._mail_get_customer().name\">\n"
+"            Congratulations <t t-out=\"object._mail_get_customer().name or "
 "''\">Brandon Freeman</t>,<br/>\n"
 "        </t>\n"
 "\n"
@@ -353,8 +385,9 @@ msgid ""
 "\n"
 "        <t t-foreach=\"object.program_id.reward_ids\" t-as=\"reward\">\n"
 "            <t t-if=\"reward.required_points &lt;= object.points\">\n"
-"                <span style=\"font-size: 50px; color: #875A7B; font-weight: "
-"bold;\" t-esc=\"reward.description\">Reward Description</span>\n"
+"                <span t-attf-style=\"font-size: 50px; color: "
+"{{object.program_id.company_id.email_secondary_color or '#875A7B'}}; font-"
+"weight: bold;\" t-esc=\"reward.description\">Reward Description</span>\n"
 "                <br/>\n"
 "            </t>\n"
 "        </t>\n"
@@ -392,14 +425,77 @@ msgid ""
 "        <t t-if=\"object._get_signature()\" data-o-mail-quote-"
 "container=\"1\">\n"
 "            <br/>\n"
-"            <t t-out=\"object._get_signature() or ''\" data-o-mail-"
-"quote=\"1\">--<br data-o-mail-quote=\"1\"/>Mitchell Admin</t>\n"
+"            <div data-o-mail-quote=\"1\">--<br data-o-mail-quote=\"1\"/><t t-"
+"out=\"object._get_signature() or ''\" data-o-mail-quote=\"1\">Mitchell "
+"Admin</t></div>\n"
 "        </t>\n"
 "    </td>\n"
 "</tr>\n"
 "</tbody></table>\n"
 "        "
 msgstr ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"width:100%; "
+"margin:0px auto; background:#ffffff; color:#333333;\"><tbody>\n"
+"<tr>\n"
+"    <td valign=\"top\" style=\"text-align: center; font-size: 14px;\">\n"
+"        <t t-if=\"object._mail_get_customer().name\">\n"
+"            Поздравления, <t t-out=\"object._mail_get_customer().name or "
+"''\">Brandon Freeman</t>,<br/>\n"
+"        </t>\n"
+"\n"
+"        Ето вашата награда от <t t-out=\"object.program_id.company_id.name "
+"or ''\">YourCompany</t>.<br/>\n"
+"\n"
+"        <t t-foreach=\"object.program_id.reward_ids\" t-as=\"reward\">\n"
+"            <t t-if=\"reward.required_points &lt;= object.points\">\n"
+"                <span t-attf-style=\"font-size: 50px; color: {"
+"{object.program_id.company_id.email_secondary_color or '#875A7B'}}; font-"
+"weight: bold;\" t-esc=\"reward.description\">Описание на наградата</span>\n"
+"                <br/>\n"
+"            </t>\n"
+"        </t>\n"
+"    </td>\n"
+"</tr>\n"
+"<tr style=\"margin-top: 16px\">\n"
+"    <td valign=\"top\" style=\"text-align: center; font-size: 14px;\">\n"
+"        Използвайте този промо код\n"
+"        <t t-if=\"object.expiration_date\">\n"
+"            преди <t t-out=\"format_date(object.expiration_date) or ''\">"
+"2021-06-16</t>\n"
+"        </t>\n"
+"        <p style=\"margin-top: 16px;\">\n"
+"            <strong style=\"padding: 16px 8px 16px 8px; border-radius: 3px; "
+"background-color: #F1F1F1;\" t-out=\"object.code or ''\">"
+"15637502648479132902</strong>\n"
+"        </p>\n"
+"        <t t-foreach=\"object.program_id.rule_ids\" t-as=\"rule\">\n"
+"            <t t-if=\"rule.minimum_qty not in [0, 1]\">\n"
+"                <span style=\"font-size: 14px;\">\n"
+"                    Минимална покупка от <t t-out=\"rule.minimum_qty or ''\">"
+"10</t> продукта\n"
+"                </span><br/>\n"
+"            </t>\n"
+"            <t t-if=\"rule.minimum_amount != 0.00\">\n"
+"                <span style=\"font-size: 14px;\">\n"
+"                    Валидно за покупка над <t t-"
+"out=\"rule.company_id.currency_id.symbol or ''\">$</t><t t-out=\"'%0.2f' % "
+"float(rule.minimum_amount) or ''\">10.00</t>\n"
+"                </span><br/>\n"
+"            </t>\n"
+"        </t>\n"
+"        <br/>\n"
+"        Благодарим ви,\n"
+"        <t t-if=\"object._get_signature()\" data-o-mail-quote-"
+"container=\"1\">\n"
+"            <br/>\n"
+"            <div data-o-mail-quote=\"1\">--<br data-o-mail-quote=\"1\"/><t t-"
+"out=\"object._get_signature() or ''\" data-o-mail-quote=\"1\">Mitchell "
+"Admin</t></div>\n"
+"        </t>\n"
+"    </td>\n"
+"</tr>\n"
+"</tbody></table>\n"
+"        "
 
 #. module: loyalty
 #. odoo-python
@@ -466,7 +562,7 @@ msgstr "Активни карти за лоялност"
 #. odoo-javascript
 #: code:addons/loyalty/static/src/xml/loyalty_templates.xml:0
 msgid "Add"
-msgstr "Добави"
+msgstr "Добавяне"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
@@ -502,7 +598,7 @@ msgstr "Анонимни клиенти"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_rule__mode
 msgid "Application"
-msgstr "Кандидатура"
+msgstr "Прилагане"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_kanban
@@ -518,7 +614,7 @@ msgstr "Прилага се за"
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_search
 msgid "Archived"
-msgstr "Архивиран"
+msgstr "Архивирано"
 
 #. module: loyalty
 #: model:ir.model.fields.selection,name:loyalty.selection__loyalty_mail__trigger__create
@@ -534,7 +630,7 @@ msgstr "Брой прикачени файлове"
 #: model:ir.model.fields.selection,name:loyalty.selection__loyalty_program__trigger__auto
 #: model:ir.model.fields.selection,name:loyalty.selection__loyalty_rule__mode__auto
 msgid "Automatic"
-msgstr "Автоматичен"
+msgstr "Автоматично"
 
 #. module: loyalty
 #. odoo-python
@@ -599,7 +695,7 @@ msgstr "Отказ"
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card_update_balance__card_id
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_history__card_id
 msgid "Card"
-msgstr "Карта "
+msgstr "Карта"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.gift_card_report
@@ -674,12 +770,12 @@ msgstr "Условия"
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_card_update_balance_form
 msgid "Confirm"
-msgstr "Потвърждение"
+msgstr "Потвърждаване"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_generate_wizard__confirmation_message
 msgid "Confirmation Message"
-msgstr "Съобщение при потвърждение"
+msgstr "Съобщение за потвърждение"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
@@ -707,7 +803,7 @@ msgstr "Купон"
 #. module: loyalty
 #: model:ir.actions.report,name:loyalty.report_loyalty_card
 msgid "Coupon Code"
-msgstr "Код за отстъпка"
+msgstr "Код на купона"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__coupon_count
@@ -718,7 +814,7 @@ msgstr "Брой купони"
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_program.py:0
 msgid "Coupon point(s)"
-msgstr "Точка(и) за купон"
+msgstr "Точки за купон"
 
 #. module: loyalty
 #: model:loyalty.program,portal_point_name:loyalty.10_percent_coupon
@@ -743,6 +839,11 @@ msgstr "Купон: Информация за купона"
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_card_view_tree
 msgid "Coupons"
 msgstr "Купони"
+
+#. module: loyalty
+#: model:ir.model,website_form_label:loyalty.model_res_partner
+msgid "Create a Customer"
+msgstr "Създаване на клиент"
 
 #. module: loyalty
 #: model_terms:ir.actions.act_window,help:loyalty.loyalty_program_gift_ewallet_action
@@ -770,7 +871,7 @@ msgstr "Създаване на запис"
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__create_uid
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_rule__create_uid
 msgid "Created by"
-msgstr "Създаден от"
+msgstr "Създадено от"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__create_date
@@ -866,7 +967,7 @@ msgstr "Описание"
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_form
 msgid "Description on order"
-msgstr "Описание на поръчката"
+msgstr "Описание в поръчката"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount
@@ -879,7 +980,7 @@ msgstr "Отстъпка"
 #: model:ir.actions.act_window,name:loyalty.loyalty_program_discount_loyalty_action
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
 msgid "Discount & Loyalty"
-msgstr "Отстъпка & лоялност"
+msgstr "Отстъпки и лоялност"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount_applicability
@@ -904,7 +1005,7 @@ msgstr "Режим на отстъпката"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__payment_program_discount_product_id
 msgid "Discount Product"
-msgstr "Продукт с отстъпка"
+msgstr "Продукт за отстъпка"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount_product_domain
@@ -950,9 +1051,10 @@ msgstr "Продукти с отстъпка"
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_program.py:0
 msgid "Discounts"
-msgstr "Отстъпки "
+msgstr "Отстъпки"
 
 #. module: loyalty
+#: model:ir.model.fields,field_description:loyalty.field_base_partner_merge_automatic_wizard__display_name
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__display_name
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card_update_balance__display_name
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_generate_wizard__display_name
@@ -961,13 +1063,17 @@ msgstr "Отстъпки "
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__display_name
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__display_name
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_rule__display_name
+#: model:ir.model.fields,field_description:loyalty.field_product_pricelist__display_name
+#: model:ir.model.fields,field_description:loyalty.field_product_product__display_name
+#: model:ir.model.fields,field_description:loyalty.field_product_template__display_name
+#: model:ir.model.fields,field_description:loyalty.field_res_partner__display_name
 msgid "Display Name"
 msgstr "Име за показване"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
 msgid "Displayed as"
-msgstr "Показано като"
+msgstr "Показва се като"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
@@ -996,7 +1102,7 @@ msgstr "Шаблон за имейл"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__mail_template_id
 msgid "Email template"
-msgstr "Имейл образец"
+msgstr "Шаблон за имейл"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__date_to
@@ -1007,12 +1113,12 @@ msgstr "Крайна дата"
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_card_update_balance_form
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_generate_wizard_view_form
 msgid "Example: Gift for customer"
-msgstr "Пример: Подарък за клиент"
+msgstr "Например: Подарък за клиент"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__expiration_date
 msgid "Expiration Date"
-msgstr "Дата на изтичане срока на годност"
+msgstr "Дата на изтичане"
 
 #. module: loyalty
 #. odoo-python
@@ -1051,7 +1157,7 @@ msgstr "Последователи (партньори)"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_generate_wizard__mode
 msgid "For"
-msgstr "за"
+msgstr "За"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_generate_wizard_view_form
@@ -1098,7 +1204,7 @@ msgstr "Бъдещи поръчки"
 #: model:ir.actions.act_window,name:loyalty.loyalty_generate_wizard_action
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_generate_wizard_view_form
 msgid "Generate"
-msgstr "Създайте"
+msgstr "Генериране"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
@@ -1154,7 +1260,7 @@ msgstr "Подаръчни карти &amp; електронен портфей�
 #: model:loyalty.reward,description:loyalty.gift_card_program_reward
 #: model:product.template,name:loyalty.gift_card_product_50_product_template
 msgid "Gift Card"
-msgstr "Карта за подарък"
+msgstr "Подаръчна карта"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
@@ -1164,7 +1270,7 @@ msgstr "Продукти за подаръчни карти"
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_generate_wizard_view_form
 msgid "Gift Card value"
-msgstr "Стойност на картата за подарък"
+msgstr "Стойност на подаръчната карта"
 
 #. module: loyalty
 #: model:mail.template,name:loyalty.mail_template_gift_card
@@ -1176,7 +1282,7 @@ msgstr "Подаръчна карта: Информация за подаръч�
 #: code:addons/loyalty/models/loyalty_program.py:0
 #: model:loyalty.program,name:loyalty.gift_card_program
 msgid "Gift Cards"
-msgstr "Карти за подарък"
+msgstr "Подаръчни карти"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
@@ -1202,7 +1308,7 @@ msgstr "Подарък за клиент"
 #. module: loyalty
 #: model:ir.actions.act_window,name:loyalty.loyalty_program_gift_ewallet_action
 msgid "Gift cards & eWallet"
-msgstr "Карти за подарък и електронен портфейл."
+msgstr "Подаръчни карти и електронен портфейл"
 
 #. module: loyalty
 #. odoo-python
@@ -1215,7 +1321,7 @@ msgstr "Подарък за клиент"
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_rule_view_form
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_rule_view_kanban
 msgid "Grant"
-msgstr "Връчете"
+msgstr "Начисляване"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
@@ -1229,7 +1335,7 @@ msgstr ""
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__has_message
 msgid "Has Message"
-msgstr "има съобщение"
+msgstr "Има съобщение"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.gift_card_report
@@ -1257,6 +1363,7 @@ msgid "History for Loyalty cards and Ewallets"
 msgstr "История за карти за лоялност и електронни портфейли"
 
 #. module: loyalty
+#: model:ir.model.fields,field_description:loyalty.field_base_partner_merge_automatic_wizard__id
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__id
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card_update_balance__id
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_generate_wizard__id
@@ -1265,6 +1372,10 @@ msgstr "История за карти за лоялност и електрон
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__id
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__id
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_rule__id
+#: model:ir.model.fields,field_description:loyalty.field_product_pricelist__id
+#: model:ir.model.fields,field_description:loyalty.field_product_product__id
+#: model:ir.model.fields,field_description:loyalty.field_product_template__id
+#: model:ir.model.fields,field_description:loyalty.field_res_partner__id
 msgid "ID"
 msgstr "ID"
 
@@ -1293,7 +1404,7 @@ msgstr "Срещу"
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_card_view_search
 msgid "Inactive"
-msgstr "Неактивен"
+msgstr "Неактивни"
 
 #. module: loyalty
 #. odoo-python
@@ -1304,7 +1415,7 @@ msgstr "Невалидно количество."
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__message_is_follower
 msgid "Is Follower"
-msgstr "е последовател"
+msgstr "Е последовател"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__is_global_discount
@@ -1327,13 +1438,13 @@ msgstr "Е платежна програма"
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_history__issued
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_card_history_template
 msgid "Issued"
-msgstr "Издадено"
+msgstr "Издадени"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__coupon_count_display
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_tree
 msgid "Items"
-msgstr "Редове"
+msgstr "Елементи"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
@@ -1383,7 +1494,7 @@ msgstr "Ограничаване на употребата"
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
 msgid "Logo"
-msgstr "Емблема"
+msgstr "Лого"
 
 #. module: loyalty
 #. odoo-python
@@ -1407,7 +1518,7 @@ msgstr "Комуникация за лоялност"
 #. module: loyalty
 #: model:ir.model,name:loyalty.model_loyalty_card
 msgid "Loyalty Coupon"
-msgstr "Купони за лоялност"
+msgstr "Купон за лоялност"
 
 #. module: loyalty
 #: model:ir.model,name:loyalty.model_loyalty_program
@@ -1433,7 +1544,12 @@ msgstr "Транзакция по лоялност"
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_program.py:0
 msgid "Loyalty point(s)"
-msgstr "Точка(и) за лоялност"
+msgstr "Точки за лоялност"
+
+#. module: loyalty
+#: model:ir.model.fields,help:loyalty.field_loyalty_program__available_on
+msgid "Manage where your program should be available for use."
+msgstr "Управлявайте къде програмата ви да бъде достъпна за използване."
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__discount_max_amount
@@ -1459,7 +1575,7 @@ msgstr "Съветник за обединяване на партньори"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__message_has_error
 msgid "Message Delivery error"
-msgstr "Грешка при доставяне на съобщението"
+msgstr "Грешка при доставката на съобщение"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__message_ids
@@ -1484,7 +1600,7 @@ msgstr "Минимално количество"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__multi_product
 msgid "Multi Product"
-msgstr "Множество продукти"
+msgstr "Няколко продукта"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card_update_balance__new_balance
@@ -1538,7 +1654,7 @@ msgstr "Брой грешки"
 #. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_card__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr "Брой съобщения изискващи действие"
+msgstr "Брой съобщения, изискващи действие"
 
 #. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_card__message_has_error_counter
@@ -1630,7 +1746,7 @@ msgstr "Продуктов домейн"
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__reward_product_tag_id
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_rule__product_tag_id
 msgid "Product Tag"
-msgstr "Етикет на продукт"
+msgstr "Продуктов маркер"
 
 #. module: loyalty
 #: model:ir.model,name:loyalty.model_product_product
@@ -1733,7 +1849,7 @@ msgstr "Количество за генериране"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__rating_ids
 msgid "Ratings"
-msgstr "Оценявания"
+msgstr "Оценки"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_rule__reward_point_amount
@@ -1790,7 +1906,7 @@ msgstr "Правила и награди"
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__message_has_sms_error
 msgid "SMS Delivery error"
-msgstr "SMS грешка при доставка"
+msgstr "Грешка при доставката на SMS"
 
 #. module: loyalty
 #: model:ir.model.fields.selection,name:loyalty.selection__loyalty_generate_wizard__mode__selected
@@ -1806,7 +1922,7 @@ msgstr "Продавайте подаръчни карти, с които мог
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_card_view_tree
 msgid "Send"
-msgstr "Изпрати"
+msgstr "Изпращане"
 
 #. module: loyalty
 #. odoo-python
@@ -1864,22 +1980,12 @@ msgstr ""
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__date_from
 msgid "Start Date"
-msgstr "Начална Дата"
+msgstr "Начална дата"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_program__currency_symbol
 msgid "Symbol"
 msgstr "Символ"
-
-#. module: loyalty
-#: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__tax_ids
-msgid "Taxes"
-msgstr "Данъци"
-
-#. module: loyalty
-#: model:ir.model.fields,help:loyalty.field_loyalty_reward__tax_ids
-msgid "Taxes to add on the discount line."
-msgstr ""
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
@@ -1909,7 +2015,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_rule.py:0
 msgid "The promo code must be unique."
-msgstr "Промокодът трябва да е уникален."
+msgstr "Промо кодът трябва да е уникален."
 
 #. module: loyalty
 #: model:ir.model.constraint,message:loyalty.constraint_loyalty_reward_required_points_positive
@@ -1950,7 +2056,7 @@ msgstr "Все още не са генерирани купони."
 #. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_reward__reward_product_ids
 msgid "These are the products that can be claimed with this rule."
-msgstr "Това са продуктите, които могат да бъдат заявени с това правило."
+msgstr "Това са продуктите, които могат да бъдат получени с това правило."
 
 #. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_reward__discount_max_amount
@@ -2002,12 +2108,6 @@ msgstr "Тригер"
 
 #. module: loyalty
 #. odoo-python
-#: code:addons/loyalty/models/loyalty_reward.py:0
-msgid "Unsupported search operator"
-msgstr ""
-
-#. module: loyalty
-#. odoo-python
 #: code:addons/loyalty/models/loyalty_card.py:0
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_card_update_balance_form
 msgid "Update Balance"
@@ -2044,7 +2144,7 @@ msgstr "Използвайте този промо код преди"
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_history__used
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_card_history_template
 msgid "Used"
-msgstr "Използвано"
+msgstr "Използвани"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_reward__user_has_debug
@@ -2064,14 +2164,19 @@ msgid "Valid until"
 msgstr "Валидна до"
 
 #. module: loyalty
+#: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
+msgid "Visible to all"
+msgstr "Видимо за всички"
+
+#. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_card__website_message_ids
 msgid "Website Messages"
-msgstr "Съобщения в уебсайт"
+msgstr "Съобщения в уебсайта"
 
 #. module: loyalty
 #: model:ir.model.fields,help:loyalty.field_loyalty_card__website_message_ids
 msgid "Website communication history"
-msgstr "История на комуникацията на уебсайт"
+msgstr "История на комуникацията на уебсайта"
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_mail__trigger
@@ -2105,8 +2210,11 @@ msgstr ""
 #: model:ir.model.fields,help:loyalty.field_loyalty_rule__reward_point_split
 msgid ""
 "Whether to separate reward coupons per matched unit, only applies to "
-"'future' programs and trigger mode per money spent or unit paid.."
+"'future' programs and trigger mode per money spent or unit paid..."
 msgstr ""
+"Дали купоните за награда да се разделят по всяка съответстваща единица; "
+"отнася се само за програми за „бъдещи“ поръчки и режим на тригер на "
+"похарчени пари или платена единица..."
 
 #. module: loyalty
 #: model:ir.model.fields,field_description:loyalty.field_loyalty_generate_wizard__will_send_mail
@@ -2203,7 +2311,7 @@ msgstr "Стойност на електронния портфейл"
 #. odoo-python
 #: code:addons/loyalty/models/loyalty_program.py:0
 msgid "eWallets"
-msgstr "електронни портфейли"
+msgstr "Електронни портфейли"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_program_view_form
@@ -2215,20 +2323,32 @@ msgid ""
 "checkout, to pay orders."
 msgstr ""
 "Електронните портфейли се създават ръчно или автоматично, когато клиентът "
-"поръча продукт за електронен портфейл.\n"
+"поръча продукт електронен портфейл.\n"
 "                                    <br/>\n"
 "                                    След това електронните портфейли се "
-"предлагат по време на плащането, за да се уредят поръчките."
+"предлагат при плащане, за да се платят поръчките."
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_rule_view_kanban
 msgid "item(s) bought"
-msgstr "купени артикули"
+msgstr "закупени артикула"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_report
 msgid "loyalty Reward"
 msgstr "Награда за лоялност"
+
+#. module: loyalty
+#. odoo-python
+#: code:addons/loyalty/models/loyalty_program.py:0
+msgid "mail.template"
+msgstr "mail.template"
+
+#. module: loyalty
+#. odoo-python
+#: code:addons/loyalty/models/loyalty_rule.py:0
+msgid "money"
+msgstr "пари"
 
 #. module: loyalty
 #: model_terms:ir.ui.view,arch_db:loyalty.loyalty_reward_view_kanban
@@ -2320,6 +2440,3 @@ msgstr "x"
 #: code:addons/loyalty/models/loyalty_reward.py:0
 msgid "your order"
 msgstr "вашата поръчка"
-
-#~ msgid "2023-12-31"
-#~ msgstr "2023-12-31"

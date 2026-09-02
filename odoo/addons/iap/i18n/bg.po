@@ -3,20 +3,18 @@
 # * iap
 #
 # Translators:
-# Petko Karamotchev, 2024
-# Elena Varbanova, 2024
-# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2024
-# KeyVillage, 2024
-# Albena Mincheva <albena_vicheva@abv.bg>, 2024
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Nikola Iliev, 2023
+# aleksandar ivanov, 2023
+# Albena Mincheva <albena_vicheva@abv.bg>, 2023
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server saas~15.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:37+0000\n"
-"PO-Revision-Date: 2026-08-09 17:12+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/iap/"
+"POT-Creation-Date: 2026-01-25 18:36+0000\n"
+"PO-Revision-Date: 2026-08-05 03:20+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/iap/"
 "bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -73,18 +71,6 @@ msgid "Banned"
 msgstr "Блокиран"
 
 #. module: iap
-#. odoo-javascript
-#: code:addons/iap/static/src/js/insufficient_credit_error_handler.js:0
-msgid "Buy credits"
-msgstr "Купете кредити"
-
-#. module: iap
-#. odoo-javascript
-#: code:addons/iap/static/src/xml/iap_templates.xml:0
-msgid "Cancel"
-msgstr "Отказ"
-
-#. module: iap
 #: model:ir.model.fields,field_description:iap.field_iap_account__company_ids
 msgid "Company"
 msgstr "Фирма"
@@ -93,7 +79,7 @@ msgstr "Фирма"
 #: model:ir.model.fields,field_description:iap.field_iap_account__create_uid
 #: model:ir.model.fields,field_description:iap.field_iap_service__create_uid
 msgid "Created by"
-msgstr "Създаден от"
+msgstr "Създадено от"
 
 #. module: iap
 #: model:ir.model.fields,field_description:iap.field_iap_account__create_date
@@ -114,6 +100,7 @@ msgstr "Описание"
 
 #. module: iap
 #: model:ir.model.fields,field_description:iap.field_iap_account__display_name
+#: model:ir.model.fields,field_description:iap.field_iap_enrich_api__display_name
 #: model:ir.model.fields,field_description:iap.field_iap_service__display_name
 msgid "Display Name"
 msgstr "Име за показване"
@@ -170,15 +157,10 @@ msgstr "Услуга IAP"
 
 #. module: iap
 #: model:ir.model.fields,field_description:iap.field_iap_account__id
+#: model:ir.model.fields,field_description:iap.field_iap_enrich_api__id
 #: model:ir.model.fields,field_description:iap.field_iap_service__id
 msgid "ID"
 msgstr "ID"
-
-#. module: iap
-#. odoo-javascript
-#: code:addons/iap/static/src/xml/iap_templates.xml:0
-msgid "Insufficient credit to perform this service."
-msgstr "Недостатъчен кредит за изпълнението на услугата"
 
 #. module: iap
 #: model:ir.model.fields,field_description:iap.field_iap_service__integer_balance
@@ -208,6 +190,12 @@ msgstr "Управление на услугата и закупуване на 
 #: model:ir.model.fields,field_description:iap.field_iap_service__name
 msgid "Name"
 msgstr "Име"
+
+#. module: iap
+#. odoo-python
+#: code:addons/iap/models/iap_account.py:0
+msgid "No service exists with the provided technical name"
+msgstr "Не съществува услуга с предоставеното техническо име"
 
 #. module: iap
 #: model_terms:ir.ui.view,arch_db:iap.res_config_settings_view_form
@@ -251,12 +239,6 @@ msgid "Service Locked"
 msgstr "Услугата е заключена"
 
 #. module: iap
-#. odoo-javascript
-#: code:addons/iap/static/src/js/insufficient_credit_error_handler.js:0
-msgid "Start a Trial at Odoo"
-msgstr ""
-
-#. module: iap
 #: model:ir.model.fields,field_description:iap.field_iap_account__state
 msgid "State"
 msgstr "Област"
@@ -265,7 +247,13 @@ msgstr "Област"
 #: model:ir.model.fields,field_description:iap.field_iap_account__service_name
 #: model:ir.model.fields,field_description:iap.field_iap_service__technical_name
 msgid "Technical Name"
-msgstr "Technical Name"
+msgstr "Техническо име"
+
+#. module: iap
+#. odoo-python
+#: code:addons/iap/models/iap_account.py:0
+msgid "The IAP token provided is invalid or empty."
+msgstr "Предоставеният IAP токен е невалиден или празен."
 
 #. module: iap
 #. odoo-python
@@ -298,3 +286,15 @@ msgstr "Преглед на моите услуги"
 #: model_terms:ir.ui.view,arch_db:iap.res_config_settings_view_form
 msgid "View your IAP Services and recharge your credits"
 msgstr "Преглед на вашите IAP услуги и зареждане на кредитите"
+
+#~ msgid "Cancel"
+#~ msgstr "Отказ"
+
+#~ msgid "Config Settings"
+#~ msgstr "Настройки"
+
+#~ msgid "Insufficient credit to perform this service."
+#~ msgstr "Недостатъчен кредит за изпълнението на услугата"
+
+#~ msgid "Service Name"
+#~ msgstr "Име на услугата"

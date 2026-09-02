@@ -11,7 +11,7 @@
 
     'version': '0.1',
     'application': True,
-    'category': 'Tutorials/AwesomeKanban',
+    'category': 'Tutorials',
     'installable': True,
     'depends': ['web', 'crm'],
     'data': [
@@ -22,5 +22,6 @@
             'awesome_kanban/static/src/**/*',
         ],
     },
+    'author': 'Odoo S.A.',
     'license': 'AGPL-3'
 }

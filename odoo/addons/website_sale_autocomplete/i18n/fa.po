@@ -2,18 +2,15 @@
 # This file contains the translation of the following modules:
 # * website_sale_autocomplete
 #
-# Translators:
-# Tiffany Chang, 2025
-#
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2026-08-21 21:28+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-09 10:32+0000\n"
+"Last-Translator: Aliraza Habibitanha <alireza.habibitanha@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/"
 "website_sale_autocomplete/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -48,21 +45,37 @@ msgstr "کلید API"
 #. module: website_sale_autocomplete
 #: model:ir.model,name:website_sale_autocomplete.model_res_config_settings
 msgid "Config Settings"
-msgstr "تنظیمات پیکربندی"
+msgstr ""
 
 #. module: website_sale_autocomplete
-#: model:ir.model.fields,field_description:website_sale_autocomplete.field_res_config_settings__google_places_api_key
+#: model:ir.model.fields,field_description:website_sale_autocomplete.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:website_sale_autocomplete.field_website__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: website_sale_autocomplete
 #: model:ir.model.fields,field_description:website_sale_autocomplete.field_website__google_places_api_key
 msgid "Google Places API Key"
-msgstr "کلید API Google Places"
+msgstr "کلید API مکان‌های گوگل (Google Places)"
+
+#. module: website_sale_autocomplete
+#: model:ir.model.fields,field_description:website_sale_autocomplete.field_res_config_settings__id
+#: model:ir.model.fields,field_description:website_sale_autocomplete.field_website__id
+msgid "ID"
+msgstr ""
 
 #. module: website_sale_autocomplete
 #. odoo-javascript
 #: code:addons/website_sale_autocomplete/static/src/xml/autocomplete.xml:0
 msgid "Powered by Google"
-msgstr "پشتیبانی شده توسط گوگل"
+msgstr "قدرت گرفته از گوگل"
 
 #. module: website_sale_autocomplete
 #: model:ir.model,name:website_sale_autocomplete.model_website
 msgid "Website"
-msgstr "تارنما"
+msgstr ""
+
+#. module: website_sale_autocomplete
+#: model:ir.model.fields,field_description:website_sale_autocomplete.field_res_config_settings__website_google_places_api_key
+msgid "Website's Google Places API Key"
+msgstr "کلید API مکان‌های گوگل برای وب سایت"

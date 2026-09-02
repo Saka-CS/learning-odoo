@@ -1,5 +1,8 @@
 from odoo import _, models, Command
+from odoo.addons.account.tools import dict_to_xml
+from odoo.addons.account_edi_ubl_cii.tools import CrossIndustryInvoice
 from odoo.tools import float_repr, is_html_empty, html2plaintext, cleanup_xml_node
+from odoo.tools.misc import str2bool
 from lxml import etree
 
 from datetime import datetime
@@ -22,10 +25,10 @@ PAYMENT_MEAN_CODES = {
 }
 
 
-class AccountEdiXmlCII(models.AbstractModel):
-    _name = "account.edi.xml.cii"
-    _inherit = 'account.edi.common'
-    _description = "Factur-x/XRechnung CII 2.2.0"
+class AccountEdiXmlCii(models.AbstractModel):
+    _name = 'account.edi.xml.cii'
+    _inherit = ['account.edi.cii']
+    _description = "Factur-x/ZUGFeRD CII 2.2.0"
 
     def _find_value(self, xpath, tree, nsmap=False):
         # EXTENDS account.edi.common
@@ -69,7 +72,7 @@ class AccountEdiXmlCII(models.AbstractModel):
             ),
             # [BR-DE-6] The element "Seller contact telephone number" (BT-42) must be transmitted.
             'seller_phone': self._check_required_fields(
-                vals['record']['company_id']['partner_id']['commercial_partner_id'], ['phone', 'mobile'],
+                vals['record']['company_id']['partner_id']['commercial_partner_id'], ['phone'],
             ),
             # [BR-DE-7] The element "Seller contact email address" (BT-43) must be transmitted.
             'seller_email': self._check_required_fields(
@@ -125,6 +128,8 @@ class AccountEdiXmlCII(models.AbstractModel):
         }
 
     def _export_invoice_vals(self, invoice):
+        customer = invoice.partner_id
+        supplier = invoice.company_id.partner_id.commercial_partner_id
 
         def format_date(dt):
             # Format the date in the Factur-x standard.
@@ -137,10 +142,9 @@ class AccountEdiXmlCII(models.AbstractModel):
 
         def grouping_key_generator(base_line, tax_data):
             tax = tax_data['tax']
-            customer = invoice.commercial_partner_id
-            supplier = invoice.company_id.partner_id.commercial_partner_id
             grouping_key = {
-                **self._get_tax_unece_codes(customer, supplier, tax),
+                'tax_category_code': self._get_tax_category_code(customer.commercial_partner_id, supplier, tax),
+                **self._get_tax_exemption_reason(customer.commercial_partner_id, supplier, tax),
                 'amount': tax.amount,
                 'amount_type': tax.amount_type,
             }
@@ -168,14 +172,6 @@ class AccountEdiXmlCII(models.AbstractModel):
             tax_details['base_amount_currency'] += fixed_tax_details['tax_amount_currency']
             tax_details['base_amount'] += fixed_tax_details['tax_amount']
 
-        if 'siret' in invoice.company_id._fields and invoice.company_id.siret:
-            seller_siret = invoice.company_id.siret
-        else:
-            seller_siret = invoice.company_id.company_registry
-
-        buyer_siret = invoice.commercial_partner_id.company_registry
-        if 'siret' in invoice.commercial_partner_id._fields and invoice.commercial_partner_id.siret:
-            buyer_siret = invoice.commercial_partner_id.siret
         template_values = {
             **invoice._prepare_edi_vals_to_export(),
             'tax_details': tax_details,
@@ -185,8 +181,8 @@ class AccountEdiXmlCII(models.AbstractModel):
             'scheduled_delivery_time': self._get_scheduled_delivery_time(invoice),
             'intracom_delivery': False,
             'ExchangedDocument_vals': self._get_exchanged_document_vals(invoice),
-            'seller_specified_legal_organization': seller_siret,
-            'buyer_specified_legal_organization': buyer_siret,
+            'seller_specified_legal_organization': invoice.company_id.company_registry,
+            'buyer_specified_legal_organization': invoice.commercial_partner_id.company_registry,
             'ship_to_trade_party': invoice.partner_shipping_id if 'partner_shipping_id' in invoice._fields and invoice.partner_shipping_id
                 else invoice.commercial_partner_id,
             # Chorus Pro fields
@@ -263,6 +259,12 @@ class AccountEdiXmlCII(models.AbstractModel):
         return template_values
 
     def _export_invoice(self, invoice):
+        if str2bool(
+            self.env['ir.config_parameter'].sudo().get_param('account_edi_ubl_cii.use_new_dict_to_xml_helpers', True),
+            default=True,
+        ):
+            return self._export_invoice_new(invoice)
+
         vals = self._export_invoice_vals(invoice.with_context(lang=invoice.partner_id.lang))
         errors = [constraint for constraint in self._export_invoice_constraints(invoice, vals).values() if constraint]
         xml_content = self.env['ir.qweb']._render('account_edi_ubl_cii.account_invoice_facturx_export_22', vals)
@@ -278,7 +280,16 @@ class AccountEdiXmlCII(models.AbstractModel):
             'name': self._find_value(f".//ram:{role}/ram:Name", tree),
             'phone': self._find_value(f".//ram:{role}/ram:DefinedTradeContact/ram:TelephoneUniversalCommunication/ram:CompleteNumber", tree),
             'email': self._find_value(f".//ram:{role}//ram:EmailURIUniversalCommunication/ram:URIID", tree),
+            'postal_address': self._get_postal_address(tree, role),
+        }
+
+    def _get_postal_address(self, tree, role):
+        return {
             'country_code': self._find_value(f'.//ram:{role}/ram:PostalTradeAddress//ram:CountryID', tree),
+            'street': self._find_value(f'.//ram:{role}/ram:PostalTradeAddress//ram:LineOne', tree),
+            'additional_street': self._find_value(f'.//ram:{role}/ram:PostalTradeAddress//ram:LineTwo', tree),
+            'city': self._find_value(f'.//ram:{role}/ram:PostalTradeAddress//ram:CityName', tree),
+            'zip': self._find_value(f'.//ram:{role}/ram:PostalTradeAddress//ram:PostcodeCode', tree),
         }
 
     def _import_fill_invoice(self, invoice, tree, qty_factor):
@@ -330,7 +341,8 @@ class AccountEdiXmlCII(models.AbstractModel):
             tree, invoice, invoice.journal_id.type, qty_factor,
         )
         logs += self._import_prepaid_amount(invoice, tree, './/{*}ApplicableHeaderTradeSettlement/{*}SpecifiedTradeSettlementHeaderMonetarySummation/{*}TotalPrepaidAmount', qty_factor)
-        invoice_line_vals, line_logs = self._import_invoice_lines(invoice, tree, './{*}SupplyChainTradeTransaction/{*}IncludedSupplyChainTradeLineItem', qty_factor)
+        invoice_line_vals, line_logs = self._import_lines(invoice, tree, './{*}SupplyChainTradeTransaction/{*}IncludedSupplyChainTradeLineItem',
+                                                          document_type=invoice.move_type, tax_type=invoice.journal_id.type, qty_factor=qty_factor)
         line_vals = allowance_charges_line_vals + invoice_line_vals
 
         invoice_values = {
@@ -410,3 +422,73 @@ class AccountEdiXmlCII(models.AbstractModel):
                 return 'refund', -1
             return 'invoice', 1
         return None, None
+
+    # -------------------------------------------------------------------------
+    # NEW EXPORT : helpers
+    # -------------------------------------------------------------------------
+
+    def _export_invoice_new(self, invoice):
+        # Validate the structure of the taxes
+        self._validate_taxes(invoice.invoice_line_ids.tax_ids)
+
+        vals = {'invoice': invoice.with_context(lang=invoice.partner_id.lang)}
+        document_node = self._get_invoice_node(vals)
+
+        errors = [constraint for constraint in self._export_invoice_constraints_new(invoice, vals).values() if constraint]
+
+        nsmap = self._get_document_nsmap()
+
+        xml_content = dict_to_xml(document_node, nsmap=nsmap, template=CrossIndustryInvoice)
+
+        return etree.tostring(xml_content, xml_declaration=True, encoding='UTF-8'), set(errors)
+
+    def _export_invoice_constraints_new(self, invoice, vals):
+        constraints = self._invoice_constraints_common(invoice)
+        constraints.update(
+            self._cii_constraints(invoice, vals)
+        )
+        return constraints
+
+    def _get_document_nsmap(self):
+        return {
+            'ram': "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100",
+            'rsm': "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100",
+            'udt': "urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100",
+            'qdt': "urn:un:unece:uncefact:data:standard:QualifiedDataType:100",
+            'xsi': "http://www.w3.org/2001/XMLSchema-instance",
+        }
+
+    def _get_invoice_node(self, vals):
+        self._cii_add_invoice_config_vals(vals)
+
+        vals['document_node'] = document_node = {}
+        self._cii_add_exchanged_document_context_node(vals)
+        self._cii_add_exchanged_document_node(vals)
+        self._cii_add_supply_chain_trade_transaction_node(vals)
+
+        return document_node
+
+    # -------------------------------------------------------------------------
+    # NEW IMPORT : helpers
+    # -------------------------------------------------------------------------
+
+    def _import_invoice_ubl_cii(self, invoice, file_data, new=False):
+        """
+        :param account.move invoice:
+        """
+        if invoice.invoice_line_ids:
+            return invoice._reason_cannot_decode_has_invoice_lines()
+        return self._cii_import_invoice(invoice, file_data, new=new)
+
+    def _import_prepare_missing_customer_create_values(self, collected_values):
+        partner_create_values = super()._import_prepare_missing_customer_create_values(collected_values)
+
+        customer_values = collected_values['customer_values']
+        if (
+                (peppol_eas := customer_values.get('peppol_eas'))
+                and (peppol_endpoint := customer_values.get('peppol_endpoint'))
+        ):
+            partner_create_values['peppol_eas'] = peppol_eas
+            partner_create_values['peppol_endpoint'] = peppol_endpoint
+
+        return partner_create_values

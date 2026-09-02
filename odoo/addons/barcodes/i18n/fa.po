@@ -3,18 +3,22 @@
 # * barcodes
 #
 # Translators:
-# zakariya moradi, 2025
-# Tiffany Chang, 2025
-#
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Mohammad Tahmasebi <hit.tah75@gmail.com>, 2023
+# Hamid Darabi, 2023
+# Hamed Mohammadi <hamed@dehongi.com>, 2023
+# Martin Trigaux, 2023
+# Hanna Kheradroosta, 2023
+# Mohsen Mohammadi <iammohsen.123@gmail.com>, 2023
+# Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 15.5alpha1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:37+0000\n"
-"PO-Revision-Date: 2026-08-21 21:29+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/barcodes/"
+"POT-Creation-Date: 2026-01-25 18:36+0000\n"
+"PO-Revision-Date: 2026-08-09 11:36+0000\n"
+"Last-Translator: Aliraza Habibitanha <alireza.habibitanha@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/barcodes/"
 "fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +31,7 @@ msgstr ""
 #. odoo-python
 #: code:addons/barcodes/models/barcode_rule.py:0
 msgid " '*' is not a valid Regex Barcode Pattern. Did you mean '.*'?"
-msgstr "\"*\" یک الگوی بارکد Regex معتبر نیست. آیا منظور شما '.' بوده است؟"
+msgstr " \"*\" یک الگوی بارکد Regex معتبر نیست. آیا منظور شما '.' بوده است؟"
 
 #. module: barcodes
 #: model_terms:ir.ui.view,arch_db:barcodes.view_barcode_nomenclature_form
@@ -42,8 +46,8 @@ msgid ""
 "of the barcode."
 msgstr ""
 "<i>نامگذاری بارکدها</i> نحوه شناسایی و دسته بندی بارکدها را مشخص می کند.\n"
-"هنگامی که یک بارکد اسکن می شود  به <i>اولین</i> قاعده‌ای که الگوی مطابقت "
-"دارد، مرتبط می‌شود.\n"
+"هنگامی که یک بارکد اسکن می شود  به <i>اولین</i> قاعده‌ای که الگوی مطابقت دارد"
+"، مرتبط می‌شود.\n"
 "سینتکس الگو همانند عبارات باقاعده است و یک بارکد مطابقت دارد\n"
 "اگر عبارت باقاعده با پیشوند بارکد تطابق داشته باشد."
 
@@ -85,7 +89,13 @@ msgstr "شناسایی داخلی نام‌گذاری بارکد"
 #. module: barcodes
 #: model:ir.model.fields.selection,name:barcodes.selection__barcode_rule__encoding__any
 msgid "Any"
-msgstr "هرگونه"
+msgstr "هر"
+
+#. module: barcodes
+#. odoo-javascript
+#: code:addons/barcodes/static/src/components/manual_barcode.xml:0
+msgid "Apply"
+msgstr "اعمال"
 
 #. module: barcodes
 #. odoo-javascript
@@ -104,13 +114,13 @@ msgstr "میکسین رویداد بارکد"
 #: model:ir.model.fields,field_description:barcodes.field_barcode_rule__barcode_nomenclature_id
 #: model_terms:ir.ui.view,arch_db:barcodes.view_barcode_nomenclature_form
 msgid "Barcode Nomenclature"
-msgstr "نام‌گذاری بارکد"
+msgstr "نامگذاری بارکد"
 
 #. module: barcodes
 #: model:ir.actions.act_window,name:barcodes.action_barcode_nomenclature_form
 #: model_terms:ir.ui.view,arch_db:barcodes.view_barcode_nomenclature_tree
 msgid "Barcode Nomenclatures"
-msgstr "نام‌گذاری بارکد"
+msgstr "نامگذاری بارکد"
 
 #. module: barcodes
 #: model:ir.model.fields,field_description:barcodes.field_barcode_rule__pattern
@@ -126,7 +136,7 @@ msgstr "قانون بارکد"
 #. module: barcodes
 #: model:ir.model.fields,field_description:barcodes.field_barcodes_barcode_events_mixin___barcode_scanned
 msgid "Barcode Scanned"
-msgstr "بارکد اسکن شد"
+msgstr "بارکد اسکن شده"
 
 #. module: barcodes
 #. odoo-javascript
@@ -137,7 +147,7 @@ msgstr "بارکد: %(barcode)s"
 #. module: barcodes
 #: model:ir.model,name:barcodes.model_res_company
 msgid "Companies"
-msgstr "شرکت‌ها"
+msgstr "شرکت"
 
 #. module: barcodes
 #: model:ir.model.fields,field_description:barcodes.field_barcode_nomenclature__create_uid
@@ -154,6 +164,9 @@ msgstr "ایجادشده در"
 #. module: barcodes
 #: model:ir.model.fields,field_description:barcodes.field_barcode_nomenclature__display_name
 #: model:ir.model.fields,field_description:barcodes.field_barcode_rule__display_name
+#: model:ir.model.fields,field_description:barcodes.field_barcodes_barcode_events_mixin__display_name
+#: model:ir.model.fields,field_description:barcodes.field_ir_http__display_name
+#: model:ir.model.fields,field_description:barcodes.field_res_company__display_name
 msgid "Display Name"
 msgstr "نام نمایشی"
 
@@ -178,6 +191,12 @@ msgid "Encoding"
 msgstr "رمزگذاری"
 
 #. module: barcodes
+#. odoo-javascript
+#: code:addons/barcodes/static/src/components/manual_barcode.js:0
+msgid "Enter a barcode..."
+msgstr "یک بارکد وارد کنید..."
+
+#. module: barcodes
 #: model:ir.model,name:barcodes.model_ir_http
 msgid "HTTP Routing"
 msgstr "مسیریابی HTTP"
@@ -185,6 +204,9 @@ msgstr "مسیریابی HTTP"
 #. module: barcodes
 #: model:ir.model.fields,field_description:barcodes.field_barcode_nomenclature__id
 #: model:ir.model.fields,field_description:barcodes.field_barcode_rule__id
+#: model:ir.model.fields,field_description:barcodes.field_barcodes_barcode_events_mixin__id
+#: model:ir.model.fields,field_description:barcodes.field_ir_http__id
+#: model:ir.model.fields,field_description:barcodes.field_res_company__id
 msgid "ID"
 msgstr "شناسه"
 
@@ -202,13 +224,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:barcodes.field_barcode_nomenclature__write_uid
 #: model:ir.model.fields,field_description:barcodes.field_barcode_rule__write_uid
 msgid "Last Updated by"
-msgstr "آخرین به‌روزرسانی توسط"
+msgstr "آخرین تغییر توسط"
 
 #. module: barcodes
 #: model:ir.model.fields,field_description:barcodes.field_barcode_nomenclature__write_date
 #: model:ir.model.fields,field_description:barcodes.field_barcode_rule__write_date
 msgid "Last Updated on"
-msgstr "آخرین به‌روزرسانی در"
+msgstr "آخرین بروز رسانی در"
 
 #. module: barcodes
 #: model:ir.model.fields.selection,name:barcodes.selection__barcode_nomenclature__upc_ean_conv__none
@@ -218,7 +240,7 @@ msgstr "هرگز"
 #. module: barcodes
 #: model:ir.model.fields,field_description:barcodes.field_res_company__nomenclature_id
 msgid "Nomenclature"
-msgstr "نام‌گذاری"
+msgstr "نامگذاری"
 
 #. module: barcodes
 #: model_terms:ir.ui.view,arch_db:barcodes.view_barcode_nomenclature_form
@@ -241,8 +263,8 @@ msgstr ""
 "که N ها\n"
 "مشخص می‌کنند که کدام ارقام عددی رمزگذاری می‌شوند. اعداد اعشاری نیز با استفاده "
 "از\n"
-"اعشاری که با Dها نشان داده می‌شوند، مانند <code>{NNNDD}</code>. در این "
-"موارد،\n"
+"اعشاری که با Dها نشان داده می‌شوند، مانند <code>{NNNDD}</code>. در این موارد"
+"،\n"
 "فیلد بارکد در رکوردهای مرتبط <i>باید</i> این ارقام را نشان دهد به‌ صورت \n"
 "صفر"
 
@@ -317,8 +339,8 @@ msgid ""
 "There is a syntax error in the barcode pattern %(pattern)s: braces can only "
 "contain N's followed by D's."
 msgstr ""
-"یک خطای نحوی در الگوی بارکد وجود دارد: %(pattern)s آکولادها فقط می‌توانند "
-"شامل N ها و پس از آن D ها باشند."
+"یک خطای نحوی در الگوی بارکد وجود دارد: %(pattern)s آکولادها فقط می‌توانند شامل "
+"N ها و پس از آن D ها باشند."
 
 #. module: barcodes
 #. odoo-python

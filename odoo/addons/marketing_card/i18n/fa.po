@@ -2,19 +2,16 @@
 # This file contains the translation of the following modules:
 # * marketing_card
 #
-# Translators:
-# zakariya moradi, 2025
-# Tiffany Chang, 2025
-#
 # Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server saas~18.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:36+0000\n"
-"PO-Revision-Date: 2026-08-21 21:27+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:35+0000\n"
+"PO-Revision-Date: 2026-08-09 11:33+0000\n"
+"Last-Translator: Aliraza Habibitanha <alireza.habibitanha@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/"
 "marketing_card/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -165,9 +162,19 @@ msgid "Attachment Count"
 msgstr "تعداد پیوست ها"
 
 #. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_avatar_highlight
+msgid "Avatar Highlight"
+msgstr "آواتار برجسته"
+
+#. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__content_background
 msgid "Background"
 msgstr "پس‌زمینه"
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_blur
+msgid "Blur"
+msgstr "تار"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__body_html
@@ -253,6 +260,16 @@ msgid "Cards"
 msgstr "کارت‌ها"
 
 #. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_user_image
+msgid "Center"
+msgstr "مرکز"
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_circles
+msgid "Circles"
+msgstr "دایره‌ها"
+
+#. module: marketing_card
 #: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_preview
 msgid "Click here for your reward!"
 msgstr "برای دریافت جایزه اینجا کلیک کنید!"
@@ -296,7 +313,12 @@ msgstr "ایجاد شده توسط"
 #: model:ir.model.fields,field_description:marketing_card.field_card_card__create_date
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__create_date
 msgid "Created on"
-msgstr "ایجاد شده در"
+msgstr "ایجادشده در"
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_dark
+msgid "Dark"
+msgstr "تاریک"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__default_background
@@ -318,8 +340,17 @@ msgstr "طراحی"
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__display_name
 #: model:ir.model.fields,field_description:marketing_card.field_card_card__display_name
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_ir_model__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_mail_compose_message__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_mailing_mailing__display_name
+#: model:ir.model.fields,field_description:marketing_card.field_utm_source__display_name
 msgid "Display Name"
 msgstr "نام نمایشی"
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_drawings
+msgid "Drawings"
+msgstr "طراحی‌ها"
 
 #. module: marketing_card
 #: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
@@ -347,11 +378,6 @@ msgid "Email composition wizard"
 msgstr "ویزارد ایجاد ایمیل"
 
 #. module: marketing_card
-#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
-msgid "Filter By"
-msgstr ""
-
-#. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__message_follower_ids
 msgid "Followers"
 msgstr "دنبال کنندگان"
@@ -367,10 +393,9 @@ msgid "Font awesome icon e.g. fa-tasks"
 msgstr "آیکون فونت عالی به عبارتی fa-tasks"
 
 #. module: marketing_card
-#: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_search
-#: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
-msgid "Group By"
-msgstr "گروه‌بندی برمبنای"
+#: model:card.template,name:marketing_card.card_template_geometric
+msgid "Geometric"
+msgstr "هندسی"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__has_message
@@ -405,11 +430,6 @@ msgid "Help us share the news"
 msgstr "در اشتراک‌گذاری خبر به ما کمک کنید"
 
 #. module: marketing_card
-#: model:ir.module.category,description:marketing_card.module_category_marketing_card
-msgid "Helps you manage marketing card campaigns."
-msgstr ""
-
-#. module: marketing_card
 #. odoo-python
 #: code:addons/marketing_card/models/card_campaign.py:0
 msgid "Here's the link to advertise your participation."
@@ -420,6 +440,10 @@ msgstr "این لینک برای تبلیغ مشارکت شماست."
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign_tag__id
 #: model:ir.model.fields,field_description:marketing_card.field_card_card__id
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__id
+#: model:ir.model.fields,field_description:marketing_card.field_ir_model__id
+#: model:ir.model.fields,field_description:marketing_card.field_mail_compose_message__id
+#: model:ir.model.fields,field_description:marketing_card.field_mailing_mailing__id
+#: model:ir.model.fields,field_description:marketing_card.field_utm_source__id
 msgid "ID"
 msgstr "شناسه"
 
@@ -501,7 +525,7 @@ msgstr "زبان"
 #: model:ir.model.fields,field_description:marketing_card.field_card_card__write_uid
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__write_uid
 msgid "Last Updated by"
-msgstr "آخرین بروز رسانی توسط"
+msgstr "آخرین تغییر توسط"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__write_date
@@ -510,6 +534,21 @@ msgstr "آخرین بروز رسانی توسط"
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__write_date
 msgid "Last Updated on"
 msgstr "آخرین بروز رسانی در"
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_light
+msgid "Light"
+msgstr "روشن"
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_lila
+msgid "Lila"
+msgstr "لیلا"
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_lines
+msgid "Lines"
+msgstr "سطرها"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__link_tracker_id
@@ -534,9 +573,9 @@ msgstr "با سپاس"
 
 #. module: marketing_card
 #: model:ir.model,name:marketing_card.model_card_card
-#: model:ir.module.category,name:marketing_card.module_category_marketing_card
 #: model:ir.ui.menu,name:marketing_card.card_menu
 #: model:ir.ui.menu,name:marketing_card.marketing_card_menu_technical
+#: model:res.groups.privilege,name:marketing_card.res_groups_privilege_marketing_card
 msgid "Marketing Card"
 msgstr "کارت بازاریابی"
 
@@ -675,13 +714,19 @@ msgstr "اودو"
 #: model:ir.model.fields,help:marketing_card.field_card_campaign__lang
 msgid ""
 "Optional translation language (ISO code) to select when sending out an "
-"email. If not set, the english version will be used. This should usually be "
-"a placeholder expression that provides the appropriate language, e.g. "
-"{{ object.partner_id.lang }}."
+"email. If not set, the main partner's language will be used. This should "
+"usually be a placeholder expression that provides the appropriate language, "
+"e.g. {{ object.partner_id.lang }}."
 msgstr ""
 "زبان ترجمه اختیاری (کد ISO) برای انتخاب هنگام ارسال ایمیل. اگر تنظیم نشود، "
-"از نسخه انگلیسی استفاده خواهد شد. این معمولاً باید یک عبارت نگهدارنده باشد که "
-"زبان مناسب را ارائه می دهد، به عنوان مثال. {{ object.partner_id.lang }}."
+"از زبان اصلی طرف همکار استفاده خواهد شد. این معمولاً باید یک عبارت جایگزین "
+"باشد که زبان مناسب را فراهم می‌کند، به عنوان مثال {{ object.partner_id.lang }}"
+"."
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_organic
+msgid "Organic"
+msgstr "ارگانیک"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__target_url
@@ -722,7 +767,7 @@ msgstr "پیش‌نمایش روی..."
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__primary_color
 msgid "Primary Color"
-msgstr "Couleur primaire"
+msgstr "رنگ اصلی"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__primary_text_color
@@ -756,7 +801,7 @@ msgstr "گیرندگان"
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_mailing_mailing__mailing_model_id
 msgid "Recipients Model"
-msgstr "مدل گیرندگان"
+msgstr ""
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_card__res_id
@@ -787,7 +832,7 @@ msgstr "نیازمند همگام‌سازی"
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__user_id
 #: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_search
 msgid "Responsible"
-msgstr "مسئول"
+msgstr "پاسخگو"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__activity_user_id
@@ -805,6 +850,11 @@ msgid "SMS Delivery error"
 msgstr "خطای تحویل پیامک"
 
 #. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_safari
+msgid "Safari"
+msgstr "سافاری"
+
+#. module: marketing_card
 #: model_terms:ir.ui.view,arch_db:marketing_card.card_card_view_search
 msgid "Search Card"
 msgstr "جستجوی کارت"
@@ -817,7 +867,7 @@ msgstr "جستجوی کمپین اشتراک‌گذاری"
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__secondary_color
 msgid "Secondary Color"
-msgstr "Couleur secondaire"
+msgstr "رنگ ثانویه"
 
 #. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_template__secondary_text_color
@@ -837,7 +887,7 @@ msgstr "مسیر بخش"
 #. module: marketing_card
 #: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_view_form
 msgid "Select a field"
-msgstr "فیلدی را انتخاب کنید"
+msgstr "یک فیلد انتخاب کنید"
 
 #. module: marketing_card
 #: model_terms:ir.ui.view,arch_db:marketing_card.card_campaign_preview
@@ -987,6 +1037,11 @@ msgid "Visited"
 msgstr "بازدید شده"
 
 #. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_waves
+msgid "Waves"
+msgstr "موج‌ها"
+
+#. module: marketing_card
 #: model:ir.model.fields,field_description:marketing_card.field_card_campaign__website_message_ids
 msgid "Website Messages"
 msgstr "پیام های وب سایت"
@@ -1001,6 +1056,11 @@ msgstr "تاریخچه ارتباط با وبسایت"
 msgid "Whether the image needs to be updated to match the campaign template."
 msgstr ""
 "اینکه آیا باید تصویر به‌روزرسانی شود تا با قالب کمپین مطابقت داشته باشد."
+
+#. module: marketing_card
+#: model:card.template,name:marketing_card.card_template_world_map
+msgid "World Map"
+msgstr "نقشه جهان"
 
 #. module: marketing_card
 #. odoo-python

@@ -4,19 +4,18 @@
 import argparse
 import logging
 import os
-import pexpect
 import shutil
 import subprocess
 import sys
 import tempfile
-import textwrap
 import time
 import traceback
-
+from datetime import datetime
+from glob import glob
 from pathlib import Path
 from xmlrpc import client as xmlrpclib
 
-from glob import glob
+import pexpect
 
 #----------------------------------------------------------
 # Utils
@@ -61,7 +60,6 @@ def run_cmd(cmd, chdir=None, timeout=None):
 
 
 def _rpc_count_modules(addr='http://127.0.0.1', port=8069, dbname='mycompany'):
-    time.sleep(5)
     uid = xmlrpclib.ServerProxy('%s:%s/xmlrpc/2/common' % (addr, port)).authenticate(
         dbname, 'admin', 'admin', {}
     )
@@ -69,7 +67,6 @@ def _rpc_count_modules(addr='http://127.0.0.1', port=8069, dbname='mycompany'):
         dbname, uid, 'admin', 'ir.module.module', 'search', [('state', '=', 'installed')]
     )
     if len(modules) > 1:
-        time.sleep(1)
         toinstallmodules = xmlrpclib.ServerProxy('%s:%s/xmlrpc/2/object' % (addr, port)).execute(
             dbname, uid, 'admin', 'ir.module.module', 'search', [('state', '=', 'to install')]
         )
@@ -86,7 +83,7 @@ def _rpc_count_modules(addr='http://127.0.0.1', port=8069, dbname='mycompany'):
 def publish(args, pub_type, extensions):
     """Publish builded package (move builded files and generate a symlink to the latests)
     :args: parsed program args
-    :pub_type: one of [deb, rpm, src, exe]
+    :pub_type: one of [deb, rpm, src, exe, iot]
     :extensions: list of extensions to publish
     :returns: published files
     """
@@ -257,13 +254,13 @@ class Docker():
         logging.info('Starting to test Odoo install test')
         start_time = time.time()
         while self.is_running() and (time.time() - start_time) < INSTALL_TIMEOUT:
-            time.sleep(5)
+            time.sleep(5)  # give some time for odoo to install and start
             if os.path.exists(os.path.join(args.build_dir, 'odoo.pid')):
                 try:
                     _rpc_count_modules(port=self.exposed_port)
+                    return
                 finally:
                     self.stop()
-                return
         if self.is_running():
             self.stop()
             raise OdooTestTimeoutError('Odoo pid file never appeared after %s sec' % INSTALL_TIMEOUT)
@@ -351,13 +348,14 @@ class DockerRpm(Docker):
     def build(self):
         logging.info('Start building fedora rpm package')
         rpmbuild_dir = '/var/lib/odoo/rpmbuild'
+        build_date = datetime.now().strftime('%a %b %d %Y')
         cmds = [
             'cd /data/src',
             'mkdir -p dist',
             'rpmdev-setuptree -d',
             f'cp -a /data/src/setup/rpm/odoo.spec {rpmbuild_dir}/SPECS/',
             f'tar --transform "s/^\\./odoo-{VERSION}/" -c -z -f {rpmbuild_dir}/SOURCES/odoo-{VERSION}.tar.gz .',
-            f'rpmbuild -bb --define="%version {VERSION}" /data/src/setup/rpm/odoo.spec',
+            f'rpmbuild -bb --define="%version {VERSION}" --define "%release {TSTAMP}" --define "%build_date {build_date}" /data/src/setup/rpm/odoo.spec',
             f'mv {rpmbuild_dir}/RPMS/noarch/odoo*.rpm /data/src/dist/'
         ]
         self.run(' && '.join(cmds), self.args.build_dir, f'odoo-rpm-build-{TSTAMP}')
@@ -373,7 +371,7 @@ class DockerRpm(Docker):
             'sleep 5',
             'su postgres -c "createuser -s odoo"',
             'su odoo -c "createdb mycompany"',
-            'dnf install -d 0 -e 0 /data/src/odoo_%s.%s.rpm -y' % (VERSION, TSTAMP),
+            'dnf install -q /data/src/odoo_%s.%s.rpm -y' % (VERSION, TSTAMP),
             'su odoo -s /bin/bash -c "odoo -c /etc/odoo/odoo.conf -d mycompany -i base --stop-after-init"',
             'su odoo -s /bin/bash -c "odoo -c /etc/odoo/odoo.conf -d mycompany --pidfile=/data/src/odoo.pid"',
         ]
@@ -405,15 +403,18 @@ class DockerWine(Docker):
 
     arch = 'win'
 
-    def build_image(self):
-        shutil.copy(os.path.join(self.args.build_dir, 'setup/win32/requirements-local-proxy.txt'), self.docker_dir)
-        super().build_image()
+    def __init__(self, args):
+        super().__init__(args)
+        self.package_name = "windows"
+        self.nsi_filepath = r"c:\odoobuild\server\setup\win32\setup.nsi"
+        self.nt_service_name = nt_service_name
+        self.bundle_po_files = True
 
     def build(self):
-        logging.info('Start building windows package')
+        logging.info('Start building %s package', self.package_name)
         winver = "%s.%s" % (VERSION.replace('~', '_').replace('+', ''), TSTAMP)
         container_python = '/var/lib/odoo/.wine/drive_c/odoobuild/WinPy64/python-3.12.3.amd64/python.exe'
-        nsis_args = f'/DVERSION={winver} /DMAJOR_VERSION={version_info[0]} /DMINOR_VERSION={version_info[1]} /DSERVICENAME={nt_service_name} /DPYTHONVERSION=3.12.3'
+        nsis_args = f'/DVERSION={winver} /DMAJOR_VERSION={version_info[0]} /DMINOR_VERSION={version_info[1]} /DSERVICENAME={self.nt_service_name} /DPYTHONVERSION=3.12.3'
 
         bundle_po_files_cmd = (
             'cd /data/src && '
@@ -424,14 +425,34 @@ class DockerWine(Docker):
         )
 
         cmds = [
-            bundle_po_files_cmd,
             rf'wine {container_python} -m pip install --upgrade pip',
             rf'cat /data/src/requirements*.txt  | while read PACKAGE; do wine {container_python} -m pip install "${{PACKAGE%%#*}}" ; done',
-            rf'wine "c:\nsis\makensis.exe" {nsis_args} "c:\odoobuild\server\setup\win32\setup.nsi"',
+            rf'wine "c:\nsis\makensis.exe" {nsis_args} "{self.nsi_filepath}"',
             rf'wine {container_python} -m pip list',
         ]
+
+        if self.bundle_po_files:
+            cmds = [bundle_po_files_cmd, *cmds]
+
         self.run(' && '.join(cmds), self.args.build_dir, 'odoo-win-build-%s' % TSTAMP)
-        logging.info('Finished building Windows package')
+        logging.info('Finished building %s package', self.package_name)
+
+
+class DockerIot(DockerWine):
+    """Docker class to build windows IoT package"""
+
+    def __init__(self, args):
+        super().__init__(args)
+        self.package_name = "IoT"
+        self.nsi_filepath = r"c:\odoobuild\server\setup\win32\setup-iot.nsi"
+        self.nt_service_name = "odoo-iot"
+        self.bundle_po_files = False
+
+    def build_image(self):
+        shutil.copy(os.path.join(self.args.build_dir, 'odoo/addons/iot_box_image/configuration/requirements.txt'), self.docker_dir / 'requirements-iot.txt')
+        self.tag = f'{self.tag}-iot'
+        super().build_image()
+
 
 def parse_args():
     ap = argparse.ArgumentParser()
@@ -445,6 +466,7 @@ def parse_args():
     ap.add_argument("--build-rpm", action="store_true")
     ap.add_argument("--build-tgz", action="store_true")
     ap.add_argument("--build-win", action="store_true")
+    ap.add_argument("--build-iot", action="store_true")
 
     ap.add_argument("-t", "--test", action="store_true", default=False, help="Test built packages")
     ap.add_argument("-s", "--sign", action="store_true", default=False, help="Sign Debian package / generate Rpm repo")
@@ -500,6 +522,14 @@ def main(args):
                 published_files = publish(args, 'windows', ['exe'])
             except Exception as e:
                 logging.error("Won't publish the exe release.\n Exception: %s" % str(e))
+        if args.build_iot:
+            _prepare_build_dir(args, win32=True)
+            docker_iot = DockerIot(args)
+            docker_iot.build()
+            try:
+                published_files = publish(args, 'iot', ['exe'])
+            except Exception as e:
+                logging.error("Won't publish the iot release.\n Exception: %s" % str(e))
     except Exception as e:
         logging.error('Something bad happened ! : {}'.format(e))
         traceback.print_exc()

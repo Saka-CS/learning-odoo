@@ -401,6 +401,19 @@ class TestEventSale(TestEventSaleCommon):
         with self.assertRaises(ValidationError):
             editor.action_make_registration()
 
+    def test_event_sale_price_total(self):
+        """ Test that the `sale_amount_total` matches the total amount of all confirmed orders.
+        """
+        self.env['sale.order.line'].create({
+            'product_id': self.event_product.id,
+            'order_id': self.sale_order.id,
+            'event_id': self.event_0.id,
+            'event_ticket_id': self.ticket.id,
+        })
+        self.sale_order.action_confirm()
+        expected_price = sum(self.event_0.sale_order_lines_ids.mapped('price_total'))
+        self.assertEqual(self.event_0.sale_price_total, expected_price)
+
     def test_ticket_price_with_currency_conversion(self):
         """ Test that the price of the ticket and the `sale_price_total` are
         correctly converted when using another currency.
@@ -488,7 +501,7 @@ class TestEventSale(TestEventSaleCommon):
 
         so.action_confirm()
         self.assertAlmostEqual(
-            event.sale_price_subtotal,
+            event.sale_price_total,
             currency_VEF._convert(
                 so.amount_total, currency_USD, self.env.user.company_id, so.date_order
             ),
@@ -564,15 +577,20 @@ class TestEventSale(TestEventSaleCommon):
         self.assertEqual(len(event.registration_ids), 0)
 
     @users('user_salesman')
-    def test_cancel_so(self):
+    def test_cancel_and_draft_so(self):
         """ This test ensures that when canceling a sale order, if the latter is linked to an event registration,
-        it is also cancelled """
+        it is also cancelled and that after the sale order is set back to draft, new registrations are created on confirmation. """
         event = self.env['event.event'].browse(self.event_0.ids)
         self.register_person.action_make_registration()
         self.assertEqual(len(event.registration_ids), 1)
         self.sale_order._action_cancel()
         self.assertEqual(len(event.registration_ids), 1)
         self.assertEqual(event.registration_ids.state, 'cancel')
+        # After canceling the sale order, we set it back to draft and confirm it again. This should create new registrations.
+        self.sale_order.action_draft()
+        self.sale_order.action_confirm()
+        self.assertEqual(len(event.registration_ids), 2)
+        self.assertEqual(event.registration_ids.mapped('state'), ['cancel', 'draft'])
 
     @users('user_salesman')
     def test_compute_sale_status(self):

@@ -68,6 +68,16 @@ class TestRoutes(TransactionCase):
         wh.reception_steps = 'two_steps'
         self.assertEqual(wh.reception_steps, 'two_steps')
 
+    def test_buy_to_resupply_unchecks_and_unlinks_warehouse(self):
+        """Unchecking Buy to Resupply should keep buy_to_resupply disabled."""
+        wh = self.env['stock.warehouse'].search([('company_id', '=', self.env.company.id)], limit=1)
+        buy_route = wh.buy_pull_id.route_id
+        wh.buy_to_resupply = False
+        # Invalidate recordset to avoid cached `buy_to_resupply`
+        wh.invalidate_recordset(["buy_to_resupply"])
+        self.assertFalse(wh.buy_to_resupply)
+        self.assertNotIn(wh, buy_route.warehouse_ids)
+
     def test_po_final_location(self):
         """
         When confirming PO with Operation Type is a sublocation, computation
@@ -107,45 +117,3 @@ class TestRoutes(TransactionCase):
 
         forecast = product.with_context(location=sub_location.id).virtual_available
         self.assertEqual(forecast, 10.0, "forecasted quantity should increment to 10.0 units")
-
-    def test_product_create_with_inaccessible_buy_route(self):
-        """
-        Creating a product should not raise an AccessError when the buy route
-        belongs to a company the user cannot access.
-        """
-        company_a = self.env.company
-        company_b = self.env['res.company'].create({
-            'name': 'Company B',
-        })
-        buy_route = self.env.ref('purchase_stock.route_warehouse0_buy')
-        buy_route.rule_ids.unlink()
-        buy_route.company_id = company_a
-
-        # The user can only access Company B.
-        user = self.env['res.users'].create({
-            'name': 'Purchase User',
-            'login': 'purchase_user_test',
-            'company_id': company_b.id,
-            'company_ids': [(6, 0, [company_b.id])],
-            'groups_id': [(6, 0, [self.env.ref('purchase.group_purchase_manager').id])],
-        })
-
-        Product = (
-            self.env['product.template']
-            .with_user(user)
-            .with_company(company_b)
-        )
-
-        self.assertFalse(
-            Product._get_buy_route(),
-            'A route from an inaccessible company must not be used by default',
-        )
-        with Form(Product) as product_form:
-            product_form.name = 'Test Product'
-
-        buy_route.company_id = company_b
-        self.assertEqual(
-            Product._get_buy_route(),
-            buy_route.ids,
-            'A route from the active company must still be used by default',
-        )

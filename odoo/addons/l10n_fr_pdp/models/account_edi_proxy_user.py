@@ -90,19 +90,16 @@ class AccountEdiProxyClientUser(models.Model):
 
     proxy_type = fields.Selection(selection_add=[('pdp', 'Approved Platform')], ondelete={'pdp': 'cascade'})
 
-    _sql_constraints = [
-        (
-            '_peppol_proxy_types_conflict',
-            """
-                EXCLUDE (
-                    company_id WITH =,
-                    edi_mode WITH =
-                )
-                WHERE (active IS TRUE AND proxy_type IN ('peppol', 'pdp'))
-            """,
-            'You can not have both a Peppol and a PDP proxy user'
-        ),
-    ]
+    _peppol_proxy_types_conflict = models.Constraint(
+        """
+            EXCLUDE (
+                company_id WITH =,
+                edi_mode WITH =
+            )
+            WHERE (active IS TRUE AND proxy_type IN ('peppol', 'pdp'))
+        """,
+        "You can not have both a Peppol and a PDP proxy user"
+    )
 
     # -------------------------------------------------------------------------
     # HELPER METHODS
@@ -184,10 +181,10 @@ class AccountEdiProxyClientUser(models.Model):
         })
 
     @handle_demo
-    def _peppol_register_receiver(self):
+    def _pdp_register_receiver(self):
         self.ensure_one()
         if self.proxy_type != 'pdp':
-            return super()._peppol_register_receiver()
+            raise UserError(self.env._("This is only possible for the 'Approved Platform'."))
 
         company = self.company_id
         if company.account_peppol_proxy_state in {'smp_registration', 'receiver'}:
@@ -195,7 +192,15 @@ class AccountEdiProxyClientUser(models.Model):
             proxy_state_translated = dict(company._fields['account_peppol_proxy_state']._description_selection(self.env))[company.account_peppol_proxy_state]
             raise UserError(self.env._("Cannot register a user with a '%(proxy_state)s' application.", proxy_state=proxy_state_translated))
 
-        super()._peppol_register_receiver()
+        params = {
+            'company_details': self._get_company_details(),
+            'supported_identifiers': list(self.company_id._peppol_supported_document_types())
+        }
+        self._call_peppol_proxy(
+            endpoint=self._get_peppol_proxy_endpoint('1/register_receiver'),
+            params=params,
+        )
+        self.company_id.account_peppol_proxy_state = 'smp_registration'
 
         datetime_in_1_hour = fields.Datetime.add(fields.Datetime.now(), hours=1)
         self.env.ref('account_peppol.ir_cron_peppol_get_participant_status')._trigger(at=datetime_in_1_hour)
@@ -212,10 +217,18 @@ class AccountEdiProxyClientUser(models.Model):
             company.l10n_fr_pdp_annuaire_start_date = fields.Date.to_date(annuaire_start_date)
             company._force_update_l10n_fr_f10_moves()
 
-    def _peppol_get_new_documents(self):
+    def _get_type_code(self, files_data):
+        """ Override to unwrap the XML from the PDF with Factur-X."""
+        if (files_data[0]['import_file_type'] != 'pdf'):
+            return super()._get_type_code(files_data)
+        files_data.extend(self.env['account.move']._unwrap_attachments(files_data, recurse=False))
+        xml_tree = next(filter(lambda file: file['import_file_type'] == 'account.edi.xml.cii', files_data))['xml_tree']
+        return xml_tree.findtext('.//{*}ExchangedDocument/{*}TypeCode')
+
+    def _peppol_get_new_documents(self, skip_no_journal=False):
         if 'pdp_einvoicing_chatter_messages' not in self.env.context:
-            return self.with_context(pdp_einvoicing_chatter_messages={})._peppol_get_new_documents()
-        return super()._peppol_get_new_documents()
+            return self.with_context(pdp_einvoicing_chatter_messages={})._peppol_get_new_documents(skip_no_journal=skip_no_journal)
+        return super()._peppol_get_new_documents(skip_no_journal=skip_no_journal)
 
     def _pdp_get_regulatory_documents(self, batch_size=None):
         if 'pdp_einvoicing_chatter_messages' not in self.env.context:
@@ -829,14 +842,6 @@ class AccountEdiProxyClientUser(models.Model):
         if content['document_type'] == 'Factur-X':
             return "pdf", "application/pdf"
         return super()._peppol_get_filetype(content)
-
-    def _get_type_code(self, attachment):
-        # Factur-X format embeds the XML in a PDF file.
-        if attachment.mimetype == 'application/pdf':
-            embedded_files = attachment._unwrap_edi_attachments()
-            xml_tree = next(filter(lambda file: file['type'] == 'xml', embedded_files))['xml_tree']
-            return xml_tree.findtext('.//{*}ExchangedDocument/{*}TypeCode')
-        return super()._get_type_code(attachment)
 
     def _pdp_send_lifecycles(self, batch_size=None):
         job_count = batch_size or BATCH_SIZE

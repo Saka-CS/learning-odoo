@@ -2,19 +2,15 @@
 # This file contains the translation of the following modules:
 # * website_project
 #
-# Translators:
-# zakariya moradi, 2025
-# Tiffany Chang, 2025
-# Mostafa Barmshory <mostafa.barmshory@gmail.com>, 2025
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2026-08-19 16:19+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-09 10:48+0000\n"
+"Last-Translator: Aliraza Habibitanha <alireza.habibitanha@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/"
 "website_project/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -22,13 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2026.6.1\n"
-
-#. module: website_project
-#: model_terms:ir.ui.view,arch_db:website_project.task_submitted
-msgid ""
-"<i class=\"fa fa-check-circle fa-1x text-success me-2\" role=\"img\" aria-"
-"label=\"Success\" title=\"Success\"/>"
-msgstr ""
 
 #. module: website_project
 #. odoo-javascript
@@ -50,14 +39,20 @@ msgid "Company Name"
 msgstr "نام شرکت"
 
 #. module: website_project
-#: model:ir.model.fields,field_description:website_project.field_project_task__partner_phone
-msgid "Contact Number"
-msgstr "شماره تماس"
+#: model:ir.model,website_form_label:website_project.model_project_task
+msgid "Create a Task"
+msgstr "ایجاد یک وظیفه"
 
 #. module: website_project
 #: model:ir.model.fields,field_description:website_project.field_project_task__partner_name
 msgid "Customer Name"
 msgstr "نام مشتری"
+
+#. module: website_project
+#: model:ir.model.fields,field_description:website_project.field_project_task__display_name
+#: model:ir.model.fields,field_description:website_project.field_website_page__display_name
+msgid "Display Name"
+msgstr "نام نمایشی"
 
 #. module: website_project
 #. odoo-python
@@ -69,12 +64,7 @@ msgstr "ایمیل"
 #. odoo-javascript
 #: code:addons/website_project/static/src/js/website_project_editor.js:0
 msgid "Email Address"
-msgstr "نشانی ایمیل"
-
-#. module: website_project
-#: model:ir.model.fields,field_description:website_project.field_project_task__email_from
-msgid "Email From"
-msgstr "ایمیل از"
+msgstr "آدرس ایمیل"
 
 #. module: website_project
 #. odoo-javascript
@@ -84,20 +74,36 @@ msgstr "نام کامل"
 
 #. module: website_project
 #: model_terms:ir.ui.view,arch_db:website_project.task_submitted
-msgid "Go to the Homepage"
-msgstr ""
+msgid "Go to Homepage"
+msgstr "ورود به صفحه اصلی"
+
+#. module: website_project
+#: model:ir.model.fields,field_description:website_project.field_project_task__id
+#: model:ir.model.fields,field_description:website_project.field_website_page__id
+msgid "ID"
+msgstr "شناسه (ID)"
 
 #. module: website_project
 #. odoo-javascript
 #: code:addons/website_project/static/src/js/website_project_editor.js:0
 msgid "Message Subject"
-msgstr "موضوع پیام"
+msgstr "عنوان پیام"
 
 #. module: website_project
 #. odoo-python
 #: code:addons/website_project/controllers/main.py:0
 msgid "Other Information"
-msgstr "اطلاعات دیگر"
+msgstr "سایر اطلاعات"
+
+#. module: website_project
+#: model_terms:ir.ui.view,arch_db:website_project.task_submitted
+msgid "Our team will get right on it."
+msgstr "تیم ما به زودی شروع به بررسی آن خواهند کرد."
+
+#. module: website_project
+#: model:ir.model,name:website_project.model_website_page
+msgid "Page"
+msgstr ""
 
 #. module: website_project
 #. odoo-javascript
@@ -118,15 +124,42 @@ msgstr "وظیفه"
 
 #. module: website_project
 #: model_terms:ir.ui.view,arch_db:website_project.task_submitted
-msgid "Thank you for contacting us, our team will get right on it!"
-msgstr ""
+msgid "Task #"
+msgstr "وظیفه #"
 
 #. module: website_project
 #: model_terms:ir.ui.view,arch_db:website_project.task_submitted
-msgid "View Task"
-msgstr "مشاهده وظیفه"
+msgid "Thank you!"
+msgstr "سپاسگذاریم"
+
+#. module: website_project
+#: model:ir.model.fields,help:website_project.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the "
+"configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+"برای تنظیم وظیفه‌های جدید، در عنوان از این کلمات کلیدی استفاده کنید:\n"
+"\n"
+"        30h تخصیص 30 ساعت به وظیفه\n"
+"        #tags تنظیم برچسب‌ها روی وظیفه\n"
+"        @user تخصیص وظیفه به یک کاربر\n"
+"        ! تنظیم وظیفه با اولویت متوسط\n"
+"        !! تنظیم وظیفه با اولویت بالا\n"
+"        !!! تنظیم وظیفه با اولویت فوری\n"
+"\n"
+"        اطمینان حاصل کنید که از فرمت و ترتیب صحیح استفاده می‌کنید، به عنوان "
+"مثال: بهبود صفحه پیکربندی 5h #feature #v16 @Alireza !"
 
 #. module: website_project
 #: model_terms:ir.ui.view,arch_db:website_project.task_submitted
-msgid "Your Task Number is"
-msgstr ""
+msgid "Your task has been sent."
+msgstr "وظیفه درخواستی شما ارسال شد."

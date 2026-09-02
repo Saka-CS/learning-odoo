@@ -2,19 +2,15 @@
 # This file contains the translation of the following modules:
 # * spreadsheet_dashboard_event_sale
 #
-# Translators:
-# zakariya moradi, 2025
-# Tiffany Chang, 2025
-#
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-29 18:38+0000\n"
-"PO-Revision-Date: 2026-08-13 17:11+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/"
+"POT-Creation-Date: 2026-01-25 18:37+0000\n"
+"PO-Revision-Date: 2026-08-09 11:37+0000\n"
+"Last-Translator: Aliraza Habibitanha <alireza.habibitanha@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/"
 "spreadsheet_dashboard_event_sale/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +23,7 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "Attended"
-msgstr "شرکت‌کنندگان"
+msgstr "حضور یافته"
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
@@ -74,21 +70,21 @@ msgstr "رویدادها"
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "Events Status"
-msgstr "وضعیت رویدادها"
+msgstr "وضعیت رویداد"
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "KPI"
-msgstr "شاخص کلیدی عملکرد"
+msgstr ""
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "Organizer"
-msgstr "سازمان‌دهنده"
+msgstr "برگزارکننده"
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
@@ -108,7 +104,7 @@ msgstr "ثبت شده"
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "Registration Status"
-msgstr "وضعیت ثبت"
+msgstr "وضعیت ثبت نام"
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
@@ -135,14 +131,14 @@ msgstr "برچسب‌ها"
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "Template"
-msgstr "پوسته"
+msgstr "قالب"
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "Top Organizers"
-msgstr "رگزارکنندگان برتر"
+msgstr "برگزارکنندگان برتر"
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
@@ -156,7 +152,7 @@ msgstr "برچسب‌های برتر"
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "Top Templates"
-msgstr "الگوهای برتر"
+msgstr "قالب‌های برتر"
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
@@ -170,11 +166,11 @@ msgstr "مکان‌های برتر"
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "Venue"
-msgstr "مکان"
+msgstr "محل برگزاری"
 
 #. module: spreadsheet_dashboard_event_sale
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_dashboard.json:0
 #: code:addons/spreadsheet_dashboard_event_sale/data/files/events_sample_dashboard.json:0
 msgid "since last period"
-msgstr "از آخرین دوره"
+msgstr "نسبت به دوره قبل"

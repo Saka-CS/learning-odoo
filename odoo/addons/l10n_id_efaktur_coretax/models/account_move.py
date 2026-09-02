@@ -34,6 +34,19 @@ COUNTRY_CODE_MAP = {
     "AX": "ALA", "AZ": "AZE", "IE": "IRL", "ID": "IDN", "UA": "UKR", "QA": "QAT", "MZ": "MOZ"
 }
 
+TAX_TRANSACTION_CODE = [
+    ('01', '01 To the Parties that is not VAT Collector (Regular Customers)'),
+    ('02', '02 To the Treasurer'),
+    ('03', '03 To other VAT Collectors other than the Treasurer'),
+    ('04', '04 Other Value of VAT Imposition Base'),
+    ('05', '05 Specified Amount (Article 9A Paragraph (1) VAT Law)'),
+    ('06', '06 to individuals holding foreign passports'),
+    ('07', '07 Deliveries that the VAT is not Collected'),
+    ('08', '08 Deliveries that the VAT is Exempted'),
+    ('09', '09 Deliveries of Assets (Article 16D of VAT Law)'),
+    ('10', '10 Other deliveries'),
+]
+
 class AccountMove(models.Model):
     _inherit = "account.move"
 
@@ -143,18 +156,24 @@ class AccountMove(models.Model):
         store=True,
     )
 
-    l10n_id_kode_transaksi = fields.Selection(selection_add=[('10', '10 Other deliveries')])
     l10n_id_coretax_efaktur_available = fields.Boolean(compute="_compute_l10n_id_coretax_efaktur_available")
     l10n_id_coretax_document = fields.Many2one('l10n_id_efaktur_coretax.document', readonly=True, copy=False, string="e-Faktur Document (Coretax)")
     l10n_id_coretax_custom_doc = fields.Char(help="Additional documentation when choosing kode 07 or 08")
+    l10n_id_coretax_custom_doc_month_year = fields.Date(string="Custom Document Month and Year")
+    l10n_id_kode_transaksi = fields.Selection(
+        selection=TAX_TRANSACTION_CODE,
+        string='Kode Transaksi',
+        help="The first 2 digits of tax code",
+        readonly=False,
+        copy=False,
+        compute="_compute_kode_transaksi",
+        store=True,
+    )
 
-    def _compute_need_kode_transaksi(self):
-        """ OVERRIDE: l10n_id_efaktur
-
-        By setting this l10n_id_need_kode_transaksi, we can prevent the old E-Faktur flow to be
-        triggered(i.e. efaktur range consumption).
-        """
-        self.l10n_id_need_kode_transaksi = False
+    @api.depends('partner_id')
+    def _compute_kode_transaksi(self):
+        for move in self:
+            move.l10n_id_kode_transaksi = move.commercial_partner_id.l10n_id_kode_transaksi
 
     @api.depends('partner_id', 'line_ids.tax_ids')
     def _compute_l10n_id_coretax_efaktur_available(self):
@@ -367,10 +386,10 @@ class AccountMove(models.Model):
             "TrxCode": trx_code,
             "AddInfo": "",
             "CustomDoc": self.l10n_id_coretax_custom_doc or "",
-            "CustomDocMonthYear": "",
+            "CustomDocMonthYear": self.l10n_id_coretax_custom_doc_month_year and self.l10n_id_coretax_custom_doc_month_year.strftime("%m%Y") or "",
             "FacilityStamp": "",
             "RefDesc": self.name,
-            "SellerIDTKU": self.company_id.vat + self.company_id.partner_id.l10n_id_tku,
+            "SellerIDTKU": self.company_id.vat + (self.company_id.partner_id.l10n_id_tku or '000000'),
             "BuyerDocument": l10n_id_buyer_document_type_mapping_to_xml.get(partner.l10n_id_buyer_document_type, partner.l10n_id_buyer_document_type),
             "BuyerTin": partner.vat if partner.l10n_id_buyer_document_type == "TIN" else "0000000000000000",
             "BuyerCountry": COUNTRY_CODE_MAP.get(partner.country_id.code),
@@ -378,7 +397,7 @@ class AccountMove(models.Model):
             "BuyerName": self.partner_id.name,
             "BuyerAdress": self.partner_id.contact_address.replace('\n', ' ').strip(),
             "BuyerEmail": partner.email or "",
-            "BuyerIDTKU": partner.vat + partner.l10n_id_tku,
+            "BuyerIDTKU": partner.vat + (partner.l10n_id_tku or '000000'),
         })
 
         if trx_code == '07':

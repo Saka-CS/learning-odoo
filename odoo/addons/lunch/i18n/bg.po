@@ -3,30 +3,28 @@
 # * lunch
 #
 # Translators:
-# Petko Karamotchev, 2024
-# Camille Dantinne <cmd@odoo.com>, 2024
-# Ивайло Малинов <iv.malinov@gmail.com>, 2024
-# Igor Sheludko <igor.sheludko@gmail.com>, 2024
-# Ivan Ivanov, 2024
-# Rumena Georgieva <rumena.georgieva@gmail.com>, 2024
-# KeyVillage, 2024
-# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2024
-# Martin Trigaux, 2024
-# aleksandar ivanov, 2024
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# Albena Mincheva <albena_vicheva@abv.bg>, 2024
-# Martin Dinovski, 2025
-# Veselina Slavkova, 2025
-# Weblate <noreply-mt-weblate@weblate.org>, 2025, 2026.
-# "v.kanev" <v.kanev@tutanota.com>, 2026.
+# Nikola Iliev, 2023
+# Ivan Ivanov, 2023
+# Александра Николова <alexandra1nikolova@gmail.com>, 2023
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2023, 2026.
+# aleksandar ivanov, 2023
+# Albena Mincheva <albena_vicheva@abv.bg>, 2023
+# Igor Sheludko <igor.sheludko@gmail.com>, 2023
+# Ivan Goychev <igoychev.projects@gmail.com>, 2023
+# Ивайло Малинов <iv.malinov@gmail.com>, 2023
+# Maria Boyadjieva <marabo2000@gmail.com>, 2023
+# Martin Trigaux, 2023
+# "Tiffany Chang (tic)" <tic@odoo.com>, 2025, 2026.
+# Ivaylo Malinov <iv.malinov@gmail.com>, 2025, 2026.
+# Weblate <noreply-mt-weblate@weblate.org>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 16.0beta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-20 18:37+0000\n"
-"PO-Revision-Date: 2026-08-15 17:09+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/lunch/"
+"POT-Creation-Date: 2026-04-10 18:38+0000\n"
+"PO-Revision-Date: 2026-08-07 00:31+0000\n"
+"Last-Translator: \"Tiffany Chang (tic)\" <tic@odoo.com>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/lunch/"
 "bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -174,7 +172,7 @@ msgid ""
 "                    <td valign=\"top\" style=\"font-size: 13px;\">\n"
 "    <div>\n"
 "        <t t-set=\"lines\" t-value=\"ctx.get('lines', [])\"/>\n"
-"        <t t-set=\"order\" t-value=\"ctx.get('order')\"/>\n"
+"        <t t-set=\"order\" t-value=\"ctx.get('order', {})\"/>\n"
 "        <t t-set=\"currency\" t-"
 "value=\"user.env['res.currency'].browse(order.get('currency_id'))\"/>\n"
 "        <p>\n"
@@ -243,9 +241,9 @@ msgid ""
 "                    <td style=\"width: 100%; font-size: 13px; border-top: "
 "1px solid black;\"><strong>Total</strong></td>\n"
 "                    <td style=\"width: 100%; font-size: 13px; border-top: "
-"1px solid black;\" align=\"right\"><strong t-"
-"out=\"format_amount(order['amount_total'], currency) or ''\">$ 10.00</"
-"strong></td>\n"
+"1px solid black;\" align=\"right\"><strong t-out=\"order.get('amount_total') "
+"and format_amount(order['amount_total'], currency) or ''\">$ 10.00</strong></"
+"td>\n"
 "                </tr>\n"
 "            </tbody>\n"
 "        </table>\n"
@@ -304,14 +302,195 @@ msgid ""
 "style=\"min-width: 590px; background-color: #F1F1F1; color: #454748; "
 "padding: 8px; border-collapse:separate;\">\n"
 "      <tr><td style=\"text-align: center; font-size: 13px;\">\n"
-"        Powered by <a target=\"_blank\" href=\"https://www.odoo.com\" "
-"style=\"color: #875A7B;\">Odoo</a>\n"
+"        Powered by <a target=\"_blank\" href=\"https://www.odoo.com\" t-attf-"
+"style=\"color: {{user.company_id.email_secondary_color or '#875A7B'}};"
+"\">Odoo</a>\n"
 "      </td></tr>\n"
 "    </table>\n"
 "</td></tr>\n"
 "</table>\n"
 "        "
 msgstr ""
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: "
+"16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; "
+"color: #454748; width: 100%; border-collapse:separate;\"><tr><td "
+"align=\"center\">\n"
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" "
+"style=\"padding: 16px; background-color: white; color: #454748; border-"
+"collapse:separate;\">\n"
+"<tbody>\n"
+"    <!-- HEADER -->\n"
+"    <tr>\n"
+"        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"min-width: 590px; background-color: white; padding: "
+"0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                <tr><td valign=\"middle\">\n"
+"                    <span style=\"font-size: 10px;\">Поръчка за обяд</span>"
+"<br/>\n"
+"                </td><td valign=\"middle\" align=\"right\" t-if=\"not "
+"user.company_id.uses_default_logo\">\n"
+"                    <img t-attf-src=\"/logo.png?company={{ "
+"user.company_id.id }}\" style=\"padding: 0px; margin: 0px; height: auto; "
+"width: 80px;\" t-att-alt=\"user.company_id.name\"/>\n"
+"                </td></tr>\n"
+"                <tr><td colspan=\"2\" style=\"text-align:center;\">\n"
+"                  <hr width=\"100%\" style=\"background-color:rgb"
+"(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-"
+"height:1px;line-height:0; margin:16px 0px 16px 0px;\"/>\n"
+"                </td></tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <!-- CONTENT -->\n"
+"    <tr>\n"
+"        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"min-width: 590px; background-color: white; padding: "
+"0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                <tr>\n"
+"                    <td valign=\"top\" style=\"font-size: 13px;\">\n"
+"    <div>\n"
+"        <t t-set=\"lines\" t-value=\"ctx.get('lines', [])\"/>\n"
+"        <t t-set=\"order\" t-value=\"ctx.get('order', {})\"/>\n"
+"        <t t-set=\"currency\" t-value=\"user.env['res.currency'].browse"
+"(order.get('currency_id'))\"/>\n"
+"        <p>\n"
+"        Здравейте, <t t-out=\"order.get('supplier_name', '')\">Laurie "
+"Poiret</t>,\n"
+"        </p><p>\n"
+"        Ето днешните поръчки за <t t-out=\"order.get('company_name', '')\">"
+"LunchCompany</t>:\n"
+"        </p>\n"
+"\n"
+"        <t t-if=\"sites\">\n"
+"            <br/>\n"
+"            <p>Локация</p>\n"
+"            <t t-foreach=\"site\" t-as=\"site\">\n"
+"                <p><t t-out=\"site['name'] or ''\"/> : <t t-"
+"out=\"site['address'] or ''\"/></p>\n"
+"            </t>\n"
+"            <br/>\n"
+"        </t>\n"
+"\n"
+"        <table>\n"
+"            <thead>\n"
+"                <tr style=\"background-color:rgb(233,232,233);\">\n"
+"                    <th style=\"width: 100%; min-width: 96px; font-size: "
+"13px;\"><strong>Продукт</strong></th>\n"
+"                    <th style=\"width: 100%; min-width: 96px; font-size: "
+"13px;\"><strong>Коментари</strong></th>\n"
+"                    <th style=\"width: 100%; min-width: 96px; font-size: "
+"13px;\"><strong>Лице</strong></th>\n"
+"                    <th style=\"width: 100%; min-width: 96px; font-size: "
+"13px;\"><strong>Обект</strong></th>\n"
+"                    <th style=\"width: 100%; min-width: 96px; font-size: "
+"13px;\" align=\"center\"><strong>Кол.</strong></th>\n"
+"                    <th style=\"width: 100%; min-width: 96px; font-size: "
+"13px;\" align=\"center\"><strong>Цена</strong></th>\n"
+"                </tr>\n"
+"            </thead>\n"
+"            <tbody>\n"
+"                <tr t-foreach=\"lines\" t-as=\"line\">\n"
+"                    <td style=\"width: 100%; font-size: 13px;\" "
+"valign=\"top\" t-out=\"line['product'] or ''\">Sushi salmon</td>\n"
+"                    <td style=\"width: 100%; font-size: 13px;\" "
+"valign=\"top\">\n"
+"                    <t t-if=\"line['toppings']\">\n"
+"                        <t t-out=\"line['toppings'] or ''\">Soy sauce</t>\n"
+"                    </t>\n"
+"                    <t t-if=\"line['note']\">\n"
+"                        <div style=\"color: rgb(173,181,189);\" t-"
+"out=\"line['note'] or ''\">With wasabi.</div>\n"
+"                    </t>\n"
+"                    </td>\n"
+"                    <td style=\"width: 100%; font-size: 13px;\" "
+"valign=\"top\" t-out=\"line['username'] or ''\">lap</td>\n"
+"                    <td style=\"width: 100%; font-size: 13px;\" "
+"valign=\"top\" t-out=\"line['site'] or ''\">Office 1</td>\n"
+"                    <td style=\"width: 100%; font-size: 13px;\" "
+"valign=\"top\" align=\"right\" t-out=\"line['quantity'] or ''\">10</td>\n"
+"                    <td style=\"width: 100%; font-size: 13px;\" "
+"valign=\"top\" align=\"right\" t-out=\"format_amount(line['price'], "
+"currency) or ''\">$ 1.00</td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td/>\n"
+"                    <td/>\n"
+"                    <td/>\n"
+"                    <td/>\n"
+"                    <td style=\"width: 100%; font-size: 13px; border-top: "
+"1px solid black;\"><strong>Общо</strong></td>\n"
+"                    <td style=\"width: 100%; font-size: 13px; border-top: "
+"1px solid black;\" align=\"right\"><strong t-out=\"order.get('amount_total') "
+"and format_amount(order['amount_total'], currency) or ''\">$ 10.00</strong></"
+"td>\n"
+"                </tr>\n"
+"            </tbody>\n"
+"        </table>\n"
+"\n"
+"        <p>Не се колебайте да се свържете с нас, ако имате въпроси.</p>\n"
+"    </div>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <tr>\n"
+"                    <td style=\"text-align:center;\">\n"
+"                        <hr width=\"100%\" style=\"background-color:rgb"
+"(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-"
+"height:1px;line-height:0; margin: 16px 0px 16px 0px;\"/>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"    <!-- FOOTER -->\n"
+"    <tr>\n"
+"        <td align=\"center\" style=\"min-width: 590px;\">\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" "
+"width=\"590\" style=\"min-width: 590px; background-color: white; font-size: "
+"11px; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                <tr><td valign=\"middle\" align=\"left\">\n"
+"                    <t t-out=\"user.company_id.name or ''\">YourCompany</t>\n"
+"                </td></tr>\n"
+"                <tr><td valign=\"middle\" align=\"left\" style=\"opacity: "
+"0.7;\">\n"
+"                    <t t-out=\"user.company_id.phone or ''\">+1 650-123-"
+"4567</t>\n"
+"                    <t t-if=\"user.company_id.phone and "
+"(user.company_id.email or user.company_id.website)\">|</t>\n"
+"                    <t t-if=\"user.company_id.email\">\n"
+"                        <a t-attf-href=\"'mailto:%s' % {{ "
+"user.company_id.email }}\" style=\"text-decoration:none; color: #454748;\" t-"
+"out=\"user.company_id.email or ''\">info@yourcompany.com</a>\n"
+"                    </t>\n"
+"                    <t t-if=\"user.company_id.email and "
+"user.company_id.website\">|</t>\n"
+"                    <t t-if=\"user.company_id.website\">\n"
+"                        <a t-attf-href=\"'%s' % {{ user.company_id.website }}"
+"\" style=\"text-decoration:none; color: #454748;\" t-"
+"out=\"user.company_id.website or ''\">http://www.example.com</a>\n"
+"                    </t>\n"
+"                </td></tr>\n"
+"            </table>\n"
+"        </td>\n"
+"    </tr>\n"
+"</tbody>\n"
+"</table>\n"
+"</td></tr>\n"
+"<!-- POWERED BY -->\n"
+"<tr><td align=\"center\" style=\"min-width: 590px;\">\n"
+"    <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" "
+"style=\"min-width: 590px; background-color: #F1F1F1; color: #454748; "
+"padding: 8px; border-collapse:separate;\">\n"
+"      <tr><td style=\"text-align: center; font-size: 13px;\">\n"
+"        Powered by <a target=\"_blank\" href=\"https://www.odoo.com\" t-attf-"
+"style=\"color: {{user.company_id.email_secondary_color or '#875A7B'}};\">"
+"Odoo</a>\n"
+"      </td></tr>\n"
+"    </table>\n"
+"</td></tr>\n"
+"</table>\n"
+"        "
 
 #. module: lunch
 #: model_terms:ir.actions.act_window,help:lunch.lunch_cashmove_report_action_control_accounts
@@ -337,12 +516,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:lunch.selection__lunch_alert__notification_moment__am
 #: model:ir.model.fields.selection,name:lunch.selection__lunch_supplier__moment__am
 msgid "AM"
-msgstr "AM"
+msgstr "Преди обяд"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__message_needaction
 msgid "Action Needed"
-msgstr "Необходимо действие"
+msgstr "Необходимо Действие"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_alert__active
@@ -362,17 +541,17 @@ msgstr "Дейности"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr " Декорация за изключение на дейност"
+msgstr "Декорация за изключение на дейност"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__activity_state
 msgid "Activity State"
-msgstr "Състояние на дейност"
+msgstr "Състояние на Дейност"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__activity_type_icon
 msgid "Activity Type Icon"
-msgstr "Икона за вид дейност"
+msgstr "Икона за Вид Дейност"
 
 #. module: lunch
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_form
@@ -431,7 +610,7 @@ msgstr "Количество"
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_supplier_view_form
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_supplier_view_search
 msgid "Archived"
-msgstr "Архивиран"
+msgstr "Архивирано"
 
 #. module: lunch
 #: model:ir.model.fields,help:lunch.field_lunch_order__available_toppings_1
@@ -443,7 +622,7 @@ msgstr "Дали за този продукт има налични добавк
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__message_attachment_count
 msgid "Attachment Count"
-msgstr "Брой прикачени файлове"
+msgstr "Брой Прикачени Файлове"
 
 #. module: lunch
 #: model:ir.model.constraint,message:lunch.constraint_lunch_supplier_automatic_email_time_range
@@ -454,6 +633,12 @@ msgstr "Времето за автоматично изпращане на им�
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_supplier_view_form
 msgid "Availability"
 msgstr "Наличност"
+
+#. module: lunch
+#. odoo-javascript
+#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
+msgid "Available Balance"
+msgstr "Налично салдо"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_order__available_on_date
@@ -484,7 +669,15 @@ msgstr "Налични добавки 3"
 #: model:lunch.product,name:lunch.product_bacon
 #: model:lunch.product,name:lunch.product_bacon_0
 msgid "Bacon"
-msgstr "Бекон"
+msgstr "Bacon"
+
+#. module: lunch
+#: model:res.groups,comment:lunch.group_lunch_manager
+msgid ""
+"Be able to create new products, cashmoves and to confirm or cancel orders."
+msgstr ""
+"Възможност за създаване на нови продукти, парични движения и за "
+"потвърждаване или отказване на поръчки."
 
 #. module: lunch
 #: model_terms:lunch.product,description:lunch.product_bacon
@@ -534,7 +727,7 @@ msgstr "Отказ"
 #: model:ir.model.fields.selection,name:lunch.selection__lunch_order__state__cancelled
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_search
 msgid "Cancelled"
-msgstr "Отказан"
+msgstr "Отменен"
 
 #. module: lunch
 #. odoo-python
@@ -601,6 +794,12 @@ msgid "City"
 msgstr "Град"
 
 #. module: lunch
+#. odoo-javascript
+#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
+msgid "Clear Order"
+msgstr "Изчисти поръчката"
+
+#. module: lunch
 #: model_terms:ir.actions.act_window,help:lunch.lunch_order_action_control_suppliers
 msgid ""
 "Click on the <span class=\"fa fa-phone text-success\" title=\"Order "
@@ -619,6 +818,12 @@ msgstr ""
 "            Натиснете <span class=\"fa fa-times-circle text-danger\" "
 "title=\"Бутон за отказ\"></span> червения X, за да обявите, че поръчката не "
 "е налична."
+
+#. module: lunch
+#. odoo-javascript
+#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
+msgid "Close"
+msgstr "Затвори"
 
 #. module: lunch
 #: model:lunch.product,name:lunch.product_club
@@ -649,7 +854,7 @@ msgstr "Фирма"
 #. module: lunch
 #: model:ir.model,name:lunch.model_res_config_settings
 msgid "Config Settings"
-msgstr "Конфигурационни настройки"
+msgstr "Настройки"
 
 #. module: lunch
 #: model:ir.ui.menu,name:lunch.menu_lunch_config
@@ -721,7 +926,7 @@ msgstr "Създай нови известия за обяд"
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__create_uid
 #: model:ir.model.fields,field_description:lunch.field_lunch_topping__create_uid
 msgid "Created by"
-msgstr "Създаден от"
+msgstr "Създадено от"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_alert__create_date
@@ -739,7 +944,7 @@ msgstr "Създадено на"
 #: model:ir.model.fields,field_description:lunch.field_lunch_alert__cron_id
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__cron_id
 msgid "Cron"
-msgstr "Cron"
+msgstr "Крон"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_cashmove__currency_id
@@ -762,6 +967,12 @@ msgstr "В момента неактивно"
 #: model:ir.model.fields,field_description:lunch.field_lunch_cashmove_report__date
 msgid "Date"
 msgstr "Дата"
+
+#. module: lunch
+#. odoo-javascript
+#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
+msgid "Decrease quantity"
+msgstr "Намали количеството"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__delivery
@@ -802,6 +1013,9 @@ msgstr "Показване на бутон Добави"
 #: model:ir.model.fields,field_description:lunch.field_lunch_product_category__display_name
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__display_name
 #: model:ir.model.fields,field_description:lunch.field_lunch_topping__display_name
+#: model:ir.model.fields,field_description:lunch.field_res_company__display_name
+#: model:ir.model.fields,field_description:lunch.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:lunch.field_res_users__display_name
 msgid "Display Name"
 msgstr "Име за показване"
 
@@ -814,12 +1028,6 @@ msgstr "Покажи бутон за повторна поръчка"
 #: model:lunch.product.category,name:lunch.categ_drinks
 msgid "Drinks"
 msgstr "Напитки"
-
-#. module: lunch
-#. odoo-javascript
-#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
-msgid "Edit order"
-msgstr ""
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__email
@@ -886,7 +1094,7 @@ msgstr "Количество на добавка 3"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_order__display_toppings
 msgid "Extras"
-msgstr "Допълнения"
+msgstr "Добавки"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_order__topping_ids_1
@@ -926,7 +1134,7 @@ msgstr "Последователи (партньори)"
 #. module: lunch
 #: model:ir.model.fields,help:lunch.field_lunch_supplier__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr " Икона, примерно fa-tasks"
+msgstr "Икона, примерно fa-tasks"
 
 #. module: lunch
 #: model:ir.model.fields,help:lunch.field_lunch_supplier__email_formatted
@@ -960,13 +1168,6 @@ msgid "Gouda Cheese"
 msgstr "Gouda Cheese"
 
 #. module: lunch
-#: model_terms:ir.ui.view,arch_db:lunch.lunch_cashmove_report_view_search_2
-#: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_search
-#: model_terms:ir.ui.view,arch_db:lunch.lunch_product_view_search
-msgid "Group By"
-msgstr "Групиране по"
-
-#. module: lunch
 #: model_terms:lunch.product,description:lunch.product_club
 #: model_terms:lunch.product,description:lunch.product_club_0
 msgid "Ham, Cheese, Vegetables"
@@ -976,16 +1177,6 @@ msgstr "Шунка, сирене, зеленчуци"
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__has_message
 msgid "Has Message"
 msgstr "има съобщение"
-
-#. module: lunch
-#: model:ir.module.category,description:lunch.module_lunch_category
-msgid ""
-"Helps you handle your lunch needs, if you are a manager you will be able to "
-"create new products, cashmoves and to confirm or cancel orders."
-msgstr ""
-"Помага Ви да се справите с нуждата от обяд - ако сте мениджър, ще можете да "
-"създавате нови продукти, движение на парите в брой и да потвърждите или "
-"отменяте поръчки."
 
 #. module: lunch
 #: model_terms:ir.actions.act_window,help:lunch.lunch_product_category_action
@@ -1020,6 +1211,9 @@ msgstr ""
 #: model:ir.model.fields,field_description:lunch.field_lunch_product_category__id
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__id
 #: model:ir.model.fields,field_description:lunch.field_lunch_topping__id
+#: model:ir.model.fields,field_description:lunch.field_res_company__id
+#: model:ir.model.fields,field_description:lunch.field_res_config_settings__id
+#: model:ir.model.fields,field_description:lunch.field_res_users__id
 msgid "ID"
 msgstr "ID"
 
@@ -1031,7 +1225,7 @@ msgstr "Икона"
 #. module: lunch
 #: model:ir.model.fields,help:lunch.field_lunch_supplier__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr "Икона за обозначаване на дейност по изключение."
+msgstr "Икона за обозначаване на дейност с изключение."
 
 #. module: lunch
 #: model:ir.model.fields,help:lunch.field_lunch_supplier__message_needaction
@@ -1080,6 +1274,12 @@ msgid "Image 512"
 msgstr "Изображение 512"
 
 #. module: lunch
+#. odoo-javascript
+#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
+msgid "Increase quantity"
+msgstr "Увеличи количеството"
+
+#. module: lunch
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_form
 msgid "Information, allergens, ..."
 msgstr "Информация, алергени, ..."
@@ -1092,7 +1292,7 @@ msgstr "Показано днес"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_product__is_favorite
 msgid "Is Favorite"
-msgstr "Любимо ли е"
+msgstr "Любимо"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__message_is_follower
@@ -1155,8 +1355,8 @@ msgid "Locations"
 msgstr "Локации"
 
 #. module: lunch
-#: model:ir.module.category,name:lunch.module_lunch_category
 #: model:ir.ui.menu,name:lunch.menu_lunch
+#: model:res.groups.privilege,name:lunch.res_groups_privilege_lunch
 #: model_terms:ir.ui.view,arch_db:lunch.res_config_settings_view_form
 msgid "Lunch"
 msgstr "Обяд"
@@ -1277,32 +1477,32 @@ msgid "Lunch: Supplier Order"
 msgstr "Обяд: Поръчка до доставчик"
 
 #. module: lunch
-#: model:ir.actions.server,name:lunch.lunch_alert_cron_sa_229
+#: model:ir.actions.server,name:lunch.lunch_alert_cron_sa_231
 msgid "Lunch: alert chat notification (Alert for Office 3)"
 msgstr "Обяд: известие в чата за сигнал (Сигнал за Офис 3)"
 
 #. module: lunch
-#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_230
+#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_232
 msgid "Lunch: send automatic email to Coin gourmand"
 msgstr "Обяд: изпращане на автоматичен имейл до Coin gourmand"
 
 #. module: lunch
-#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_225
+#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_227
 msgid "Lunch: send automatic email to Lunch Supplier"
 msgstr "Обяд: изпращане на автоматичен имейл до Доставчик на обяд"
 
 #. module: lunch
-#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_231
+#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_233
 msgid "Lunch: send automatic email to Pizza Inn"
 msgstr "Обяд: изпращане на автоматичен имейл до Pizza Inn"
 
 #. module: lunch
-#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_233
+#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_235
 msgid "Lunch: send automatic email to Sushi Shop"
 msgstr "Обяд: изпращане на автоматичен имейл до Sushi Shop"
 
 #. module: lunch
-#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_232
+#: model:ir.actions.server,name:lunch.lunch_supplier_cron_sa_234
 msgid "Lunch: send automatic email to The Corner"
 msgstr "Обяд: изпращане на автоматичен имейл до The Corner"
 
@@ -1334,7 +1534,7 @@ msgstr "Съобщение"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__message_has_error
 msgid "Message Delivery error"
-msgstr "Грешка при доставяне на съобщението"
+msgstr "Грешка при доставката на съобщение"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__message_ids
@@ -1497,12 +1697,18 @@ msgstr "Неполучени"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_order__note
 msgid "Notes"
-msgstr "Забележки"
+msgstr "Бележки"
 
 #. module: lunch
 #: model_terms:ir.actions.act_window,help:lunch.lunch_order_action_by_supplier
 msgid "Nothing to order today"
 msgstr "Няма какво да поръчате днес"
+
+#. module: lunch
+#. odoo-javascript
+#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
+msgid "Nothing to order, add some meals to begin."
+msgstr "Няма какво да поръчате, добавете ястия, за да започнете."
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_alert__notification_moment
@@ -1522,7 +1728,7 @@ msgstr "Времето за известяване трябва да е межд
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_order__notified
 msgid "Notified"
-msgstr "Уведомен"
+msgstr "Известен"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__message_needaction_counter
@@ -1543,6 +1749,17 @@ msgstr "Брой съобщения изискващи действие"
 #: model:ir.model.fields,help:lunch.field_lunch_supplier__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr "Брой съобщения с грешка при доставка"
+
+#. module: lunch
+#. odoo-python
+#: code:addons/lunch/models/lunch_order.py:0
+msgid ""
+"Oh no! You don’t have enough money in your wallet to order your selected "
+"lunch! Contact your lunch manager to add some money to your wallet."
+msgstr ""
+"О, не! Нямате достатъчно средства в портфейла си, за да поръчате избрания "
+"обяд! Свържете се с вашия мениджър по обядите, за да добавите средства в "
+"портфейла си."
 
 #. module: lunch
 #: model:ir.model.fields.selection,name:lunch.selection__lunch_supplier__topping_quantity_1__1_more
@@ -1584,7 +1801,7 @@ msgstr "Поръчайте сега"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__automatic_email_time
 msgid "Order Time"
-msgstr "Време на поръчката"
+msgstr "Време на поръчка"
 
 #. module: lunch
 #: model:ir.actions.act_window,name:lunch.lunch_product_action_order
@@ -1608,8 +1825,8 @@ msgstr "Поръчки"
 
 #. module: lunch
 #: model:mail.template,subject:lunch.lunch_order_mail_supplier
-msgid "Orders for {{ ctx['order']['company_name'] }}"
-msgstr ""
+msgid "Orders for {{ ctx.get('order', {}).get('company_name') }}"
+msgstr "Поръчки за {{ ctx.get('order', {}).get('company_name') }}"
 
 #. module: lunch
 #: model_terms:ir.ui.view,arch_db:lunch.res_config_settings_view_form
@@ -1621,6 +1838,12 @@ msgstr "Овърдрафт"
 #: model:ir.model.fields.selection,name:lunch.selection__lunch_supplier__moment__pm
 msgid "PM"
 msgstr "След обяд"
+
+#. module: lunch
+#. odoo-javascript
+#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
+msgid "Passed orders"
+msgstr "Минали поръчки"
 
 #. module: lunch
 #: model:lunch.product.category,name:lunch.categ_pasta
@@ -1779,7 +2002,7 @@ msgstr "Количество"
 #. module: lunch
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_tree
 msgid "Re-order"
-msgstr "Поръзай пак"
+msgstr "Поръчай отново"
 
 #. module: lunch
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_kanban
@@ -1816,17 +2039,17 @@ msgstr "Нулиране"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__responsible_id
 msgid "Responsible"
-msgstr "Отговорен"
+msgstr "Отговорно лице"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__activity_user_id
 msgid "Responsible User"
-msgstr "Отговорен потребител"
+msgstr "Отговорник"
 
 #. module: lunch
 #: model:lunch.product,name:lunch.product_chirashi
 msgid "Salmon and Avocado"
-msgstr "Salmon and Avocado"
+msgstr "Сьомга и авокадо"
 
 #. module: lunch
 #: model:lunch.product.category,name:lunch.categ_sandwich
@@ -1848,7 +2071,7 @@ msgstr "Събота"
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_alert_view_search
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_search
 msgid "Search"
-msgstr "Tyrsene"
+msgstr "Потърсете"
 
 #. module: lunch
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_kanban
@@ -1933,10 +2156,10 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
-"Статус въз основа на дейности\n"
-"Просрочени: Срокът вече е изтекъл\n"
-"Днес: Датата на дейността е днес\n"
-"Планирано: Бъдещи дейности."
+"Статус според дейностите\n"
+"Пресрочени: Крайната дата е в миналото\n"
+"Днес: Дейности с дата на изпълнение днес \n"
+"Планирани: Бъдещи дейности."
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__street
@@ -2136,8 +2359,6 @@ msgstr ""
 "сте конфигурирали продукти"
 
 #. module: lunch
-#. odoo-javascript
-#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_search
 msgid "Today"
 msgstr "Днес"
@@ -2177,7 +2398,7 @@ msgstr "Домати, гъби, моцарела"
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_topping__topping_category
 msgid "Topping Category"
-msgstr "Категория „Гарнитури“"
+msgstr "Категория добавки"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__topping_ids_1
@@ -2202,7 +2423,7 @@ msgstr "ID-та на добавки 3"
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_cashmove_view_tree
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_tree
 msgid "Total"
-msgstr "Обща стойност"
+msgstr "Общ"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_order__price
@@ -2233,7 +2454,7 @@ msgstr "Риба тон, майонеза"
 #. module: lunch
 #: model:ir.model.fields,help:lunch.field_lunch_supplier__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr "Вид на записаната дейност по изключение."
+msgstr "Вид на изключение на дейност в базата."
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_supplier__recurrency_end_date
@@ -2262,7 +2483,7 @@ msgstr "Потребител : Поръчайте храната си"
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_product_view_search
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_supplier_view_form
 msgid "Vendor"
-msgstr "Доставчик"
+msgstr "Търговец"
 
 #. module: lunch
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_search
@@ -2275,6 +2496,14 @@ msgstr "Поръчки на търговеца по дата"
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_product_view_search
 msgid "Vendors"
 msgstr "Доставчици"
+
+#. module: lunch
+#: model_terms:ir.ui.view,arch_db:lunch.lunch_location_form_view
+#: model_terms:ir.ui.view,arch_db:lunch.lunch_product_category_view_form
+#: model_terms:ir.ui.view,arch_db:lunch.lunch_product_view_form
+#: model_terms:ir.ui.view,arch_db:lunch.lunch_supplier_view_form
+msgid "Visible to all"
+msgstr "Видимо за всички"
 
 #. module: lunch
 #: model:ir.model.fields,field_description:lunch.field_lunch_alert__wed
@@ -2312,12 +2541,6 @@ msgstr "Трябва да поръчате поне едно %s"
 #. module: lunch
 #. odoo-javascript
 #: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
-msgid "Your Account"
-msgstr "Вашата сметка"
-
-#. module: lunch
-#. odoo-javascript
-#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
 msgid "Your Cart ("
 msgstr "Вашата количка ("
 
@@ -2334,8 +2557,6 @@ msgid "Your Order"
 msgstr "Вашата поръчка"
 
 #. module: lunch
-#. odoo-python
-#: code:addons/lunch/models/lunch_order.py:0
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_order_view_form
 msgid ""
 "Your wallet does not contain enough money to order that. To add some money "
@@ -2403,3 +2624,38 @@ msgstr "на"
 #: model_terms:ir.ui.view,arch_db:lunch.lunch_alert_view_kanban
 msgid "to"
 msgstr "до"
+
+#. module: lunch
+#. odoo-javascript
+#: code:addons/lunch/static/src/components/lunch_dashboard.xml:0
+msgid "x"
+msgstr "x"
+
+#~ msgid "Group By"
+#~ msgstr "Групиране по"
+
+#~ msgid ""
+#~ "Helps you handle your lunch needs, if you are a manager you will be able "
+#~ "to create new products, cashmoves and to confirm or cancel orders."
+#~ msgstr ""
+#~ "Помага Ви да се справите с нуждата от обяд - ако сте мениджър, ще можете "
+#~ "да създавате нови продукти, движение на парите в брой и да потвърждите "
+#~ "или отменяте поръчки."
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Брой съобщения, които изискват внимание"
+
+#~ msgid "Order lines Tree"
+#~ msgstr "Дървовидна графика на поръчките"
+
+#~ msgid "Products Tree"
+#~ msgstr "Дървовидна графика на продукти"
+
+#~ msgid "Save"
+#~ msgstr "Запазете"
+
+#~ msgid "Your Account"
+#~ msgstr "Вашата сметка"
+
+#~ msgid "cashmove tree"
+#~ msgstr "дървовидна графика на движението на парите в брой"

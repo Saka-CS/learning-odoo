@@ -1,6 +1,6 @@
 {
     "projects": {
-        "odoo-18": [
+        "odoo-19": [
             {
                 "name": "account",
                 "filemask": "addons/account/i18n/*.po",
@@ -37,11 +37,6 @@
                 "new_base": "addons/account_edi_ubl_cii/i18n/account_edi_ubl_cii.pot"
             },
             {
-                "name": "account_edi_ubl_cii_tax_extension",
-                "filemask": "addons/account_edi_ubl_cii_tax_extension/i18n/*.po",
-                "new_base": "addons/account_edi_ubl_cii_tax_extension/i18n/account_edi_ubl_cii_tax_extension.pot"
-            },
-            {
                 "name": "account_fleet",
                 "filemask": "addons/account_fleet/i18n/*.po",
                 "new_base": "addons/account_fleet/i18n/account_fleet.pot"
@@ -57,14 +52,14 @@
                 "new_base": "addons/account_peppol/i18n/account_peppol.pot"
             },
             {
+                "name": "account_peppol_advanced_fields",
+                "filemask": "addons/account_peppol_advanced_fields/i18n/*.po",
+                "new_base": "addons/account_peppol_advanced_fields/i18n/account_peppol_advanced_fields.pot"
+            },
+            {
                 "name": "account_peppol_response",
                 "filemask": "addons/account_peppol_response/i18n/*.po",
                 "new_base": "addons/account_peppol_response/i18n/account_peppol_response.pot"
-            },
-            {
-                "name": "account_peppol_selfbilling",
-                "filemask": "addons/account_peppol_selfbilling/i18n/*.po",
-                "new_base": "addons/account_peppol_selfbilling/i18n/account_peppol_selfbilling.pot"
             },
             {
                 "name": "account_qr_code_emv",
@@ -112,6 +107,11 @@
                 "new_base": "addons/auth_passkey/i18n/auth_passkey.pot"
             },
             {
+                "name": "auth_passkey_portal",
+                "filemask": "addons/auth_passkey_portal/i18n/*.po",
+                "new_base": "addons/auth_passkey_portal/i18n/auth_passkey_portal.pot"
+            },
+            {
                 "name": "auth_password_policy",
                 "filemask": "addons/auth_password_policy/i18n/*.po",
                 "new_base": "addons/auth_password_policy/i18n/auth_password_policy.pot"
@@ -132,6 +132,11 @@
                 "new_base": "addons/auth_signup/i18n/auth_signup.pot"
             },
             {
+                "name": "auth_timeout",
+                "filemask": "addons/auth_timeout/i18n/*.po",
+                "new_base": "addons/auth_timeout/i18n/auth_timeout.pot"
+            },
+            {
                 "name": "auth_totp",
                 "filemask": "addons/auth_totp/i18n/*.po",
                 "new_base": "addons/auth_totp/i18n/auth_totp.pot"
@@ -140,11 +145,6 @@
                 "name": "auth_totp_mail",
                 "filemask": "addons/auth_totp_mail/i18n/*.po",
                 "new_base": "addons/auth_totp_mail/i18n/auth_totp_mail.pot"
-            },
-            {
-                "name": "auth_totp_mail_enforce",
-                "filemask": "addons/auth_totp_mail_enforce/i18n/*.po",
-                "new_base": "addons/auth_totp_mail_enforce/i18n/auth_totp_mail_enforce.pot"
             },
             {
                 "name": "auth_totp_portal",
@@ -382,6 +382,11 @@
                 "new_base": "addons/google_account/i18n/google_account.pot"
             },
             {
+                "name": "google_address_autocomplete",
+                "filemask": "addons/google_address_autocomplete/i18n/*.po",
+                "new_base": "addons/google_address_autocomplete/i18n/google_address_autocomplete.pot"
+            },
+            {
                 "name": "google_calendar",
                 "filemask": "addons/google_calendar/i18n/*.po",
                 "new_base": "addons/google_calendar/i18n/google_calendar.pot"
@@ -412,11 +417,6 @@
                 "new_base": "addons/hr_calendar/i18n/hr_calendar.pot"
             },
             {
-                "name": "hr_contract",
-                "filemask": "addons/hr_contract/i18n/*.po",
-                "new_base": "addons/hr_contract/i18n/hr_contract.pot"
-            },
-            {
                 "name": "hr_expense",
                 "filemask": "addons/hr_expense/i18n/*.po",
                 "new_base": "addons/hr_expense/i18n/hr_expense.pot"
@@ -442,9 +442,9 @@
                 "new_base": "addons/hr_holidays_attendance/i18n/hr_holidays_attendance.pot"
             },
             {
-                "name": "hr_holidays_contract",
-                "filemask": "addons/hr_holidays_contract/i18n/*.po",
-                "new_base": "addons/hr_holidays_contract/i18n/hr_holidays_contract.pot"
+                "name": "hr_holidays_homeworking",
+                "filemask": "addons/hr_holidays_homeworking/i18n/*.po",
+                "new_base": "addons/hr_holidays_homeworking/i18n/hr_holidays_homeworking.pot"
             },
             {
                 "name": "hr_homeworking",
@@ -507,6 +507,11 @@
                 "new_base": "addons/hr_skills/i18n/hr_skills.pot"
             },
             {
+                "name": "hr_skills_event",
+                "filemask": "addons/hr_skills_event/i18n/*.po",
+                "new_base": "addons/hr_skills_event/i18n/hr_skills_event.pot"
+            },
+            {
                 "name": "hr_skills_slides",
                 "filemask": "addons/hr_skills_slides/i18n/*.po",
                 "new_base": "addons/hr_skills_slides/i18n/hr_skills_slides.pot"
@@ -532,14 +537,14 @@
                 "new_base": "addons/hr_work_entry/i18n/hr_work_entry.pot"
             },
             {
-                "name": "hr_work_entry_contract",
-                "filemask": "addons/hr_work_entry_contract/i18n/*.po",
-                "new_base": "addons/hr_work_entry_contract/i18n/hr_work_entry_contract.pot"
-            },
-            {
                 "name": "hr_work_entry_holidays",
                 "filemask": "addons/hr_work_entry_holidays/i18n/*.po",
                 "new_base": "addons/hr_work_entry_holidays/i18n/hr_work_entry_holidays.pot"
+            },
+            {
+                "name": "html_builder",
+                "filemask": "addons/html_builder/i18n/*.po",
+                "new_base": "addons/html_builder/i18n/html_builder.pot"
             },
             {
                 "name": "html_editor",
@@ -677,11 +682,6 @@
                 "new_base": "addons/mass_mailing_themes/i18n/mass_mailing_themes.pot"
             },
             {
-                "name": "membership",
-                "filemask": "addons/membership/i18n/*.po",
-                "new_base": "addons/membership/i18n/membership.pot"
-            },
-            {
                 "name": "microsoft_account",
                 "filemask": "addons/microsoft_account/i18n/*.po",
                 "new_base": "addons/microsoft_account/i18n/microsoft_account.pot"
@@ -757,6 +757,11 @@
                 "new_base": "addons/partner_autocomplete/i18n/partner_autocomplete.pot"
             },
             {
+                "name": "partnership",
+                "filemask": "addons/partnership/i18n/*.po",
+                "new_base": "addons/partnership/i18n/partnership.pot"
+            },
+            {
                 "name": "payment",
                 "filemask": "addons/payment/i18n/*.po",
                 "new_base": "addons/payment/i18n/payment.pot"
@@ -797,9 +802,24 @@
                 "new_base": "addons/payment_demo/i18n/payment_demo.pot"
             },
             {
+                "name": "payment_dpo",
+                "filemask": "addons/payment_dpo/i18n/*.po",
+                "new_base": "addons/payment_dpo/i18n/payment_dpo.pot"
+            },
+            {
+                "name": "payment_ecpay",
+                "filemask": "addons/payment_ecpay/i18n/*.po",
+                "new_base": "addons/payment_ecpay/i18n/payment_ecpay.pot"
+            },
+            {
                 "name": "payment_flutterwave",
                 "filemask": "addons/payment_flutterwave/i18n/*.po",
                 "new_base": "addons/payment_flutterwave/i18n/payment_flutterwave.pot"
+            },
+            {
+                "name": "payment_iyzico",
+                "filemask": "addons/payment_iyzico/i18n/*.po",
+                "new_base": "addons/payment_iyzico/i18n/payment_iyzico.pot"
             },
             {
                 "name": "payment_mercado_pago",
@@ -817,9 +837,19 @@
                 "new_base": "addons/payment_nuvei/i18n/payment_nuvei.pot"
             },
             {
+                "name": "payment_paymob",
+                "filemask": "addons/payment_paymob/i18n/*.po",
+                "new_base": "addons/payment_paymob/i18n/payment_paymob.pot"
+            },
+            {
                 "name": "payment_paypal",
                 "filemask": "addons/payment_paypal/i18n/*.po",
                 "new_base": "addons/payment_paypal/i18n/payment_paypal.pot"
+            },
+            {
+                "name": "payment_payu",
+                "filemask": "addons/payment_payu/i18n/*.po",
+                "new_base": "addons/payment_payu/i18n/payment_payu.pot"
             },
             {
                 "name": "payment_razorpay",
@@ -827,14 +857,19 @@
                 "new_base": "addons/payment_razorpay/i18n/payment_razorpay.pot"
             },
             {
-                "name": "payment_razorpay_oauth",
-                "filemask": "addons/payment_razorpay_oauth/i18n/*.po",
-                "new_base": "addons/payment_razorpay_oauth/i18n/payment_razorpay_oauth.pot"
+                "name": "payment_redsys",
+                "filemask": "addons/payment_redsys/i18n/*.po",
+                "new_base": "addons/payment_redsys/i18n/payment_redsys.pot"
             },
             {
                 "name": "payment_stripe",
                 "filemask": "addons/payment_stripe/i18n/*.po",
                 "new_base": "addons/payment_stripe/i18n/payment_stripe.pot"
+            },
+            {
+                "name": "payment_toss_payments",
+                "filemask": "addons/payment_toss_payments/i18n/*.po",
+                "new_base": "addons/payment_toss_payments/i18n/payment_toss_payments.pot"
             },
             {
                 "name": "payment_worldline",
@@ -877,19 +912,29 @@
                 "new_base": "addons/pos_adyen/i18n/pos_adyen.pot"
             },
             {
+                "name": "pos_cashdro",
+                "filemask": "addons/pos_cashdro/i18n/*.po",
+                "new_base": "addons/pos_cashdro/i18n/pos_cashdro.pot"
+            },
+            {
+                "name": "pos_cashmatic",
+                "filemask": "addons/pos_cashmatic/i18n/*.po",
+                "new_base": "addons/pos_cashmatic/i18n/pos_cashmatic.pot"
+            },
+            {
                 "name": "pos_discount",
                 "filemask": "addons/pos_discount/i18n/*.po",
                 "new_base": "addons/pos_discount/i18n/pos_discount.pot"
             },
             {
+                "name": "pos_dpopay",
+                "filemask": "addons/pos_dpopay/i18n/*.po",
+                "new_base": "addons/pos_dpopay/i18n/pos_dpopay.pot"
+            },
+            {
                 "name": "pos_edi_ubl",
                 "filemask": "addons/pos_edi_ubl/i18n/*.po",
                 "new_base": "addons/pos_edi_ubl/i18n/pos_edi_ubl.pot"
-            },
-            {
-                "name": "pos_epson_printer",
-                "filemask": "addons/pos_epson_printer/i18n/*.po",
-                "new_base": "addons/pos_epson_printer/i18n/pos_epson_printer.pot"
             },
             {
                 "name": "pos_event",
@@ -902,9 +947,19 @@
                 "new_base": "addons/pos_event_sale/i18n/pos_event_sale.pot"
             },
             {
+                "name": "pos_glory_cash",
+                "filemask": "addons/pos_glory_cash/i18n/*.po",
+                "new_base": "addons/pos_glory_cash/i18n/pos_glory_cash.pot"
+            },
+            {
                 "name": "pos_hr",
                 "filemask": "addons/pos_hr/i18n/*.po",
                 "new_base": "addons/pos_hr/i18n/pos_hr.pot"
+            },
+            {
+                "name": "pos_imin",
+                "filemask": "addons/pos_imin/i18n/*.po",
+                "new_base": "addons/pos_imin/i18n/pos_imin.pot"
             },
             {
                 "name": "pos_loyalty",
@@ -915,6 +970,11 @@
                 "name": "pos_mercado_pago",
                 "filemask": "addons/pos_mercado_pago/i18n/*.po",
                 "new_base": "addons/pos_mercado_pago/i18n/pos_mercado_pago.pot"
+            },
+            {
+                "name": "pos_mollie",
+                "filemask": "addons/pos_mollie/i18n/*.po",
+                "new_base": "addons/pos_mollie/i18n/pos_mollie.pot"
             },
             {
                 "name": "pos_mrp",
@@ -932,19 +992,24 @@
                 "new_base": "addons/pos_online_payment_self_order/i18n/pos_online_payment_self_order.pot"
             },
             {
-                "name": "pos_paytm",
-                "filemask": "addons/pos_paytm/i18n/*.po",
-                "new_base": "addons/pos_paytm/i18n/pos_paytm.pot"
-            },
-            {
                 "name": "pos_pine_labs",
                 "filemask": "addons/pos_pine_labs/i18n/*.po",
                 "new_base": "addons/pos_pine_labs/i18n/pos_pine_labs.pot"
             },
             {
+                "name": "pos_qfpay",
+                "filemask": "addons/pos_qfpay/i18n/*.po",
+                "new_base": "addons/pos_qfpay/i18n/pos_qfpay.pot"
+            },
+            {
                 "name": "pos_razorpay",
                 "filemask": "addons/pos_razorpay/i18n/*.po",
                 "new_base": "addons/pos_razorpay/i18n/pos_razorpay.pot"
+            },
+            {
+                "name": "pos_repair",
+                "filemask": "addons/pos_repair/i18n/*.po",
+                "new_base": "addons/pos_repair/i18n/pos_repair.pot"
             },
             {
                 "name": "pos_restaurant",
@@ -955,6 +1020,11 @@
                 "name": "pos_restaurant_adyen",
                 "filemask": "addons/pos_restaurant_adyen/i18n/*.po",
                 "new_base": "addons/pos_restaurant_adyen/i18n/pos_restaurant_adyen.pot"
+            },
+            {
+                "name": "pos_safaricom",
+                "filemask": "addons/pos_safaricom/i18n/*.po",
+                "new_base": "addons/pos_safaricom/i18n/pos_safaricom.pot"
             },
             {
                 "name": "pos_sale",
@@ -982,6 +1052,16 @@
                 "new_base": "addons/pos_self_order_adyen/i18n/pos_self_order_adyen.pot"
             },
             {
+                "name": "pos_self_order_pine_labs",
+                "filemask": "addons/pos_self_order_pine_labs/i18n/*.po",
+                "new_base": "addons/pos_self_order_pine_labs/i18n/pos_self_order_pine_labs.pot"
+            },
+            {
+                "name": "pos_self_order_qfpay",
+                "filemask": "addons/pos_self_order_qfpay/i18n/*.po",
+                "new_base": "addons/pos_self_order_qfpay/i18n/pos_self_order_qfpay.pot"
+            },
+            {
                 "name": "pos_self_order_razorpay",
                 "filemask": "addons/pos_self_order_razorpay/i18n/*.po",
                 "new_base": "addons/pos_self_order_razorpay/i18n/pos_self_order_razorpay.pot"
@@ -997,9 +1077,9 @@
                 "new_base": "addons/pos_self_order_stripe/i18n/pos_self_order_stripe.pot"
             },
             {
-                "name": "pos_six",
-                "filemask": "addons/pos_six/i18n/*.po",
-                "new_base": "addons/pos_six/i18n/pos_six.pot"
+                "name": "pos_self_order_viva_com",
+                "filemask": "addons/pos_self_order_viva_com/i18n/*.po",
+                "new_base": "addons/pos_self_order_viva_com/i18n/pos_self_order_viva_com.pot"
             },
             {
                 "name": "pos_sms",
@@ -1012,9 +1092,9 @@
                 "new_base": "addons/pos_stripe/i18n/pos_stripe.pot"
             },
             {
-                "name": "pos_viva_wallet",
-                "filemask": "addons/pos_viva_wallet/i18n/*.po",
-                "new_base": "addons/pos_viva_wallet/i18n/pos_viva_wallet.pot"
+                "name": "pos_viva_com",
+                "filemask": "addons/pos_viva_com/i18n/*.po",
+                "new_base": "addons/pos_viva_com/i18n/pos_viva_com.pot"
             },
             {
                 "name": "privacy_lookup",
@@ -1035,11 +1115,6 @@
                 "name": "product_expiry",
                 "filemask": "addons/product_expiry/i18n/*.po",
                 "new_base": "addons/product_expiry/i18n/product_expiry.pot"
-            },
-            {
-                "name": "product_images",
-                "filemask": "addons/product_images/i18n/*.po",
-                "new_base": "addons/product_images/i18n/product_images.pot"
             },
             {
                 "name": "product_margin",
@@ -1207,11 +1282,6 @@
                 "new_base": "addons/sale/i18n/sale.pot"
             },
             {
-                "name": "sale_async_emails",
-                "filemask": "addons/sale_async_emails/i18n/*.po",
-                "new_base": "addons/sale_async_emails/i18n/sale_async_emails.pot"
-            },
-            {
                 "name": "sale_crm",
                 "filemask": "addons/sale_crm/i18n/*.po",
                 "new_base": "addons/sale_crm/i18n/sale_crm.pot"
@@ -1320,6 +1390,11 @@
                 "name": "sale_stock_margin",
                 "filemask": "addons/sale_stock_margin/i18n/*.po",
                 "new_base": "addons/sale_stock_margin/i18n/sale_stock_margin.pot"
+            },
+            {
+                "name": "sale_stock_product_expiry",
+                "filemask": "addons/sale_stock_product_expiry/i18n/*.po",
+                "new_base": "addons/sale_stock_product_expiry/i18n/sale_stock_product_expiry.pot"
             },
             {
                 "name": "sale_timesheet",
@@ -1467,6 +1542,11 @@
                 "new_base": "addons/stock_landed_costs/i18n/stock_landed_costs.pot"
             },
             {
+                "name": "stock_maintenance",
+                "filemask": "addons/stock_maintenance/i18n/*.po",
+                "new_base": "addons/stock_maintenance/i18n/stock_maintenance.pot"
+            },
+            {
                 "name": "stock_picking_batch",
                 "filemask": "addons/stock_picking_batch/i18n/*.po",
                 "new_base": "addons/stock_picking_batch/i18n/stock_picking_batch.pot"
@@ -1480,6 +1560,11 @@
                 "name": "survey",
                 "filemask": "addons/survey/i18n/*.po",
                 "new_base": "addons/survey/i18n/survey.pot"
+            },
+            {
+                "name": "survey_crm",
+                "filemask": "addons/survey_crm/i18n/*.po",
+                "new_base": "addons/survey_crm/i18n/survey_crm.pot"
             },
             {
                 "name": "transifex",
@@ -1500,11 +1585,6 @@
                 "name": "web",
                 "filemask": "addons/web/i18n/*.po",
                 "new_base": "addons/web/i18n/web.pot"
-            },
-            {
-                "name": "web_editor",
-                "filemask": "addons/web_editor/i18n/*.po",
-                "new_base": "addons/web_editor/i18n/web_editor.pot"
             },
             {
                 "name": "web_hierarchy",
@@ -1602,21 +1682,6 @@
                 "new_base": "addons/website_event_exhibitor/i18n/website_event_exhibitor.pot"
             },
             {
-                "name": "website_event_jitsi",
-                "filemask": "addons/website_event_jitsi/i18n/*.po",
-                "new_base": "addons/website_event_jitsi/i18n/website_event_jitsi.pot"
-            },
-            {
-                "name": "website_event_meet",
-                "filemask": "addons/website_event_meet/i18n/*.po",
-                "new_base": "addons/website_event_meet/i18n/website_event_meet.pot"
-            },
-            {
-                "name": "website_event_meet_quiz",
-                "filemask": "addons/website_event_meet_quiz/i18n/*.po",
-                "new_base": "addons/website_event_meet_quiz/i18n/website_event_meet_quiz.pot"
-            },
-            {
                 "name": "website_event_sale",
                 "filemask": "addons/website_event_sale/i18n/*.po",
                 "new_base": "addons/website_event_sale/i18n/website_event_sale.pot"
@@ -1652,9 +1717,9 @@
                 "new_base": "addons/website_hr_recruitment/i18n/website_hr_recruitment.pot"
             },
             {
-                "name": "website_jitsi",
-                "filemask": "addons/website_jitsi/i18n/*.po",
-                "new_base": "addons/website_jitsi/i18n/website_jitsi.pot"
+                "name": "website_hr_recruitment_livechat",
+                "filemask": "addons/website_hr_recruitment_livechat/i18n/*.po",
+                "new_base": "addons/website_hr_recruitment_livechat/i18n/website_hr_recruitment_livechat.pot"
             },
             {
                 "name": "website_links",
@@ -1687,11 +1752,6 @@
                 "new_base": "addons/website_mass_mailing_sms/i18n/website_mass_mailing_sms.pot"
             },
             {
-                "name": "website_membership",
-                "filemask": "addons/website_membership/i18n/*.po",
-                "new_base": "addons/website_membership/i18n/website_membership.pot"
-            },
-            {
                 "name": "website_partner",
                 "filemask": "addons/website_partner/i18n/*.po",
                 "new_base": "addons/website_partner/i18n/website_partner.pot"
@@ -1700,11 +1760,6 @@
                 "name": "website_payment",
                 "filemask": "addons/website_payment/i18n/*.po",
                 "new_base": "addons/website_payment/i18n/website_payment.pot"
-            },
-            {
-                "name": "website_payment_authorize",
-                "filemask": "addons/website_payment_authorize/i18n/*.po",
-                "new_base": "addons/website_payment_authorize/i18n/website_payment_authorize.pot"
             },
             {
                 "name": "website_profile",
@@ -1730,6 +1785,11 @@
                 "name": "website_sale_collect",
                 "filemask": "addons/website_sale_collect/i18n/*.po",
                 "new_base": "addons/website_sale_collect/i18n/website_sale_collect.pot"
+            },
+            {
+                "name": "website_sale_collect_wishlist",
+                "filemask": "addons/website_sale_collect_wishlist/i18n/*.po",
+                "new_base": "addons/website_sale_collect_wishlist/i18n/website_sale_collect_wishlist.pot"
             },
             {
                 "name": "website_sale_comparison",
@@ -1805,9 +1865,14 @@
                 "name": "website_sms",
                 "filemask": "addons/website_sms/i18n/*.po",
                 "new_base": "addons/website_sms/i18n/website_sms.pot"
+            },
+            {
+                "name": "website_timesheet",
+                "filemask": "addons/website_timesheet/i18n/*.po",
+                "new_base": "addons/website_timesheet/i18n/website_timesheet.pot"
             }
         ],
-        "odoo-18-l10n": [
+        "odoo-19-l10n": [
             {
                 "name": "l10n_account_withholding_tax",
                 "filemask": "addons/l10n_account_withholding_tax/i18n/*.po",
@@ -1830,6 +1895,12 @@
                 "name": "l10n_ar_pos",
                 "filemask": "addons/l10n_ar_pos/i18n/*.po",
                 "new_base": "addons/l10n_ar_pos/i18n/l10n_ar_pos.pot",
+                "language_regex": "^(es_419)$"
+            },
+            {
+                "name": "l10n_ar_stock",
+                "filemask": "addons/l10n_ar_stock/i18n/*.po",
+                "new_base": "addons/l10n_ar_stock/i18n/l10n_ar_stock.pot",
                 "language_regex": "^(es_419)$"
             },
             {
@@ -2109,15 +2180,15 @@
                 "language_regex": "^(es_419)$"
             },
             {
-                "name": "l10n_ec_stock",
-                "filemask": "addons/l10n_ec_stock/i18n/*.po",
-                "new_base": "addons/l10n_ec_stock/i18n/l10n_ec_stock.pot",
+                "name": "l10n_ec_sale",
+                "filemask": "addons/l10n_ec_sale/i18n/*.po",
+                "new_base": "addons/l10n_ec_sale/i18n/l10n_ec_sale.pot",
                 "language_regex": "^(es_419)$"
             },
             {
-                "name": "l10n_ec_website_sale",
-                "filemask": "addons/l10n_ec_website_sale/i18n/*.po",
-                "new_base": "addons/l10n_ec_website_sale/i18n/l10n_ec_website_sale.pot",
+                "name": "l10n_ec_stock",
+                "filemask": "addons/l10n_ec_stock/i18n/*.po",
+                "new_base": "addons/l10n_ec_stock/i18n/l10n_ec_stock.pot",
                 "language_regex": "^(es_419)$"
             },
             {
@@ -2178,12 +2249,6 @@
                 "name": "l10n_es_edi_verifactu_pos",
                 "filemask": "addons/l10n_es_edi_verifactu_pos/i18n/*.po",
                 "new_base": "addons/l10n_es_edi_verifactu_pos/i18n/l10n_es_edi_verifactu_pos.pot",
-                "language_regex": "^(es)$"
-            },
-            {
-                "name": "l10n_es_modelo130",
-                "filemask": "addons/l10n_es_modelo130/i18n/*.po",
-                "new_base": "addons/l10n_es_modelo130/i18n/l10n_es_modelo130.pot",
                 "language_regex": "^(es)$"
             },
             {
@@ -2271,6 +2336,12 @@
                 "language_regex": "^(fr)$"
             },
             {
+                "name": "l10n_ge",
+                "filemask": "addons/l10n_ge/i18n/*.po",
+                "new_base": "addons/l10n_ge/i18n/l10n_ge.pot",
+                "language_regex": "^(ka)$"
+            },
+            {
                 "name": "l10n_gn",
                 "filemask": "addons/l10n_gn/i18n/*.po",
                 "new_base": "addons/l10n_gn/i18n/l10n_gn.pot",
@@ -2292,12 +2363,6 @@
                 "name": "l10n_gr_edi",
                 "filemask": "addons/l10n_gr_edi/i18n/*.po",
                 "new_base": "addons/l10n_gr_edi/i18n/l10n_gr_edi.pot",
-                "language_regex": "^(el)$"
-            },
-            {
-                "name": "l10n_gr_edi_e_invoo",
-                "filemask": "addons/l10n_gr_edi_e_invoo/i18n/*.po",
-                "new_base": "addons/l10n_gr_edi_e_invoo/i18n/l10n_gr_edi_e_invoo.pot",
                 "language_regex": "^(el)$"
             },
             {
@@ -2367,12 +2432,6 @@
                 "language_regex": "^(id)$"
             },
             {
-                "name": "l10n_id_efaktur",
-                "filemask": "addons/l10n_id_efaktur/i18n/*.po",
-                "new_base": "addons/l10n_id_efaktur/i18n/l10n_id_efaktur.pot",
-                "language_regex": "^(id)$"
-            },
-            {
                 "name": "l10n_id_efaktur_coretax",
                 "filemask": "addons/l10n_id_efaktur_coretax/i18n/*.po",
                 "new_base": "addons/l10n_id_efaktur_coretax/i18n/l10n_id_efaktur_coretax.pot",
@@ -2403,27 +2462,21 @@
                 "language_regex": "^(hi)$"
             },
             {
-                "name": "l10n_in_edi_ewaybill",
-                "filemask": "addons/l10n_in_edi_ewaybill/i18n/*.po",
-                "new_base": "addons/l10n_in_edi_ewaybill/i18n/l10n_in_edi_ewaybill.pot",
+                "name": "l10n_in_ewaybill",
+                "filemask": "addons/l10n_in_ewaybill/i18n/*.po",
+                "new_base": "addons/l10n_in_ewaybill/i18n/l10n_in_ewaybill.pot",
                 "language_regex": "^(hi)$"
             },
             {
-                "name": "l10n_in_ewaybill_port",
-                "filemask": "addons/l10n_in_ewaybill_port/i18n/*.po",
-                "new_base": "addons/l10n_in_ewaybill_port/i18n/l10n_in_ewaybill_port.pot",
+                "name": "l10n_in_ewaybill_irn",
+                "filemask": "addons/l10n_in_ewaybill_irn/i18n/*.po",
+                "new_base": "addons/l10n_in_ewaybill_irn/i18n/l10n_in_ewaybill_irn.pot",
                 "language_regex": "^(hi)$"
             },
             {
                 "name": "l10n_in_ewaybill_stock",
                 "filemask": "addons/l10n_in_ewaybill_stock/i18n/*.po",
                 "new_base": "addons/l10n_in_ewaybill_stock/i18n/l10n_in_ewaybill_stock.pot",
-                "language_regex": "^(hi)$"
-            },
-            {
-                "name": "l10n_in_gstin_status",
-                "filemask": "addons/l10n_in_gstin_status/i18n/*.po",
-                "new_base": "addons/l10n_in_gstin_status/i18n/l10n_in_gstin_status.pot",
                 "language_regex": "^(hi)$"
             },
             {
@@ -2436,12 +2489,6 @@
                 "name": "l10n_in_pos",
                 "filemask": "addons/l10n_in_pos/i18n/*.po",
                 "new_base": "addons/l10n_in_pos/i18n/l10n_in_pos.pot",
-                "language_regex": "^(hi)$"
-            },
-            {
-                "name": "l10n_in_purchase",
-                "filemask": "addons/l10n_in_purchase/i18n/*.po",
-                "new_base": "addons/l10n_in_purchase/i18n/l10n_in_purchase.pot",
                 "language_regex": "^(hi)$"
             },
             {
@@ -2469,18 +2516,6 @@
                 "language_regex": "^(hi)$"
             },
             {
-                "name": "l10n_in_withholding",
-                "filemask": "addons/l10n_in_withholding/i18n/*.po",
-                "new_base": "addons/l10n_in_withholding/i18n/l10n_in_withholding.pot",
-                "language_regex": "^(hi)$"
-            },
-            {
-                "name": "l10n_in_withholding_payment",
-                "filemask": "addons/l10n_in_withholding_payment/i18n/*.po",
-                "new_base": "addons/l10n_in_withholding_payment/i18n/l10n_in_withholding_payment.pot",
-                "language_regex": "^(hi)$"
-            },
-            {
                 "name": "l10n_iq",
                 "filemask": "addons/l10n_iq/i18n/*.po",
                 "new_base": "addons/l10n_iq/i18n/l10n_iq.pot",
@@ -2505,33 +2540,9 @@
                 "language_regex": "^(it)$"
             },
             {
-                "name": "l10n_it_edi_ndd",
-                "filemask": "addons/l10n_it_edi_ndd/i18n/*.po",
-                "new_base": "addons/l10n_it_edi_ndd/i18n/l10n_it_edi_ndd.pot",
-                "language_regex": "^(it)$"
-            },
-            {
-                "name": "l10n_it_edi_ndd_account_dn",
-                "filemask": "addons/l10n_it_edi_ndd_account_dn/i18n/*.po",
-                "new_base": "addons/l10n_it_edi_ndd_account_dn/i18n/l10n_it_edi_ndd_account_dn.pot",
-                "language_regex": "^(it)$"
-            },
-            {
                 "name": "l10n_it_edi_sale",
                 "filemask": "addons/l10n_it_edi_sale/i18n/*.po",
                 "new_base": "addons/l10n_it_edi_sale/i18n/l10n_it_edi_sale.pot",
-                "language_regex": "^(it)$"
-            },
-            {
-                "name": "l10n_it_edi_website_sale",
-                "filemask": "addons/l10n_it_edi_website_sale/i18n/*.po",
-                "new_base": "addons/l10n_it_edi_website_sale/i18n/l10n_it_edi_website_sale.pot",
-                "language_regex": "^(it)$"
-            },
-            {
-                "name": "l10n_it_edi_withholding",
-                "filemask": "addons/l10n_it_edi_withholding/i18n/*.po",
-                "new_base": "addons/l10n_it_edi_withholding/i18n/l10n_it_edi_withholding.pot",
                 "language_regex": "^(it)$"
             },
             {
@@ -2550,12 +2561,6 @@
                 "name": "l10n_jo_edi",
                 "filemask": "addons/l10n_jo_edi/i18n/*.po",
                 "new_base": "addons/l10n_jo_edi/i18n/l10n_jo_edi.pot",
-                "language_regex": "^(ar)$"
-            },
-            {
-                "name": "l10n_jo_edi_extended",
-                "filemask": "addons/l10n_jo_edi_extended/i18n/*.po",
-                "new_base": "addons/l10n_jo_edi_extended/i18n/l10n_jo_edi_extended.pot",
                 "language_regex": "^(ar)$"
             },
             {
@@ -2643,6 +2648,12 @@
                 "language_regex": "^(ar|fr)$"
             },
             {
+                "name": "l10n_lk_invoice",
+                "filemask": "addons/l10n_lk_invoice/i18n/*.po",
+                "new_base": "addons/l10n_lk_invoice/i18n/l10n_lk_invoice.pot",
+                "language_regex": "^(si|ta)$"
+            },
+            {
                 "name": "l10n_lt",
                 "filemask": "addons/l10n_lt/i18n/*.po",
                 "new_base": "addons/l10n_lt/i18n/l10n_lt.pot",
@@ -2697,12 +2708,6 @@
                 "language_regex": "^(es_419)$"
             },
             {
-                "name": "l10n_mx_hr",
-                "filemask": "addons/l10n_mx_hr/i18n/*.po",
-                "new_base": "addons/l10n_mx_hr/i18n/l10n_mx_hr.pot",
-                "language_regex": "^(es_419)$"
-            },
-            {
                 "name": "l10n_my",
                 "filemask": "addons/l10n_my/i18n/*.po",
                 "new_base": "addons/l10n_my/i18n/l10n_my.pot",
@@ -2712,12 +2717,6 @@
                 "name": "l10n_my_edi",
                 "filemask": "addons/l10n_my_edi/i18n/*.po",
                 "new_base": "addons/l10n_my_edi/i18n/l10n_my_edi.pot",
-                "language_regex": "^(ms)$"
-            },
-            {
-                "name": "l10n_my_edi_extended",
-                "filemask": "addons/l10n_my_edi_extended/i18n/*.po",
-                "new_base": "addons/l10n_my_edi_extended/i18n/l10n_my_edi_extended.pot",
                 "language_regex": "^(ms)$"
             },
             {
@@ -2781,12 +2780,6 @@
                 "language_regex": "^(es_419)$"
             },
             {
-                "name": "l10n_pe_website_sale",
-                "filemask": "addons/l10n_pe_website_sale/i18n/*.po",
-                "new_base": "addons/l10n_pe_website_sale/i18n/l10n_pe_website_sale.pot",
-                "language_regex": "^(es_419)$"
-            },
-            {
                 "name": "l10n_ph",
                 "filemask": "addons/l10n_ph/i18n/*.po",
                 "new_base": "addons/l10n_ph/i18n/l10n_ph.pot",
@@ -2808,12 +2801,6 @@
                 "name": "l10n_pl_edi",
                 "filemask": "addons/l10n_pl_edi/i18n/*.po",
                 "new_base": "addons/l10n_pl_edi/i18n/l10n_pl_edi.pot",
-                "language_regex": "^(pl)$"
-            },
-            {
-                "name": "l10n_pl_taxable_supply_date",
-                "filemask": "addons/l10n_pl_taxable_supply_date/i18n/*.po",
-                "new_base": "addons/l10n_pl_taxable_supply_date/i18n/l10n_pl_taxable_supply_date.pot",
                 "language_regex": "^(pl)$"
             },
             {
@@ -2856,12 +2843,6 @@
                 "name": "l10n_ro_edi_stock_batch",
                 "filemask": "addons/l10n_ro_edi_stock_batch/i18n/*.po",
                 "new_base": "addons/l10n_ro_edi_stock_batch/i18n/l10n_ro_edi_stock_batch.pot",
-                "language_regex": "^(ro)$"
-            },
-            {
-                "name": "l10n_ro_efactura_synchronize",
-                "filemask": "addons/l10n_ro_efactura_synchronize/i18n/*.po",
-                "new_base": "addons/l10n_ro_efactura_synchronize/i18n/l10n_ro_efactura_synchronize.pot",
                 "language_regex": "^(ro)$"
             },
             {
@@ -2973,6 +2954,12 @@
                 "language_regex": "^(tr)$"
             },
             {
+                "name": "l10n_tr_nilvera_base_vat",
+                "filemask": "addons/l10n_tr_nilvera_base_vat/i18n/*.po",
+                "new_base": "addons/l10n_tr_nilvera_base_vat/i18n/l10n_tr_nilvera_base_vat.pot",
+                "language_regex": "^(tr)$"
+            },
+            {
                 "name": "l10n_tr_nilvera_edispatch",
                 "filemask": "addons/l10n_tr_nilvera_edispatch/i18n/*.po",
                 "new_base": "addons/l10n_tr_nilvera_edispatch/i18n/l10n_tr_nilvera_edispatch.pot",
@@ -3000,6 +2987,12 @@
                 "name": "l10n_tw_edi_ecpay",
                 "filemask": "addons/l10n_tw_edi_ecpay/i18n/*.po",
                 "new_base": "addons/l10n_tw_edi_ecpay/i18n/l10n_tw_edi_ecpay.pot",
+                "language_regex": "^(zh_TW)$"
+            },
+            {
+                "name": "l10n_tw_edi_ecpay_pos",
+                "filemask": "addons/l10n_tw_edi_ecpay_pos/i18n/*.po",
+                "new_base": "addons/l10n_tw_edi_ecpay_pos/i18n/l10n_tw_edi_ecpay_pos.pot",
                 "language_regex": "^(zh_TW)$"
             },
             {
@@ -3033,16 +3026,22 @@
                 "language_regex": "^(es_419)$"
             },
             {
+                "name": "l10n_us_account",
+                "filemask": "addons/l10n_us_account/i18n/*.po",
+                "new_base": "addons/l10n_us_account/i18n/l10n_us_account.pot",
+                "language_regex": "^(es_419)$"
+            },
+            {
                 "name": "l10n_uy",
                 "filemask": "addons/l10n_uy/i18n/*.po",
                 "new_base": "addons/l10n_uy/i18n/l10n_uy.pot",
                 "language_regex": "^(es_419)$"
             },
             {
-                "name": "l10n_uy_website_sale",
-                "filemask": "addons/l10n_uy_website_sale/i18n/*.po",
-                "new_base": "addons/l10n_uy_website_sale/i18n/l10n_uy_website_sale.pot",
-                "language_regex": "^(es_419)$"
+                "name": "l10n_uz",
+                "filemask": "addons/l10n_uz/i18n/*.po",
+                "new_base": "addons/l10n_uz/i18n/l10n_uz.pot",
+                "language_regex": "^(ru|uz)$"
             },
             {
                 "name": "l10n_ve",

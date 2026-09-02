@@ -1,16 +1,16 @@
 import { patch } from "@web/core/utils/patch";
-import { PosStore } from "@point_of_sale/app/store/pos_store";
+import { PosStore } from "@point_of_sale/app/services/pos_store";
 
 patch(PosStore.prototype, {
     async updatePrograms() {
-        if (this.get_order().uiState._isSettlingSO) {
+        if (this.getOrder()?._isSettlingSO) {
             return;
         }
         return super.updatePrograms();
     },
 
     updateRewards() {
-        if (this.get_order().uiState._isSettlingSO) {
+        if (this.getOrder()?._isSettlingSO) {
             return;
         }
         return super.updateRewards();

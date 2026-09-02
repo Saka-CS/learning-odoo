@@ -2,19 +2,15 @@
 # This file contains the translation of the following modules:
 # * website_event_booth
 #
-# Translators:
-# Tiffany Chang, 2025
-# Naser mars, 2025
-#
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Aliraza Habibitanha <alireza.habibitanha@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-27 18:38+0000\n"
-"PO-Revision-Date: 2026-08-21 21:29+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Persian <https://translate.odoo.com/projects/odoo-18/"
+"PO-Revision-Date: 2026-08-09 10:19+0000\n"
+"Last-Translator: Aliraza Habibitanha <alireza.habibitanha@gmail.com>\n"
+"Language-Team: Persian <https://translate.odoo.com/projects/odoo-19/"
 "website_event_booth/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -82,7 +78,7 @@ msgstr ""
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_order_progress
 msgid "<span>Confirmed</span>"
-msgstr "<span>تایید شده</span>"
+msgstr "<span>تأیید شده</span>"
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration_details
@@ -103,6 +99,12 @@ msgstr ""
 "                            <span> *</span>"
 
 #. module: website_event_booth
+#. odoo-python
+#: code:addons/website_event_booth/models/event_event.py:0
+msgid "Become exhibitor"
+msgstr "غرفه‌دار شوید"
+
+#. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_type_view_form
 msgid "Booth Menu Item"
 msgstr "آیتم منوی غرفه"
@@ -120,7 +122,7 @@ msgstr "ثبت نام غرفه انجام شد!"
 
 #. module: website_event_booth
 #. odoo-javascript
-#: code:addons/website_event_booth/static/src/js/booth_register.js:0
+#: code:addons/website_event_booth/static/src/interactions/booth_registration.js:0
 msgid "Booth registration failed."
 msgstr "ثبت نام غرفه با خطا مواجه شد."
 
@@ -131,8 +133,14 @@ msgstr "غرفه‌ها در وب سایت"
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
-msgid "Check our"
+msgid ""
+"Check our <a class=\"o_translate_inline\" href=\"/event\" title=\"List of "
+"Future Events\" aria-label=\"Link to list of future events\">list of future "
+"events</a>."
 msgstr ""
+"لطفاً <a class=\"o_translate_inline\" href=\"/event\" title=\"List of Future "
+"Events\" aria-label=\"Link to list of future events\">لیست رویدادهای آینده "
+"را ببینید</a>."
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
@@ -142,7 +150,7 @@ msgstr "نوع غرفه خود را انتخاب کنید"
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration_details
 msgid "Contact Details"
-msgstr "جزییات تماس"
+msgstr "اطلاعات مخاطب"
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_order_progress
@@ -157,6 +165,13 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
 msgid "Contact Us"
 msgstr "تماس با ما"
+
+#. module: website_event_booth
+#: model:ir.model.fields,field_description:website_event_booth.field_event_event__display_name
+#: model:ir.model.fields,field_description:website_event_booth.field_event_type__display_name
+#: model:ir.model.fields,field_description:website_event_booth.field_website_event_menu__display_name
+msgid "Display Name"
+msgstr "نام نمایشی"
 
 #. module: website_event_booth
 #: model:ir.model,name:website_event_booth.model_event_event
@@ -181,7 +196,7 @@ msgstr "رویداد پایان یافت"
 #. module: website_event_booth
 #: model:ir.model,name:website_event_booth.model_event_type
 msgid "Event Template"
-msgstr "الگوی رویداد"
+msgstr "قالب رویداد"
 
 #. module: website_event_booth
 #: model:ir.model.fields,field_description:website_event_booth.field_event_event__exhibition_map
@@ -189,8 +204,6 @@ msgid "Exhibition Map"
 msgstr "نقشه نمایشگاه"
 
 #. module: website_event_booth
-#. odoo-python
-#: code:addons/website_event_booth/models/event_event.py:0
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration_details
 msgid "Get A Booth"
@@ -199,11 +212,18 @@ msgstr "رزرو غرفه"
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration_details
 msgid "Go back"
-msgstr "برگرد"
+msgstr "بازگشت"
+
+#. module: website_event_booth
+#: model:ir.model.fields,field_description:website_event_booth.field_event_event__id
+#: model:ir.model.fields,field_description:website_event_booth.field_event_type__id
+#: model:ir.model.fields,field_description:website_event_booth.field_website_event_menu__id
+msgid "ID"
+msgstr "شناسه (ID)"
 
 #. module: website_event_booth
 #. odoo-javascript
-#: code:addons/website_event_booth/static/src/js/booth_register.js:0
+#: code:addons/website_event_booth/static/src/interactions/booth_registration.js:0
 msgid "It looks like your email is already in our system."
 msgstr "به نظر می‌رسد ایمیل شما از قبل در سیستم ما وجود دارد."
 
@@ -213,19 +233,9 @@ msgid "It's no longer possible to book a booth."
 msgstr "رزرو غرفه دیگر امکان‌پذیر نیست."
 
 #. module: website_event_booth
-#: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
-msgid "Link to list of future events"
-msgstr ""
-
-#. module: website_event_booth
-#: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
-msgid "List of Future Events"
-msgstr ""
-
-#. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
 msgid "Location"
-msgstr "مکان"
+msgstr "موقعیت مکانی"
 
 #. module: website_event_booth
 #: model:ir.model.fields,field_description:website_event_booth.field_website_event_menu__menu_type
@@ -244,7 +254,7 @@ msgstr "وارد سیستم شوید یا حساب کاربری ایجاد کن�
 
 #. module: website_event_booth
 #. odoo-javascript
-#: code:addons/website_event_booth/static/src/js/booth_register.js:0
+#: code:addons/website_event_booth/static/src/interactions/booth_registration.js:0
 msgid "Please fill out the form correctly."
 msgstr "لطفاً فرم را با دقت تکمیل کنید."
 
@@ -260,7 +270,7 @@ msgstr "متاسفیم، همه غرفه واگذار شده‌اند."
 
 #. module: website_event_booth
 #. odoo-javascript
-#: code:addons/website_event_booth/static/src/js/booth_register.js:0
+#: code:addons/website_event_booth/static/src/interactions/booth_registration.js:0
 msgid "The booth category doesn't exist."
 msgstr "دسته‌بندی غرفه وجود ندارد."
 
@@ -272,14 +282,9 @@ msgstr "این رویداد در حال حاضر برای ثبت نام غرفه
 #. module: website_event_booth
 #: model:ir.model,name:website_event_booth.model_website_event_menu
 msgid "Website Event Menu"
-msgstr "منوی رویداد وب سایت"
+msgstr "منوی رویداد در وب سایت"
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
 msgid "if you have any question."
 msgstr "اگر سؤالی دارید."
-
-#. module: website_event_booth
-#: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
-msgid "list of future events"
-msgstr ""

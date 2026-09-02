@@ -3,7 +3,7 @@ import { ControlButtons } from "@point_of_sale/app/screens/product_screen/contro
 
 patch(ControlButtons.prototype, {
     getPotentialRewards() {
-        if (this.pos.get_order().uiState._isSettlingSO) {
+        if (this.pos.getOrder()?._isSettlingSO) {
             return [];
         }
         return super.getPotentialRewards();

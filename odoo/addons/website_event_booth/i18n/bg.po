@@ -2,22 +2,15 @@
 # This file contains the translation of the following modules:
 # * website_event_booth
 #
-# Translators:
-# Albena Mincheva <albena_vicheva@abv.bg>, 2024
-# aleksandar ivanov, 2024
-# Elena Varbanova, 2024
-# Maria Boyadjieva <marabo2000@gmail.com>, 2024
-# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2024
-# Petko Karamotchev, 2024
-# Weblate <noreply-mt-weblate@weblate.org>, 2026.
+# Rosen Vladimirov <vladimirov.rosen@gmail.com>, 2026.
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-27 18:38+0000\n"
-"PO-Revision-Date: 2026-08-21 21:28+0000\n"
-"Last-Translator: Weblate <noreply-mt-weblate@weblate.org>\n"
-"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-18/"
+"PO-Revision-Date: 2026-08-07 01:07+0000\n"
+"Last-Translator: Rosen Vladimirov <vladimirov.rosen@gmail.com>\n"
+"Language-Team: Bulgarian <https://translate.odoo.com/projects/odoo-19/"
 "website_event_booth/bg/>\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +79,7 @@ msgstr ""
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_order_progress
 msgid "<span>Confirmed</span>"
-msgstr "<span>Потвърдено</span>"
+msgstr "<span>Потвърдена</span>"
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration_details
@@ -107,6 +100,12 @@ msgstr ""
 "                            <span> *</span>"
 
 #. module: website_event_booth
+#. odoo-python
+#: code:addons/website_event_booth/models/event_event.py:0
+msgid "Become exhibitor"
+msgstr "Стани изложител"
+
+#. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_type_view_form
 msgid "Booth Menu Item"
 msgstr "Елемент от менюто за щандове"
@@ -124,7 +123,7 @@ msgstr "Регистрацията на щанд е завършена!"
 
 #. module: website_event_booth
 #. odoo-javascript
-#: code:addons/website_event_booth/static/src/js/booth_register.js:0
+#: code:addons/website_event_booth/static/src/interactions/booth_registration.js:0
 msgid "Booth registration failed."
 msgstr "Регистрацията на щанд е неуспешна."
 
@@ -135,8 +134,14 @@ msgstr "Щандове на уебсайта"
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
-msgid "Check our"
+msgid ""
+"Check our <a class=\"o_translate_inline\" href=\"/event\" title=\"List of "
+"Future Events\" aria-label=\"Link to list of future events\">list of future "
+"events</a>."
 msgstr ""
+"Вижте нашия <a class=\"o_translate_inline\" href=\"/event\" title=\"Списък с "
+"бъдещи събития\" aria-label=\"Връзка към списъка с бъдещи събития\">списък с "
+"бъдещи събития</a>."
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
@@ -163,6 +168,13 @@ msgid "Contact Us"
 msgstr "Свържете се с нас"
 
 #. module: website_event_booth
+#: model:ir.model.fields,field_description:website_event_booth.field_event_event__display_name
+#: model:ir.model.fields,field_description:website_event_booth.field_event_type__display_name
+#: model:ir.model.fields,field_description:website_event_booth.field_website_event_menu__display_name
+msgid "Display Name"
+msgstr "Име за показване"
+
+#. module: website_event_booth
 #: model:ir.model,name:website_event_booth.model_event_event
 msgid "Event"
 msgstr "Събитие"
@@ -185,7 +197,7 @@ msgstr "Приключило събитие"
 #. module: website_event_booth
 #: model:ir.model,name:website_event_booth.model_event_type
 msgid "Event Template"
-msgstr "Шаблон на събитие"
+msgstr "Обрзец на събитие"
 
 #. module: website_event_booth
 #: model:ir.model.fields,field_description:website_event_booth.field_event_event__exhibition_map
@@ -193,8 +205,6 @@ msgid "Exhibition Map"
 msgstr "Карта на изложението"
 
 #. module: website_event_booth
-#. odoo-python
-#: code:addons/website_event_booth/models/event_event.py:0
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration_details
 msgid "Get A Booth"
@@ -206,8 +216,15 @@ msgid "Go back"
 msgstr "Върнете се назад"
 
 #. module: website_event_booth
+#: model:ir.model.fields,field_description:website_event_booth.field_event_event__id
+#: model:ir.model.fields,field_description:website_event_booth.field_event_type__id
+#: model:ir.model.fields,field_description:website_event_booth.field_website_event_menu__id
+msgid "ID"
+msgstr "Номер (ID)"
+
+#. module: website_event_booth
 #. odoo-javascript
-#: code:addons/website_event_booth/static/src/js/booth_register.js:0
+#: code:addons/website_event_booth/static/src/interactions/booth_registration.js:0
 msgid "It looks like your email is already in our system."
 msgstr "Изглежда, че вашият имейл вече е в нашата система."
 
@@ -215,16 +232,6 @@ msgstr "Изглежда, че вашият имейл вече е в нашат
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
 msgid "It's no longer possible to book a booth."
 msgstr "Вече не е възможно да се резервира щанд."
-
-#. module: website_event_booth
-#: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
-msgid "Link to list of future events"
-msgstr ""
-
-#. module: website_event_booth
-#: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
-msgid "List of Future Events"
-msgstr ""
 
 #. module: website_event_booth
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
@@ -248,7 +255,7 @@ msgstr "Моля, влезте или създайте акаунт."
 
 #. module: website_event_booth
 #. odoo-javascript
-#: code:addons/website_event_booth/static/src/js/booth_register.js:0
+#: code:addons/website_event_booth/static/src/interactions/booth_registration.js:0
 msgid "Please fill out the form correctly."
 msgstr "Моля, попълнете формуляра правилно."
 
@@ -264,7 +271,7 @@ msgstr "За съжаление всички щандове са разпрод�
 
 #. module: website_event_booth
 #. odoo-javascript
-#: code:addons/website_event_booth/static/src/js/booth_register.js:0
+#: code:addons/website_event_booth/static/src/interactions/booth_registration.js:0
 msgid "The booth category doesn't exist."
 msgstr "Категорията щанд не съществува."
 
@@ -282,8 +289,3 @@ msgstr "Меню за събития на уебсайта"
 #: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_registration
 msgid "if you have any question."
 msgstr "ако имате въпроси."
-
-#. module: website_event_booth
-#: model_terms:ir.ui.view,arch_db:website_event_booth.event_booth_layout
-msgid "list of future events"
-msgstr ""

@@ -9,5 +9,8 @@
 
     <Card title="'card 1'" content="html1" />
     <Card title="'card 2'" content="html2" />
+
+    <input type="text" t-on-keyup="addTodo" t-ref="todoInput" />
+    <TodoList todo="state.todoList" />
   </t>
 </templates>

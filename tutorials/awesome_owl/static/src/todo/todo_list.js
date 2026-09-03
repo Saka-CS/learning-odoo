@@ -1,7 +1,10 @@
 import { Component, useState } from "@odoo/owl";
+import { TodoItem } from "./todo_item";
 
-class TodoItem extends Component {
-  static templete = "awesome_owl.todo_item";
+export class TodoList extends Component {
+  static template = "awesome_owl.todo_list";
+
+  static components = { TodoItem };
 
   static props = {
     todo: {
@@ -12,14 +15,4 @@ class TodoItem extends Component {
       },
     },
   };
-
-  setup() {
-    this.state = useState([
-      {
-        id: 1,
-        description: "buy milk",
-        isCompleted: false,
-      },
-    ]);
-  }
 }

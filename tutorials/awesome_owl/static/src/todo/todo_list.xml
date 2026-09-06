@@ -2,7 +2,7 @@
 <templates xml:space="preserve">
   <t t-name="awesome_owl.todo_list">
     <t t-foreach="props.todo" t-as="todo" t-key="todo_index">
-      <TodoItem todo="todo" />
+      <TodoItem todo="todo" changeTodoState="props.changeTodoState" />
     </t>
   </t>
 </templates>

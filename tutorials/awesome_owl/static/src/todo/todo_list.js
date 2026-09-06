@@ -7,6 +7,7 @@ export class TodoList extends Component {
   static components = { TodoItem };
 
   static props = {
+    changeTodoState: { type: Function, optional: true },
     todo: {
       type: Array,
       element: {

@@ -8,5 +8,14 @@ export class TodoItem extends Component {
       type: Object,
       shape: { id: Number, description: String, isCompleted: Boolean },
     },
+    changeTodoState: { type: Function, optional: true },
   };
+
+  toggleState() {
+    this.props.changeTodoState(this.props.todo.id, "markComplete");
+  }
+
+  removeTodo() {
+    this.props.changeTodoState(this.props.todo.id, "delete");
+  }
 }

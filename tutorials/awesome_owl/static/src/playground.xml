@@ -7,10 +7,13 @@
 
     <t t-esc="state.sum" />
 
-    <Card title="'card 1'" content="html1" />
-    <Card title="'card 2'" content="html2" />
+    <Card title="'card 1'">This is a test of default values</Card>
+    <Card title="'card 2'">
+      This is a test counter
+      <Counter onChange.bind="onChange" />
+    </Card>
 
     <input type="text" t-on-keyup="addTodo" t-ref="todoInput" />
-    <TodoList todo="state.todoList" />
+    <TodoList todo="state.todoList" changeTodoState.bind="changeTodoState" />
   </t>
 </templates>

@@ -21,16 +21,9 @@ export class Playground extends Component {
     this.state.sum++;
   }
 
-  changeTodoState(id, command) {
-    if (command === "markComplete") {
-      const targetTodo = this.state.todoList.find((todo) => todo.id === id);
-      targetTodo.isCompleted = !targetTodo.isCompleted;
-    } else {
-      const targetTodoIndex = this.state.todoList.findIndex(
-        (todo) => todo.id === id,
-      );
-      this.state.todoList.splice(targetTodoIndex, 1);
-    }
+  changeTodoStatus(env) {
+    console.log(env.target);
+    // const todoItem = this.state.todoList.find(todo => todo.id === env.target.)
   }
 
   addTodo(env) {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+  <t t-name="awesome_dashboard.DashboardItem">
+    <div
+      class="p-3 bg-primary border border-primary rounded"
+      t-attf-style="width: #{18 * this.props.size}rem"
+    >
+      <div class="d-flex align-items-center flex-column">
+        <t t-slot="default" />
+      </div>
+    </div>
+  </t>
+
+</templates>

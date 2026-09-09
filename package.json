@@ -1,0 +1,24 @@
+{
+  "name": "2026-09-01-learning-odoo-18",
+  "version": "1.0.0",
+  "description": "Starter template for neovim and odoo 18 development with the required LSPs, formatters and debuggers.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saka-CS/learning-odoo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Saka-CS/learning-odoo/issues"
+  },
+  "homepage": "https://github.com/Saka-CS/learning-odoo#readme",
+  "devDependencies": {
+    "@odoo/owl": "^2.8.3"
+  }
+}

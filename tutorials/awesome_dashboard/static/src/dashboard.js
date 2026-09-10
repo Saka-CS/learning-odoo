@@ -2,7 +2,7 @@ import { Layout } from "@web/search/layout";
 import { registry } from "@web/core/registry";
 import { useService } from "@web/core/utils/hooks";
 import { DashboardItem } from "./dashboard_item";
-import { Component, onWillStart } from "@odoo/owl";
+import { Component, onWillStart, useEffect } from "@odoo/owl";
 
 class AwesomeDashboard extends Component {
   static template = "awesome_dashboard.AwesomeDashboard";
@@ -11,7 +11,11 @@ class AwesomeDashboard extends Component {
 
   setup() {
     this.action = useService("action");
-    this.statistics = useService("statistics");
+    this.statistics = useService("awesome_dashboard.statistics");
+    onWillStart(async () => {
+      this.statistics = await this.statistics.loadStatistics();
+    });
+    useEffect(() => this.renderChart());
   }
 
   openCustomers() {
@@ -29,6 +33,13 @@ class AwesomeDashboard extends Component {
         [false, "form"],
       ],
     });
+  }
+
+  renderChart() {
+    if (this.chart) {
+      this.chart.destroy();
+    }
+    this.chart = new Chart();
   }
 }
 

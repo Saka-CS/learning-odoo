@@ -3,21 +3,21 @@ import { rpc } from "@web/core/network/rpc";
 import { registry } from "@web/core/registry";
 import { memoize } from "@web/core/utils/functions";
 
-const load = memoize(async function load() {
-  return await rpc("/awesome_dashboard/statistics");
-});
-
 // export  {
 //   onWillStart(async () => {
 //     return await rpc("/awesome_dashboard/statistics");
 //   });
 // }
 
-export const loadStatistics = {
+export const statisticsService = {
+  async: ["loadStatistics"],
   start() {
-    const memory = load();
-    return memory;
+    return {
+      loadStatistics: memoize(() => rpc("/awesome_dashboard/statistics")),
+    };
   },
 };
 
-registry.category("services").add("statistics", loadStatistics);
+registry
+  .category("services")
+  .add("awesome_dashboard.statistics", statisticsService);

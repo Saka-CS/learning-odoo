@@ -29,4 +29,4 @@ Starter template for neovim and odoo 18 development with the required LSPs, form
 
     # Start Odoo development server with auto-reload
 
-uv run odoo/odoo-bin -c odoo.conf -d dev_db --dev=reload,xml,qweb
+uv run odoo/odoo-bin -c odoo.conf -d dev_db -u awesome_dashboard --dev=reload,xml,qweb

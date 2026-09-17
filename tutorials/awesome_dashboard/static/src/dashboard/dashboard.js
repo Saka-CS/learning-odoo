@@ -8,24 +8,20 @@ import {
   onWillStart,
   onWillUnmount,
   useEffect,
+  useState,
 } from "@odoo/owl";
-import { loadJS } from "@web/core/assets";
+import { PieChart } from "./pie_chart";
 
 class AwesomeDashboard extends Component {
   static template = "awesome_dashboard.AwesomeDashboard";
 
-  static components = { Layout, DashboardItem };
+  static components = { Layout, DashboardItem, PieChart };
 
   setup() {
     this.action = useService("action");
-    this.statistics = useService("awesome_dashboard.statistics");
-    onWillStart(async () => {
-      this.statistics = await this.statistics.loadStatistics();
-    });
-    onWillStart(() => loadJS("/web/static/lib/Chart/Chart.js"));
-
-    onMounted(() => this.renderChart());
-    onWillUnmount(() => this.chart.destroy());
+    this.statistics = useState(useService("awesome_dashboard.statistics"));
+    // onWillStart(async () => {
+    // });
   }
 
   openCustomers() {
@@ -43,13 +39,6 @@ class AwesomeDashboard extends Component {
         [false, "form"],
       ],
     });
-  }
-
-  renderChart() {
-    if (this.chart) {
-      this.chart.destroy();
-    }
-    this.chart = new Chart();
   }
 }
 

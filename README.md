@@ -1,7 +1,5 @@
 # neovim-odoo-development-template
 
-Starter template for neovim and odoo 18 development with the required LSPs, formatters and debuggers.
-
 ## Setup Commands
 
 ### 🛠️ Step-by-Step uv Commands
